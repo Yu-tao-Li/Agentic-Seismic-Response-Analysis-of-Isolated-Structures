@@ -1,0 +1,18 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB three_story_shear
+Abaqus 2025
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Analysis Input File Processor
+6/21/2026 3:18:45 AM
+Run pre.exe
+6/21/2026 3:18:56 AM
+Abaqus Error: Analysis Input File Processor exited with an error - Please see the 
+three_story_shear.dat file for possible error messages if the file exists.
+Begin SIM Wrap-up
+6/21/2026 3:18:57 AM
+Run SMASimUtility.exe
+6/21/2026 3:18:57 AM
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

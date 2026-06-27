@@ -1,0 +1,28 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB three_story_shear_spring_mass
+Abaqus 2025
+abaqus : Abaqus License Manager checked out the following licenses:
+At line:2 char:36
++ ... 'Continue'; abaqus job=three_story_shear_spring_mass input=three_stor ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Abaqus License ...owing licenses::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Abaqus/Foundation checked out 3 tokens from Flexnet server <local_machine>.
+<9996 out of 9999 licenses remain available>.
+Begin Analysis Input File Processor
+6/24/2026 11:22:04 PM
+Run pre.exe
+6/24/2026 11:22:13 PM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/24/2026 11:22:13 PM
+Run standard.exe
+6/24/2026 11:22:23 PM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+6/24/2026 11:22:24 PM
+Run SMASimUtility.exe
+6/24/2026 11:22:25 PM
+End SIM Wrap-up
+Abaqus JOB three_story_shear_spring_mass COMPLETED

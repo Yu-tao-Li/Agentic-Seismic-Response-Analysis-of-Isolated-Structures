@@ -1,0 +1,163 @@
+1
+
+   Abaqus 2025                                  Date 22-6��-2026   Time 16:29:55
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***ERROR: in keyword *MASS, file "frame_model.inp", line 75: Unknown assembly 
+           set FLOOR1
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+
+ ***ERROR: in keyword *MASS, file "frame_model.inp", line 77: Unknown assembly 
+           set FLOOR2
+
+ ***ERROR: in keyword *MASS, file "frame_model.inp", line 79: Unknown assembly 
+           set FLOOR3
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT, TYPE=B21, ELSET=COLUMNS
+  *ELEMENT, TYPE=B21, ELSET=BEAMS
+  *heading
+          2D Three-Story Two-Bay Base-Isolated Steel Frame - Elastic Validation                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+  *material, name=STEEL
+  *elastic
+  *density
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *spring, elset=BASE
+  *mass, elset=FLOOR1
+  *mass, elset=FLOOR2
+  *mass, elset=FLOOR3
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+  *spring, elset=BASE
+
+ ***ERROR: INVALID INTEGER VALUE
+ LINE IMAGE: 1, 2.0E6
+  *mass, elset=FLOOR1
+  *mass, elset=FLOOR2
+  *mass, elset=FLOOR3
+  *boundary
+  *boundary
+  *equation
+  *step, name=FREQUENCY
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS
+  *step, name=FREQUENCY
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS
+  *frequency, eigensolver=LANCZOS
+  *endstep
+  *boundary
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS
+  *frequency, eigensolver=LANCZOS
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    15
+          NUMBER OF NODES IS                                       42
+          NUMBER OF NODES DEFINED BY THE USER                      12
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        30
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   36
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     4 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      1.2    
+       SYSTEM TIME (SEC)    =     0.40    
+       TOTAL CPU TIME (SEC) =      1.6    
+       WALLCLOCK TIME (SEC) =            0

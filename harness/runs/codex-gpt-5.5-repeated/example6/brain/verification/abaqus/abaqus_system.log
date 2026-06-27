@@ -1,0 +1,47 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.35
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+:: initializing oneAPI environment...
+   Initializing Visual Studio command-line environment...
+   Visual Studio version 17.14.35 environment configured.
+   "<visual_studio_buildtools>\"
+   Visual Studio command-line environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  ipp -- latest
+:  ippcp -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  ocloc -- latest
+:  pti -- latest
+:  tbb -- latest
+:  umf -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+Abaqus JOB abaqus
+Abaqus 2025
+Abaqus Site ID: 
+Abaqus is located in the directory <abaqus_install>\EstProducts\2025 <abaqus_install>\EstProducts\2025\win_b64 <abaqus_install>\EstProducts\2025\win_b64\code <abaqus_install>\EstProducts\2025\win_b64\code\bin <abaqus_install>\EstProducts\2025\win_b64\code\bin\SMAExternal <abaqus_install>\EstProducts\2025\win_b64\CAEresources <abaqus_install>\EstProducts\2025\win_b64\SMA
+Sequence Information:
+    <abaqus_install>\EstProducts\2025\win_b64: 2024_09_20-21.00.46 RELr427 198590
+The Abaqus information files are located in the directory <abaqus_install>\EstProducts\2025\win_b64\SMA\info
+                        
+# --------------------  
+# System Information    
+# --------------------
+
+
+Running system configuration checks for Windows/x86-64.
+Please wait until all necessary information has been gathered...
+
+Abaqus sysinfo execution exited with error(s).
+
+Abaqus JOB abaqus COMPLETED

@@ -1,0 +1,56 @@
+{
+  "software": "MATLAB",
+  "version": "25.2.0.3055257 (R2025b) Update 2",
+  "model_type": "nonlinear_MDOF_Newmark_NR",
+  "n_stories": 4,
+  "parameters": {
+    "mass": [
+      250000,
+      270000,
+      270000,
+      180000
+    ],
+    "stiffness": [
+      5.0E+7,
+      2.45E+8,
+      1.95E+8,
+      9.8E+7
+    ],
+    "yield_force": [
+      500000,
+      1.225E+6,
+      975000,
+      490000
+    ],
+    "hardening_ratio": [
+      0.05,
+      0,
+      0,
+      0
+    ]
+  },
+  "damping": {
+    "ratio": 0.05,
+    "alpha": 0.50592893173366082,
+    "beta": 0.0034765127740739666
+  },
+  "integration": {
+    "method": "Newmark-beta",
+    "beta": 0.25,
+    "gamma": 0.5
+  },
+  "input": {
+    "file": "Northridge_01_NO_968.txt",
+    "n_rows": 1900,
+    "dt": 0.01,
+    "PGA": 3.9240000000000004
+  },
+  "results": {
+    "peak_top_displacement_m": 0.028148812300968159,
+    "peak_top_acceleration_ms2": 5.0791572380796719,
+    "peak_isolation_displacement_m": 0.023147668727616606,
+    "peak_base_shear_N": 532869.17181904148,
+    "convergence_failures": 0,
+    "convergence_rate_pct": 100
+  }
+}

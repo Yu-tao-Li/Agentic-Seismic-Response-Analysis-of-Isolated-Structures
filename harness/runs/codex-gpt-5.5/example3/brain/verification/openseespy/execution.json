@@ -1,0 +1,7 @@
+{
+  "cmd": "conda run -n ops312 python main.py",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "timed_out": false
+}

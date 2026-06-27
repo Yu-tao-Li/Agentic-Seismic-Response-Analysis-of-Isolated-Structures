@@ -1,0 +1,211 @@
+1
+
+   Abaqus 2025                                  Date 22-6��-2026   Time 21:39:26
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT, TYPE=B21, ELSET=COLUMNS
+  *ELEMENT, TYPE=B21, ELSET=BEAMS
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR1
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR2
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR3
+  *ELEMENT, TYPE=MASS, ELSET=MASS_BASE
+  *ELEMENT, TYPE=SPRINGA, ELSET=ISOLATORS
+  *heading
+          2D Frame - Linear Elastic Isolators - Diagnostic                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  *material, name=STEEL
+  *elastic
+  *density
+  *damping, alpha=0.18647, beta=0.00707
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *spring, elset=ISOLATORS
+
+ ***ERROR: THE INDEPENDENT VARIABLES MUST BE ARRANGED IN ASCENDING ORDER
+ LINE IMAGE: 2
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+
+ ***ERROR: THE INDEPENDENT VARIABLES MUST BE ARRANGED IN ASCENDING ORDER
+ LINE IMAGE: 1.0E10
+  *mass, elset=MASS_FLOOR1
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_FLOOR2
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_FLOOR3
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_BASE
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+  *spring, elset=ISOLATORS
+  *mass, elset=MASS_FLOOR1
+  *mass, elset=MASS_FLOOR2
+  *mass, elset=MASS_FLOOR3
+  *mass, elset=MASS_BASE
+  *boundary
+  *boundary
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *output, field, frequency=100
+  *output, history, frequency=10
+ 
+      ELEMENT CONSTRUCTION EXECUTED IN PARALLEL USING 4 THREADS
+ 
+      ELEMENT GEOMETRY CALCULATIONS EXECUTED IN PARALLEL USING 4 THREADS
+  *step, name=DYNAMIC, inc=2000
+  *step, name=DYNAMIC, inc=2000
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *step, name=DYNAMIC, inc=2000
+  *step, name=DYNAMIC, inc=2000
+  *dynamic, alpha=-0.05, haftol=100000000
+  *output, field, frequency=100
+  *nodeoutput
+  *output, history, frequency=10
+  *nodeoutput, nset=ROOF_CENTER
+  *nodeoutput, nset=ISO_TOP
+  *endstep
+  *boundary
+  *step, name=DYNAMIC, inc=2000
+  *dynamic, alpha=-0.05, haftol=100000000
+  *cload, amplitude=ACCEL_HIST
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    30
+          NUMBER OF NODES IS                                       45
+          NUMBER OF NODES DEFINED BY THE USER                      15
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        30
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   57
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     2 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.20    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.30    
+       WALLCLOCK TIME (SEC) =            0

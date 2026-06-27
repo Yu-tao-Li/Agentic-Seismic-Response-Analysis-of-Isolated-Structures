@@ -1,0 +1,22 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB three_story_modal
+Abaqus 2025
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 3 tokens from Flexnet server <local_machine>.
+<9996 out of 9999 licenses remain available>.
+Begin Analysis Input File Processor
+6/25/2026 1:35:26 AM
+Run pre.exe
+6/25/2026 1:35:35 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/25/2026 1:35:35 AM
+Run standard.exe
+6/25/2026 1:35:45 AM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+6/25/2026 1:35:46 AM
+Run SMASimUtility.exe
+6/25/2026 1:35:47 AM
+End SIM Wrap-up
+Abaqus JOB three_story_modal COMPLETED

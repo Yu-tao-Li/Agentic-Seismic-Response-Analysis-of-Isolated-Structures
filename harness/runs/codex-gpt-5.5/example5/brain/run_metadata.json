@@ -1,0 +1,12 @@
+{
+  "agent": "codex-gpt-5.5",
+  "agent_kind": "codex_cli",
+  "model_backend": "GPT-5.5 (per user naming)",
+  "prompt_type": "brain",
+  "example": "example5",
+  "run_id": "example5/brain",
+  "started_at_local": "2026-06-21T09:18:26.793957+08:00",
+  "manual_edits": 1,
+  "harness_note": "No repeat/round folders are used; the run is assessed by final cross-software evidence and report.md.",
+  "latest_adjustment": "ABAQUS Example 5 damping was corrected by representing alpha*M and beta*K0 with explicit DASHPOT2 elements after checking the Steel01 bilinear kinematic-hardening rule."
+}

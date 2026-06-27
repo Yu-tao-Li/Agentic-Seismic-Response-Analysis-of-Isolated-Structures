@@ -1,0 +1,43 @@
+{
+    "agent":  "claude-code-mimo-v2.5-pro-ultraspeed",
+    "example":  "example1",
+    "prompt_type":  "brain",
+    "formal_harness_run":  true,
+    "run_root":  "harness\\runs\\claude-code-mimo-v2.5-pro-ultraspeed\\example1\\brain",
+    "result":  "three-software pass",
+    "strict_three_software_agreement":  true,
+    "total_agent_duration_ms":  300266,
+    "total_agent_duration_readable":  "5m 0s",
+    "total_wall_clock_duration_ms":  303458,
+    "total_wall_clock_duration_readable":  "5m 3s",
+    "total_num_turns":  81,
+    "final_round_agent_duration_ms":  300266,
+    "final_round_agent_duration_readable":  "5m 0s",
+    "final_round_wall_clock_duration_ms":  303458,
+    "final_round_wall_clock_duration_readable":  "5m 3s",
+    "final_round_num_turns":  81,
+    "api_error_status":  null,
+    "returncode":  0,
+    "cross_validation_report":  "harness\\runs\\claude-code-mimo-v2.5-pro-ultraspeed\\example1\\brain\\cross_validation_report.json",
+    "notes":  "Formal harness run passed three-software modal comparison.",
+    "rounds":  [
+                   {
+                       "name":  "initial",
+                       "agent_ms":  300266,
+                       "wall_ms":  303458,
+                       "turns":  81,
+                       "api":  null,
+                       "returncode":  0,
+                       "stdout":  "agent_io/claude_stdout.json",
+                       "call":  "agent_io/claude_call.json"
+                   }
+               ],
+    "evidence_files":  [
+                           "sent_prompt.txt",
+                           "agent_io/claude_input.txt",
+                           "agent_io/claude_stdout.json",
+                           "agent_io/claude_call.json",
+                           "run_metadata.json",
+                           "efficiency_record.json"
+                       ]
+}

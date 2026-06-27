@@ -1,0 +1,12 @@
+{
+  "software": "Python_Reference_Newmark",
+  "time_step": 0.02,
+  "n_samples": 2686,
+  "top_displacement_peak_m": 0.1090218086606281,
+  "top_acceleration_peak_m_s2": 13.72894011593508,
+  "omega1": 9.951438694861201,
+  "omega2": 27.883311604680046,
+  "omega3": 40.292552684816734,
+  "alphaM": 0.7333973763454436,
+  "betaK": 0.002643072815554237
+}

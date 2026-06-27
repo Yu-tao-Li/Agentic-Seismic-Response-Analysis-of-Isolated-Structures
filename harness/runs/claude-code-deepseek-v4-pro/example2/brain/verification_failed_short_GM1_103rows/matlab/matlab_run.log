@@ -1,0 +1,6 @@
+omega1=9.951439 rad/s  omega2=27.883312 rad/s  omega3=40.292553 rad/s
+alpha=0.733397  beta=0.00264307
+Raw PGA=0.180010 m/s^2, scale=21.798789, normalized PGA=3.924000 m/s^2
+MATLAB analysis complete.
+Peak top displacement: 1.352116e-01 m
+Peak top acceleration: 1.302367e+01 m/s^2

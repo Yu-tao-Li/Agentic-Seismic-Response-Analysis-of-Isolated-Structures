@@ -1,0 +1,56 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.35
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+:: initializing oneAPI environment...
+   Initializing Visual Studio command-line environment...
+   Visual Studio version 17.14.35 environment configured.
+   "<visual_studio_buildtools>\"
+   Visual Studio command-line environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  ipp -- latest
+:  ippcp -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  ocloc -- latest
+:  pti -- latest
+:  tbb -- latest
+:  umf -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+Analysis initiated from SIMULIA established products
+Abaqus JOB static_check
+Abaqus 2025
+Begin Compiling Abaqus/Standard User Subroutines
+6/25/2026 3:21:41 AM
+End Compiling Abaqus/Standard User Subroutines
+Begin Linking Abaqus/Standard User Subroutines
+  Creating library standardU.lib and object standardU.exp
+libirc.lib(fast_mem_ops.c.obj) : warning LNK4210: .CRT section present; possible unhandled static initializer or terminator
+End Linking Abaqus/Standard User Subroutines
+6/25/2026 3:21:41 AM
+Begin Analysis Input File Processor
+6/25/2026 3:21:41 AM
+Run pre.exe
+6/25/2026 3:21:50 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/25/2026 3:21:50 AM
+Run standard.exe
+6/25/2026 3:22:05 AM
+Abaqus Error: Abaqus/Standard Analysis exited with an error - Please see the 
+message file for possible error messages if the file exists.
+Begin SIM Wrap-up
+6/25/2026 3:22:05 AM
+Run SMASimUtility.exe
+6/25/2026 3:22:05 AM
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

@@ -1,0 +1,106 @@
+You are running inside a coding-agent harness. Work only inside this run directory:
+harness\runs\codex-gpt-5.5-repeated\example1\brain
+
+This is an independent repeated Codex run. Use the task prompt below as the input. Do not copy generated outputs,
+scripts, reports, or response files from other agents or from the previous codex-gpt-5.5 run. You may use the files
+provided inside this run directory as inputs, and you may inspect software documentation or logs as needed.
+
+Required final structure:
+- verification/matlab/ with executable MATLAB code, logs, and machine-readable output
+- verification/openseespy/ with executable Python + OpenSeesPy code, logs, and machine-readable output
+- verification/abaqus/ with ABAQUS input/post-processing files, logs, and machine-readable output
+- cross_validation_report.json
+- report.md
+
+Record failures honestly. Do not declare PASS if any required generated software output is missing, empty, copied
+from another run, or not physically comparable. Save stdout/stderr logs where useful.
+
+Base task prompt:
+
+Background:
+Structural modal analysis determines the natural vibration characteristics of a structure. In this harness, correctness must be supported by cross-software verification rather than by a single program output.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for MATLAB, Python + OpenSeesPy, and ABAQUS, then compare the three results.
+
+Aims:
+Conduct modal analysis for a three-story shear building. Each story has a lumped mass of 1000 kg and a story stiffness of 500 kN/m.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same physical model and SI units in all three software implementations.
+
+1. MATLAB
+   - Build the 3x3 mass and stiffness matrices.
+   - Solve the generalized eigenvalue problem.
+   - Output circular frequencies, periods, and normalized mode shapes.
+
+2. Python + OpenSeesPy
+   - Build an equivalent three-DOF shear-building model.
+   - Use elastic story springs and lumped floor masses.
+   - Extract eigenvalues and node eigenvectors.
+
+3. ABAQUS
+   - Build an equivalent spring-mass model.
+   - Run a frequency extraction analysis.
+   - Post-process the ODB to extract frequencies and mode shapes.
+
+Harness verification requirements:
+For each software, write a machine-readable `modal_results.json` with:
+- `circular_frequencies_rad_per_s`
+- `periods_s`
+- `normalized_mode_shapes`
+
+Then create `cross_validation_report.json` that compares MATLAB, OpenSeesPy, and ABAQUS results. Mode-shape signs are arbitrary, so compare mode shapes after whole-mode sign correction or by absolute normalized amplitudes.
+
+The consistency thresholds may be proposed by the agent based on modal-analysis practice and software precision, but the adopted thresholds and their reasoning must be recorded before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Three software-specific `modal_results.json` files.
+- `cross_validation_report.json`.
+- `report.md` describing the model, software differences, encountered issues, corrections, adopted consistency criteria, and final agreement.
+
+Additional harness execution instructions:
+
+Work only inside the current run directory.
+
+Do not treat reference files as generated software results. Reference files may be used only to understand parameters or to diagnose discrepancies. The final pass/fail must be based on outputs generated in this run by MATLAB, OpenSeesPy, and ABAQUS.
+
+You must actually run the generated analysis paths when the software is available. A script that is written but not executed does not count as a completed software result.
+
+Use this directory layout:
+- verification/matlab/
+- verification/openseespy/
+- verification/abaqus/
+
+Each software folder must contain:
+- the source/input file used for that software
+- an execution log
+- machine-readable response or modal result JSON
+- manuscript-style txt outputs when requested
+
+The final `cross_validation_report.json` must compare only these generated outputs:
+- verification/matlab/*
+- verification/openseespy/*
+- verification/abaqus/*
+
+If any software path fails, read the error log, identify the root cause, modify that software path, rerun it, and repeat until either:
+1. all three generated outputs agree within adopted thresholds, or
+2. a true external blocker remains.
+
+Do not declare PASS if any of MATLAB, OpenSeesPy, or ABAQUS output is missing.
+
+For ABAQUS:
+- Ensure the model has valid inertia/mass definitions.
+- Ensure spring/connector elements have valid section/property definitions.
+- Ensure output extraction produces the same physical quantities and units as MATLAB and OpenSeesPy.
+- If ODB extraction fails, inspect the `.dat`, `.msg`, `.sta`, and `.odb`/postprocessing logs before revising.
+
+The report must include:
+- generated output files used in validation
+- errors encountered
+- corrections made
+- final pairwise metrics
+- whether the final result is a strict three-software pass

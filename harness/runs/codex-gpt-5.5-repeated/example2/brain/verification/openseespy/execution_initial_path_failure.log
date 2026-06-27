@@ -1,0 +1,21 @@
+<python_env>\python.exe : WARNING ZeroLength::setDomain(): Element 1 has L= 1, which is greater than the 
+tolerance
+At line:2 char:1
++ <python_env>\python.exe .\verification\openseespy\run_o ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING ZeroLen...n the tolerance:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING ZeroLength::setDomain(): Element 2 has L= 1, which is greater than the tolerance
+WARNING ZeroLength::setDomain(): Element 3 has L= 1, which is greater than the tolerance
+WARNING - PathSeries::PathSeries() - could not open file 
+WARNING - problem creating TimeSeries for LoadPattern 
+WARNING failed to create pattern
+Traceback (most recent call last):
+  File "harness\runs\codex-gpt-5.5-repeated\example2\br
+ain\verification\openseespy\run_openseespy_analysis.py", line 149, in <module>
+    main()
+  File "harness\runs\codex-gpt-5.5-repeated\example2\br
+ain\verification\openseespy\run_openseespy_analysis.py", line 82, in main
+    ops.pattern("Plain", 1, 1)
+opensees.OpenSeesError: See stderr output

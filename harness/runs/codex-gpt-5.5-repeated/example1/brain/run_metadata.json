@@ -1,0 +1,82 @@
+{
+  "agent": "codex-gpt-5.5-repeated",
+  "agent_kind": "codex_cli",
+  "model": "gpt-5.5",
+  "example": "example1",
+  "prompt_type": "brain",
+  "run_id": "example1/brain",
+  "prompt_file": "prompts/example1_brain.txt",
+  "started_at_local": "2026-06-24T23:11:57.110741+08:00",
+  "finished_at_local": "2026-06-24T23:27:45.818170+08:00",
+  "duration_ms": 948707,
+  "duration_minutes": 15.812,
+  "num_agent_turns_recorded_from_codex_events": 1,
+  "num_turns_recorded_from_codex_events": 1,
+  "codex_event_stats": {
+    "total_events": 170,
+    "event_type_counts": {
+      "thread.started": 1,
+      "turn.started": 1,
+      "item.completed": 96,
+      "item.started": 67,
+      "item.updated": 4,
+      "turn.completed": 1
+    },
+    "item_type_counts": {
+      "agent_message": 29,
+      "command_execution": 124,
+      "todo_list": 6,
+      "file_change": 8
+    },
+    "item_started": 67,
+    "item_completed": 96,
+    "item_updated": 4,
+    "command_execution_started": 62,
+    "command_execution_completed": 62,
+    "command_execution_failed": 12,
+    "command_status_counts": {
+      "completed": 50,
+      "failed": 12
+    },
+    "agent_messages": 29,
+    "todo_updates": 4,
+    "efficiency_action_count": 96,
+    "efficiency_action_count_basis": "Codex CLI item.completed events; this is closer to an action/event count than num_turns from one-shot codex exec."
+  },
+  "codex_efficiency_action_count": 96,
+  "codex_efficiency_action_count_basis": "Codex CLI item.completed events; this is closer to an action/event count than num_turns from one-shot codex exec.",
+  "manual_feedback_cycles": 0,
+  "first_pass_attempt": true,
+  "final_pass": true,
+  "final_pass_basis": "status=PASS",
+  "software_output_status": {
+    "matlab": {
+      "folder_exists": true,
+      "accepted_outputs": [
+        "verification\\matlab\\modal_results.json"
+      ],
+      "selected_output": "verification\\matlab\\modal_results.json",
+      "output_exists": true,
+      "output_size_bytes": 1582
+    },
+    "openseespy": {
+      "folder_exists": true,
+      "accepted_outputs": [
+        "verification\\openseespy\\modal_results.json"
+      ],
+      "selected_output": "verification\\openseespy\\modal_results.json",
+      "output_exists": true,
+      "output_size_bytes": 1598
+    },
+    "abaqus": {
+      "folder_exists": true,
+      "accepted_outputs": [
+        "verification\\abaqus\\modal_results.json"
+      ],
+      "selected_output": "verification\\abaqus\\modal_results.json",
+      "output_exists": true,
+      "output_size_bytes": 2647
+    }
+  },
+  "harness_note": "Independent repeated run using the same BRAIN prompt and a fresh run directory. No generated outputs from previous runs are copied."
+}

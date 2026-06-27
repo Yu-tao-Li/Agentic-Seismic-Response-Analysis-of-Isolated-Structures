@@ -1,0 +1,60 @@
+Generate one complete Python file named `sdof_newmark_demo.py`.
+
+Output code only. Do not use Markdown fences. Do not use external files. Use only Python standard library, NumPy, and Matplotlib.
+
+The file must analyze the following fixed SDOF oscillator:
+
+- Mass: m = 1000.0 kg
+- Stiffness: k = 200000.0 N/m
+- Damping ratio: zeta = 0.05
+- Gravity: g = 9.81 m/s^2
+- Time step: dt = 0.01 s
+- Duration: T = 20.0 s
+- Initial displacement: u0 = 0.0 m
+- Initial velocity: v0 = 0.0 m/s
+
+Define the ground acceleration inside the script as:
+ag(t) = 0.30*g*sin(2*pi*1.2*t)*exp(-0.15*t)
+      + 0.10*g*sin(2*pi*3.0*t)*exp(-0.20*t)
+
+The equation of motion is:
+m*u_ddot + c*u_dot + k*u = -m*ag(t)
+
+The script must include:
+
+1. `make_time_vector(dt, duration)`
+2. `ground_acceleration(t, g=9.81)`
+3. `compute_damping(m, k, zeta)`
+4. `newmark_average_acceleration(m, c, k, ag, dt, u0=0.0, v0=0.0)`
+5. `compute_response_metrics(t, ag, u, v, a_rel, a_abs)`
+6. `save_csv(path, t, ag, u, v, a_rel, a_abs)`
+7. `save_summary_json(path, metrics)`
+8. `plot_response(path, t, ag, u, v, a_abs)`
+9. `run_analysis(output_dir="sdof_output")`
+10. `main()`
+
+The Newmark method must use beta = 1/4 and gamma = 1/2.
+
+The script must compute and report:
+- natural circular frequency
+- natural period
+- damping coefficient
+- peak relative displacement
+- peak relative velocity
+- peak relative acceleration
+- peak absolute acceleration
+- peak pseudo base shear k*u
+- time of peak displacement
+
+The script must create the output directory and write:
+- `response.csv`
+- `summary.json`
+- `response.png`
+
+Add three simple assertion-based test functions at the bottom:
+- `test_zero_ground_motion()`
+- `test_output_shapes()`
+- `test_damping_positive()`
+
+Do not include TODOs, placeholders, pseudocode, or omitted sections.
+The final code should be directly runnable.

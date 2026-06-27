@@ -1,0 +1,44 @@
+*Heading
+Three-story shear building modal analysis - spring-mass model
+*Preprint, echo=NO
+**
+** ---- NODES ----
+*Node
+1, 0.0, 0.0, 0.0
+2, 1.0, 0.0, 0.0
+3, 2.0, 0.0, 0.0
+4, 3.0, 0.0, 0.0
+**
+** ---- SPRING ELEMENTS between consecutive nodes ----
+*Element, type=SPRING2
+1, 1, 2
+2, 2, 3
+3, 3, 4
+*Elset, elset=Springs
+1, 2, 3
+*Spring, elset=Springs
+1, 1
+500000.0
+**
+** ---- MASS ELEMENTS (point masses at floor nodes) ----
+*Element, type=MASS
+10, 2
+11, 3
+12, 4
+*Elset, elset=MassElements
+10, 11, 12
+*Mass, elset=MassElements
+1000.0
+**
+** ---- BOUNDARY CONDITIONS ----
+*Boundary
+1, 1, 6
+2, 2, 6
+3, 2, 6
+4, 2, 6
+**
+** ---- FREQUENCY EXTRACTION STEP ----
+*Step, name=FREQ, perturbation
+*Frequency, eigensolver=Lanczos
+3,
+*End Step

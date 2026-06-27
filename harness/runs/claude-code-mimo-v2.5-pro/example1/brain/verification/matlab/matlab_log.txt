@@ -1,0 +1,21 @@
+=== MATLAB Modal Analysis Results ===
+
+Mode 1:
+  omega  = 9.9514 rad/s
+  f      = 1.5838 Hz
+  T      = 0.631385 s
+  phi    = [0.445042, 0.801938, 1.000000]
+
+Mode 2:
+  omega  = 27.8833 rad/s
+  f      = 4.4378 Hz
+  T      = 0.225339 s
+  phi    = [-1.246980, -0.554958, 1.000000]
+
+Mode 3:
+  omega  = 40.2926 rad/s
+  f      = 6.4128 Hz
+  T      = 0.155939 s
+  phi    = [1.801938, -2.246980, 1.000000]
+
+Results written to modal_results.json

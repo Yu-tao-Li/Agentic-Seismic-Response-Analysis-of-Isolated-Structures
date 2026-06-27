@@ -1,0 +1,69 @@
+{
+  "example": "example4",
+  "origin_project": "gpt4.opju",
+  "cached_project": "<origin_project_cache>\\reference_export\\gpt4.opju",
+  "worksheet_shape": [
+    3500,
+    29
+  ],
+  "groups": {
+    "matlab": {
+      "topStoDisIso1.txt": {
+        "source": "MATLAB displacement",
+        "rows": 2686,
+        "peak_abs": 0.0360226441420838
+      },
+      "topStoAccIso1.txt": {
+        "source": "MATLAB acceleration",
+        "rows": 2686,
+        "peak_abs": 5.39533906725571
+      }
+    },
+    "cui": {
+      "topStoDisIso1.txt": {
+        "source": "Cui displacement",
+        "rows": 3500,
+        "peak_abs": 0.0360226448439617
+      },
+      "topStoAccIso1.txt": {
+        "source": "Cui acceleration",
+        "rows": 3500,
+        "peak_abs": 5.39536556497175
+      },
+      "hysteresis_layer1.txt": {
+        "source": "Cui first-layer hysteresis",
+        "rows": 3500,
+        "peak_abs": 1269444.65310237
+      }
+    },
+    "openseespy": {
+      "topStoDisIso1.txt": {
+        "source": "OpenSeesPy displacement",
+        "rows": 2686,
+        "peak_abs": 0.0360226
+      },
+      "topStoAccIso1.txt": {
+        "source": "OpenSeesPy acceleration",
+        "rows": 2686,
+        "peak_abs": 5.39539
+      }
+    },
+    "reference": {
+      "topStoDisIso1.txt": {
+        "source": "Cui displacement",
+        "rows": 3500,
+        "peak_abs": 0.0360226448439617
+      },
+      "topStoAccIso1.txt": {
+        "source": "Cui acceleration",
+        "rows": 3500,
+        "peak_abs": 5.39536556497175
+      },
+      "hysteresis_layer1.txt": {
+        "source": "Cui first-layer hysteresis",
+        "rows": 3500,
+        "peak_abs": 1269444.65310237
+      }
+    }
+  }
+}

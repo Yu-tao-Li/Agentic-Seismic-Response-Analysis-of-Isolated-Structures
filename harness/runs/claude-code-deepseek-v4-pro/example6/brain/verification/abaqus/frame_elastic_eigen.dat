@@ -1,0 +1,218 @@
+1
+
+   Abaqus 2025                                  Date 22-6��-2026   Time 16:54:14
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 94: Illegal 
+           value "POINT" for parameter "type".  The value may be misspelled, 
+           obsolete, or invalid.
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 96: Illegal 
+           value "POINT" for parameter "type".  The value may be misspelled, 
+           obsolete, or invalid.
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 98: Illegal 
+           value "POINT" for parameter "type".  The value may be misspelled, 
+           obsolete, or invalid.
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 94: Unknown 
+           assembly set FLOOR1
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 96: Unknown 
+           assembly set FLOOR2
+
+ ***ERROR: in keyword *MASS, file "frame_elastic_eigen.inp", line 98: Unknown 
+           assembly set FLOOR3
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT, TYPE=B21, ELSET=COLUMNS
+  *ELEMENT, TYPE=B21, ELSET=BEAMS
+  *ELEMENT, TYPE=SPRINGA, ELSET=ISOLATORS
+  *heading
+          2D Base-Isolated Frame - Elastic Eigenvalue Validation                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  *material, name=STEEL
+  *elastic
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *spring, elset=ISOLATORS
+
+ ***ERROR: THE INDEPENDENT VARIABLES MUST BE ARRANGED IN ASCENDING ORDER
+ LINE IMAGE: 2
+
+ ***ERROR: THE INDEPENDENT VARIABLES MUST BE ARRANGED IN ASCENDING ORDER
+ LINE IMAGE: 1.0E10
+
+ ***ERROR: VALUE FOR TYPE IS NOT ONE OF THE LEGAL STRINGS. PLEASE CHECK FOR THE 
+           ALLOWABLE VALUES OF THIS PARAMETER IN THE USERS MANUAL.
+ LINE IMAGE: *mass, elset=FLOOR1, type=POINT
+  *mass, elset=FLOOR1, type=POINT
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+  *spring, elset=ISOLATORS
+
+ ***ERROR: VALUE FOR TYPE IS NOT ONE OF THE LEGAL STRINGS. PLEASE CHECK FOR THE 
+           ALLOWABLE VALUES OF THIS PARAMETER IN THE USERS MANUAL.
+ LINE IMAGE: *mass, elset=FLOOR1, type=POINT
+  *mass, elset=FLOOR1, type=POINT
+
+ ***ERROR: VALUE FOR TYPE IS NOT ONE OF THE LEGAL STRINGS. PLEASE CHECK FOR THE 
+           ALLOWABLE VALUES OF THIS PARAMETER IN THE USERS MANUAL.
+ LINE IMAGE: *mass, elset=FLOOR2, type=POINT
+  *mass, elset=FLOOR2, type=POINT
+
+ ***ERROR: VALUE FOR TYPE IS NOT ONE OF THE LEGAL STRINGS. PLEASE CHECK FOR THE 
+           ALLOWABLE VALUES OF THIS PARAMETER IN THE USERS MANUAL.
+ LINE IMAGE: *mass, elset=FLOOR3, type=POINT
+  *mass, elset=FLOOR3, type=POINT
+  *boundary
+  *boundary
+  *equation
+  *equation
+  *equation
+  *equation
+  *equation
+  *equation
+  *step, name=FREQUENCY
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS, normalization=MASS
+  *step, name=FREQUENCY
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS, normalization=MASS
+  *frequency, eigensolver=LANCZOS, normalization=MASS
+
+ ***ERROR: THERE ARE NO ELEMENTS WITH MASS MATRICES IN THE MODEL. THE FREQUENCY 
+           EXTRACTION CANNOT BE DONE. IF THIS IS A RESTART JOB, MAKE SURE THAT 
+           THE OLD JOB CONTAINS "*RESTART, WRITE"
+  *endstep
+  *boundary
+  *step, name=FREQUENCY
+  *frequency, eigensolver=LANCZOS, normalization=MASS
+  *frequency, eigensolver=LANCZOS, normalization=MASS
+  *endstep
+
+ ***WARNING: IN THIS TYPE OF ANALYSIS ONE WOULD NORMALLY EXPECT THAT A DENSITY 
+             FOR MATERIAL STEEL WOULD BE DEFINED.
+
+ ***WARNING: Boundary conditions are specified on inactive dof 4 at 3 nodes. 
+             The nodes have been identified in node set WarnNodeBCInactiveDof4.
+
+ ***WARNING: Boundary conditions are specified on inactive dof 5 at 3 nodes. 
+             The nodes have been identified in node set WarnNodeBCInactiveDof5.
+
+ ***WARNING: Boundary conditions are specified on inactive dof 6 at 3 nodes. 
+             The nodes have been identified in node set WarnNodeBCInactiveDof6.
+
+ ***ERROR: THERE ARE NO SOURCES OF INERTIA IN THIS MODEL. IT IS NECESSARY TO 
+           DEFINE A MATERIAL DENSITY OR LUMPED MASS OR INPUT THE MASS MATRIX 
+           FOR A PART OF THE MODEL USING THE MATRIX INPUT CAPABILITY WHEN 
+           INERTIA TERMS ARE REQUIRED IN THE ANALYSIS.
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    18
+          NUMBER OF NODES IS                                       45
+          NUMBER OF NODES DEFINED BY THE USER                      15
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        30
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   48
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED    14 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.20    
+       WALLCLOCK TIME (SEC) =            0

@@ -1,0 +1,7 @@
+{
+  "cmd": "abaqus python extract_results.py",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "timed_out": false
+}

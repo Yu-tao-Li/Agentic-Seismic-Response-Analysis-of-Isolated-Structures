@@ -1,0 +1,20 @@
+﻿{
+    "run_id":  "claude_mimo_v2_5_pro_ultraspeed_run_01",
+    "model":  "mimo-v2.5-pro-ultraspeed",
+    "api_time_s":  5.505057000031229,
+    "input_tokens":  6048,
+    "output_tokens":  2606,
+    "output_tokens_per_s":  473.38292773085124,
+    "input_cost":  0.00789264,
+    "output_cost":  0.006801659999999999,
+    "total_cost":  0.014694299999999999,
+    "cost_per_1k_output_tokens":  0.005638641596316192,
+    "completed":  true,
+    "notes":  "Request and model response successful; output violation: pseudo Write wrapper; inner code uses misspelled required function newmark_average_accelration.",
+    "started_at":  "2026-06-27T20:43:12.814719+08:00",
+    "ended_at":  "2026-06-27T20:43:18.319832+08:00",
+    "claude_code_version":  "2.1.112",
+    "method":  "claude --print --output-format json --tools empty",
+    "model_verified_from_response":  true
+}
+

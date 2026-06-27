@@ -1,0 +1,53 @@
+=== ABAQUS RUN v3 ===
+Date: Mon 2026/06/22 19:17:36.80
+cmd.exe : 'vswhere.exe' is not recognized as an internal or external command,
+At line:6 char:1
++ & cmd.exe /c $batPath 2>&1 | Tee-Object -FilePath $logPath
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ('vswhere.exe' i...ternal command,:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+operable program or batch file.
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.0
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+Analysis initiated from SIMULIA established products
+Abaqus JOB frame_bw_dynamic
+Abaqus 2025
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Compiling Abaqus/Standard User Subroutines
+6/22/2026 7:17:40 PM
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.13.1 Build 20240703
+_000000
+Copyright (C) 1985-2024 Intel Corporation.  All rights reserved.
+
+ifort: remark #10448: Intel(R) Fortran Compiler Classic (ifort) is now deprecated and will be discontinued late 2024. I
+ntel recommends that customers transition now to using the LLVM-based Intel(R) Fortran Compiler (ifx) for continued Win
+dows* and Linux* support, new language support, new language features, and optimizations. Use '/Qdiag-disable:10448' to
+ disable this message.
+End Compiling Abaqus/Standard User Subroutines
+Begin Linking Abaqus/Standard User Subroutines
+  Creating library standardU.lib and object standardU.exp
+End Linking Abaqus/Standard User Subroutines
+6/22/2026 7:17:40 PM
+Begin Analysis Input File Processor
+6/22/2026 7:17:40 PM
+Run pre.exe
+6/22/2026 7:17:51 PM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/22/2026 7:17:51 PM
+Run standard.exe
+6/22/2026 7:18:17 PM
+Abaqus Error: Abaqus/Standard Analysis exited with an error - Please see the 
+message file for possible error messages if the file exists.
+Begin SIM Wrap-up
+6/22/2026 7:18:18 PM
+Run SMASimUtility.exe
+6/22/2026 7:18:18 PM
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

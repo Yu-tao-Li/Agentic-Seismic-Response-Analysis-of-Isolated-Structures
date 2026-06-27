@@ -1,0 +1,18 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB test_minimal
+Abaqus 2025
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Analysis Input File Processor
+6/21/2026 3:13:38 AM
+Run pre.exe
+6/21/2026 3:13:49 AM
+Abaqus Error: Analysis Input File Processor exited with an error - Please see the 
+test_minimal.dat file for possible error messages if the file exists.
+Begin SIM Wrap-up
+6/21/2026 3:13:50 AM
+Run SMASimUtility.exe
+6/21/2026 3:13:50 AM
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

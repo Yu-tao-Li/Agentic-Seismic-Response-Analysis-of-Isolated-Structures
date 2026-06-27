@@ -1,0 +1,29 @@
+{
+  "input_file": "harness\runs\\codex-gpt-5.5-repeated\\example5\\brain\\verification\\abaqus\\isolated_shear_abaqus.inp",
+  "ground_motion_file": "harness\runs\\codex-gpt-5.5-repeated\\example5\\brain\\input_data\\Northridge_01_NO_968.txt",
+  "dt": 0.01,
+  "sample_count": 1900,
+  "raw_peak": 158.281,
+  "target_pga_mps2": 3.92266,
+  "normalized_peak_mps2": 3.92266,
+  "rayleigh_alphaM": 0.5807292965956242,
+  "rayleigh_betaKinit": 0.0017337982046407964,
+  "elastic_omega_rad_s": [
+    6.5514695544742985,
+    22.21298681276481,
+    35.90427991756182,
+    51.125369498844336
+  ],
+  "story_connector_damping": [
+    86689.91023203982,
+    424780.5601369951,
+    338090.6499049553,
+    169912.22405479805
+  ],
+  "mass_connector_damping": [
+    145182.32414890605,
+    156796.91008081855,
+    156796.91008081855,
+    104531.27338721236
+  ]
+}

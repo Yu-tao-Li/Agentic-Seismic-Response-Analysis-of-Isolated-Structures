@@ -1,0 +1,109 @@
+{
+  "validation_date": "2026-06-22",
+  "software_paths": {
+    "matlab": "verification/matlab/",
+    "openseespy": "verification/openseespy/",
+    "abaqus": "verification/abaqus/"
+  },
+  "abaqus_status": "FAIL",
+  "abaqus_physical_response_achieved": false,
+  "abaqus_peak_roof_displacement_m": 971.47,
+  "abaqus_expected_peak_roof_displacement_m": 0.0181,
+  "abaqus_displacement_overestimate_factor": 53672,
+  "abaqus_runs_summary": {
+    "v8_material_dashpot_C50000": { "max_increments": 1666, "max_time_s": 16.65, "peak_roof_m": 971.47, "status": "non-physical" },
+    "v9_material_dashpot_C14140_mass_dashpot": { "max_increments": 1666, "max_time_s": 16.65, "peak_roof_m": 971.47, "status": "non-physical, identical to v8" },
+    "v10_UEL_damp_C100000_full_tangent": { "max_increments": 71, "max_time_s": 0.33, "peak_roof_m": null, "status": "convergence failure" },
+    "v11_UEL_damp_C14140_no_tangent": { "max_increments": 1587, "max_time_s": 15.87, "peak_roof_m": 885.72, "status": "non-physical, marginally reduced" },
+    "v12_UEL_damp_C60000_no_tangent": { "max_increments": 74, "max_time_s": 0.35, "peak_roof_m": null, "status": "convergence failure" },
+    "v13_UEL_damp_C60000_limited_tangent": { "max_increments": 90, "max_time_s": 0.33, "peak_roof_m": null, "status": "convergence failure" },
+    "v14_material_dashpot_C500000": { "max_increments": 1666, "max_time_s": 16.65, "peak_roof_m": 971.47, "status": "non-physical, identical to v8/v9" }
+  },
+  "abaqus_root_blockers": [
+    "1) DASHPOT1 elements: ABAQUS issues 'Too many nodes' warnings for all DASHPOT1 elements. Tests with C=14,140, C=50,000, and C=500,000 N-s/m all produce byte-identical results (971.47m), proving dashpots contribute ZERO effective damping to the implicit dynamic system.",
+    "2) Material-level *DAMPING (ALPHA=0.18647, BETA=0.00707) on STEEL material applies only to B21 beam elements, NOT to UEL isolator elements or MASS lumped-mass elements. The critical isolation mode receives no damping from this source.",
+    "3) UEL internal damping (adding C*v to RHS): Causes proportional convergence degradation. At C=14,140 N-s/m (correct Rayleigh beta_k*k0), convergence quality drops from 1 to 2-3 iterations/increment with only marginal response reduction (885m vs 971m). At C=60,000 (target 5% modal damping), Newton iterations fail immediately.",
+    "4) HHT numerical damping (ALPHA=-0.05) provides only ~0.005% effective damping at low frequencies, insufficient to bound the resonant isolation-mode response.",
+    "5) The fundamental issue: ABAQUS 2025 *DYNAMIC (implicit direct integration) does not support *DAMPING, ALPHA=..., BETA=... at the step level. There is no mechanism to apply global Rayleigh damping that covers UEL elements and MASS elements."
+  ],
+  "abaqus_uel_compilation": "VERIFIED",
+  "abaqus_uel_compiler": "Intel Fortran Classic 2021.13.1 (ifort)",
+  "abaqus_uel_linker": "MSVC 14.44.35207 (link.exe)",
+  "abaqus_convergence_barrier_time_s": 16.65,
+  "abaqus_convergence_barrier_note": "All simulations that reach this time fail with 'TOO MANY ATTEMPTS MADE FOR THIS INCREMENT' regardless of time step (0.01s to 0.0005s). Consistent across v8, v9, v11, v14.",
+  "input_consistency": {
+    "pga_normalization": { "target_pga_m_s2": 3.924, "target_pga_g": 0.4, "raw_pga_m_s2": 158.281, "scale_factor": 0.024791, "consistent": true },
+    "dt_s": 0.01, "n_steps": 1900,
+    "material_properties": { "E_Pa": 206000000000.0, "nu": 0.3, "A_c_m2": 0.02, "I_c_m4": 0.0008, "A_b_m2": 0.015, "I_b_m4": 0.00045 },
+    "isolator_parameters": { "k0_N_m": 2000000.0, "Fy_N": 10000.0, "uy_m": 0.005, "alpha": 0.05, "n": 2.0, "beta_bw": 20000.0, "gamma_bw": 20000.0, "Ao": 1.0 },
+    "consistent": true
+  },
+  "fundamental_period": {
+    "matlab_s": 2.84314, "openseespy_s": 2.84282, "abaqus_s": null,
+    "difference_pct_matlab_openseespy": 0.011, "consistent": true, "within_threshold_1pct": true,
+    "note": "ABAQUS fundamental period not independently verified."
+  },
+  "peak_roof_displacement": {
+    "matlab_m": 0.018101, "openseespy_m": 0.018212, "abaqus_m": 971.47,
+    "matlab_openseespy_ratio": 0.9939, "matlab_openseespy_diff_pct": 0.61,
+    "abaqus_physical": false
+  },
+  "peak_isolation_displacement": {
+    "matlab_m": 0.013861, "openseespy_m": 0.014043, "abaqus_m": 1002.39,
+    "matlab_openseespy_ratio": 0.9870, "matlab_openseespy_diff_pct": 1.30,
+    "abaqus_physical": false
+  },
+  "peak_base_shear": {
+    "matlab_N": 31613.5, "openseespy_N": 31613.4, "abaqus_N": null,
+    "matlab_openseespy_ratio": 1.000003, "matlab_openseespy_diff_pct": 0.0003
+  },
+  "max_drift_ratio_story1": {
+    "matlab": 0.000729, "openseespy": 0.000705,
+    "ratio": 1.035, "difference_pct": 3.36, "consistent": true
+  },
+  "time_history_nrmse": {
+    "matlab_openseespy_roof_displacement": 0.0131,
+    "matlab_openseespy_isolation_displacement": 0.0174,
+    "matlab_openseespy_base_shear": 0.0512,
+    "abaqus_comparable": false
+  },
+  "isolator_hysteresis_area": {
+    "matlab_center_isolator_J": 644.88,
+    "openseespy_center_isolator_J": 668.52,
+    "ratio": 0.965,
+    "abaqus_not_available": true
+  },
+  "convergence": {
+    "matlab_failed_steps": 0, "matlab_total_steps": 1900,
+    "openseespy_failed_steps": 0, "openseespy_total_steps": 1900,
+    "abaqus_converged_increments_v14": 1666,
+    "abaqus_time_at_failure_s": 16.65,
+    "abaqus_completion_pct": 87.6
+  },
+  "consistency_thresholds": {
+    "fundamental_period_pct": 1.0,
+    "peak_isolation_displacement_pct": 5.0,
+    "peak_roof_displacement_pct": 20.0,
+    "peak_base_shear_pct": 10.0,
+    "nrmse_isolation": 0.15,
+    "nrmse_roof": 0.25,
+    "nrmse_base_shear": 0.20,
+    "hysteresis_area_ratio": 0.85
+  },
+  "overall_assessment": {
+    "three_software_agreement": "NOT ACHIEVED",
+    "two_software_agreement_matlab_openseespy": "PASS",
+    "abaqus_status": "FAIL",
+    "matlab_openseespy_fundamental_period_match": true,
+    "matlab_openseespy_isolation_displacement_match": true,
+    "matlab_openseespy_roof_displacement_match": true,
+    "matlab_openseespy_base_shear_match": true,
+    "matlab_openseespy_drift_match": true,
+    "matlab_openseespy_time_history_nrmse_pass": true,
+    "abaqus_dashpot_effective": false,
+    "abaqus_uel_damping_effective": false,
+    "abaqus_material_damping_covers_isolation": false,
+    "summary": "MATLAB and OpenSeesPy achieve STRICT CROSS-VALIDATION AGREEMENT across all metrics (0.0003%-3.4% differences). ABAQUS UEL compilation and linking VERIFIED. However, ABAQUS produces non-physical results (971m vs 0.018m peak roof displacement) regardless of damping approach. Extensive testing with 7 different configurations (v8-v14) shows: (1) DASHPOT1 elements have zero measurable effect, (2) UEL internal damping causes proportional convergence degradation, (3) material-level *DAMPING does not cover UEL or MASS elements. The root cause is that ABAQUS 2025 *DYNAMIC (implicit) does not support step-level Rayleigh damping, and all workarounds fail. STRICT THREE-SOFTWARE AGREEMENT IS NOT ACHIEVED.",
+    "pass_or_fail": "FAIL"
+  }
+}

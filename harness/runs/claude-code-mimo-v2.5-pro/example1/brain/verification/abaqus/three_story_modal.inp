@@ -1,0 +1,45 @@
+*HEADING
+Three-story shear building - Modal analysis (frequency extraction)
+Each story: lumped mass 1000 kg, story stiffness 500 kN/m
+SI units: N, m, s, kg
+*PREPRINT, ECHO=NO, HISTORY=NO, CONTACT=NO
+**
+** NODES
+*NODE
+1, 0.0, 0.0, 0.0
+2, 1.0, 0.0, 0.0
+3, 2.0, 0.0, 0.0
+4, 3.0, 0.0, 0.0
+**
+** SPRING2 elements (story springs in X-direction)
+*ELEMENT, TYPE=SPRING2, ELSET=STORY_SPRINGS
+1, 1, 2
+2, 2, 3
+3, 3, 4
+*SPRING, ELSET=STORY_SPRINGS
+1, 1
+500000.0
+**
+** Lumped floor masses
+*ELEMENT, TYPE=MASS, ELSET=FLOOR_MASS
+10, 2
+11, 3
+12, 4
+*MASS, ELSET=FLOOR_MASS
+1000.0
+**
+** BOUNDARY CONDITIONS
+*BOUNDARY
+1, 1, 6
+2, 2, 6
+3, 2, 6
+4, 2, 6
+**
+** STEP: Frequency extraction
+*STEP, NAME=FREQ, PERTURBATION
+*FREQUENCY
+3
+*OUTPUT, FIELD
+*NODE OUTPUT
+U,
+*END STEP

@@ -1,0 +1,153 @@
+{
+  "example": "example4",
+  "agent": "codex-gpt-5.5",
+  "prompt_type": "brain",
+  "input": {
+    "ground_motion_file": "input_data/Northridge_01_NO_968.txt",
+    "ground_motion_rows": 1900,
+    "time_step_s": 0.01,
+    "target_pga_m_s2": 3.924
+  },
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "script": "verification/matlab/nonlinear_mdof_analysis.m"
+    },
+    "openseespy": {
+      "status": "completed",
+      "script": "verification/openseespy/nonlinear_mdof_analysis.py",
+      "fixes": [
+        "Added -doRayleigh to twoNodeLink spring elements so stiffness-proportional Rayleigh damping participates.",
+        "Recorded initial state at t=0 before transient stepping to align the time vector with MATLAB and ABAQUS."
+      ]
+    },
+    "abaqus": {
+      "status": "completed",
+      "input_file": "verification/abaqus/model.inp"
+    }
+  },
+  "peak_response": {
+    "top_displacement": {
+      "matlab": 0.03602264344020835,
+      "openseespy": 0.036022645425,
+      "abaqus": 0.036022316664
+    },
+    "top_acceleration": {
+      "matlab": 5.395312569539586,
+      "openseespy": 5.3953926475,
+      "abaqus": 5.3953385353
+    },
+    "isolation_displacement": {
+      "matlab": 0.025045285193546988,
+      "openseespy": 0.025045286177,
+      "abaqus": 0.025045054033
+    }
+  },
+  "comparisons": {
+    "matlab_vs_openseespy": {
+      "top_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.03602264344020835,
+        "comparison_peak": 0.036022645425,
+        "peak_error_percent": 5.509844533681297e-06,
+        "nrmse": 6.538451433561233e-05,
+        "relative_l2_error": 0.0003663312753059965
+      },
+      "top_acceleration": {
+        "samples": 1900,
+        "reference_peak": 5.395312569539586,
+        "comparison_peak": 5.3953926475,
+        "peak_error_percent": 0.0014842135535549478,
+        "nrmse": 3.647027847507682e-05,
+        "relative_l2_error": 0.0003314994765219191
+      },
+      "isolation_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.025045285193546988,
+        "comparison_peak": 0.025045286177,
+        "peak_error_percent": 3.9266992005481985e-06,
+        "nrmse": 6.651337732080811e-05,
+        "relative_l2_error": 0.0003699191307190444
+      },
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "top_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.03602264344020835,
+        "comparison_peak": 0.036022316664,
+        "peak_error_percent": 0.0009071411122059158,
+        "nrmse": 4.363378658334394e-05,
+        "relative_l2_error": 0.0002444679882985686
+      },
+      "top_acceleration": {
+        "samples": 1900,
+        "reference_peak": 5.395312569539586,
+        "comparison_peak": 5.3953385353,
+        "peak_error_percent": 0.00048126517378065407,
+        "nrmse": 1.4377617396191264e-05,
+        "relative_l2_error": 0.00013068648882752468
+      },
+      "isolation_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.025045285193546988,
+        "comparison_peak": 0.025045054033,
+        "peak_error_percent": 0.0009229703123855802,
+        "nrmse": 4.438644053381133e-05,
+        "relative_l2_error": 0.00024685851417205647
+      },
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "top_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.036022645425,
+        "comparison_peak": 0.036022316664,
+        "peak_error_percent": 0.0009126509064539511,
+        "nrmse": 2.192783683676721e-05,
+        "relative_l2_error": 0.00012285474990418756
+      },
+      "top_acceleration": {
+        "samples": 1900,
+        "reference_peak": 5.3953926475,
+        "comparison_peak": 5.3953385353,
+        "peak_error_percent": 0.0010029334940994412,
+        "nrmse": 3.0652950652441144e-05,
+        "relative_l2_error": 0.00027862398034598156
+      },
+      "isolation_displacement": {
+        "samples": 1900,
+        "reference_peak": 0.025045286177,
+        "comparison_peak": 0.025045054033,
+        "peak_error_percent": 0.0009268969751896723,
+        "nrmse": 2.2306532515476142e-05,
+        "relative_l2_error": 0.00012405859248664367
+      },
+      "pass": true
+    }
+  },
+  "thresholds": {
+    "peak_response_error_percent": 1.0,
+    "curve_nrmse": 0.01,
+    "rationale": "No yielding occurred in this 0.40 g run, so the response is effectively linear; after matching Rayleigh participation and time-vector convention, a 1% peak threshold and 1% curve NRMSE are conservative."
+  },
+  "diagnosis_and_fixes": [
+    "Initial discrepancy was caused by OpenSeesPy elements not participating in Rayleigh damping; MATLAB and ABAQUS both included alpha*M + beta*K0.",
+    "After enabling -doRayleigh, peak responses matched but curve comparison still showed an artificial error because OpenSeesPy output started at 0.01 s.",
+    "Recording the initial state at t=0 removed the time shift and produced auditable three-software agreement."
+  ],
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "conclusion": "MATLAB, OpenSeesPy, and ABAQUS now agree for Example 4 after fixing OpenSeesPy Rayleigh participation and output time alignment.",
+  "figure_note": {
+    "example4_panel_d": {
+      "issue": "The saved hysteresis_layer1.txt files use mixed force conventions: MATLAB stores keq*u_iso only, while OpenSeesPy and ABAQUS store reaction-type quantities that include damping contributions.",
+      "plotting_resolution": "For example4_isolated_response_comparison panel (d), the plotting script recomputes the same isolation-layer total force for all three software paths as F_iso = keq*u_iso + c_iso*v_iso.",
+      "parameters": {
+        "keq_N_per_m": 50000000.0,
+        "c_iso_N_s_per_m": 1000000.0
+      },
+      "validation_scope": "This affects only the force-displacement visualization; pass/fail validation is based on top displacement, top acceleration, and isolation displacement time histories."
+    }
+  }
+}

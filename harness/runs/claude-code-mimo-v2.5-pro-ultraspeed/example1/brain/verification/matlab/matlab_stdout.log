@@ -1,0 +1,18 @@
+=== 3-Story Shear Building Modal Analysis (MATLAB) ===
+
+Mode 1:
+  omega = 9.951439 rad/s
+  T     = 0.631385 s
+  phi   = [-0.445042, -0.801938, -1.000000]
+
+Mode 2:
+  omega = 27.883312 rad/s
+  T     = 0.225339 s
+  phi   = [1.000000, 0.445042, -0.801938]
+
+Mode 3:
+  omega = 40.292553 rad/s
+  T     = 0.155939 s
+  phi   = [-0.801938, 1.000000, -0.445042]
+
+Results saved to modal_results.json

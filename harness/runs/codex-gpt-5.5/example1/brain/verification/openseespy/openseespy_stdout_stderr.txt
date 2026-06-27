@@ -1,0 +1,8 @@
+<OPENSEESPY_PYTHON> : WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the defau
+lt eigen solver.
+At line:2 char:1
++ <OPENSEESPY_PYTHON> .\run_openseespy_modal.py *> open ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING - the '...t eigen solver.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

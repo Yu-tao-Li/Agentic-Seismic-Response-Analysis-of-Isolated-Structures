@@ -1,0 +1,51 @@
+{
+  "software": "OpenSeesPy",
+  "execution": {
+    "python_executable": "<python_env>\\python.exe",
+    "python_version": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "opensees_version": "3.8.0",
+    "source_file": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\openseespy\\run_modal_analysis.py"
+  },
+  "model": {
+    "description": "Three-story shear building with equal lumped floor masses and equal story stiffnesses.",
+    "units": "SI: kg, N, m, s",
+    "story_mass_kg": 1000.0,
+    "story_stiffness_N_per_m": 500000.0,
+    "base_node": 0,
+    "floor_nodes": [
+      1,
+      2,
+      3
+    ],
+    "element_type": "zeroLength with Elastic uniaxial material"
+  },
+  "mode_shape_convention": "Rows are floors 1..3; columns are modes 1..3; each mode is normalized to max(abs(component)) = 1 and signed so the roof component is positive.",
+  "circular_frequencies_rad_per_s": [
+    9.951438694861206,
+    27.883311604680063,
+    40.29255268481674
+  ],
+  "periods_s": [
+    0.6313846168217006,
+    0.2253385607943709,
+    0.15593912245592845
+  ],
+  "normalized_mode_shapes": [
+    [
+      0.4450418679126287,
+      -1.0,
+      0.8019377358048384
+    ],
+    [
+      0.8019377358048381,
+      -0.44504186791262873,
+      -1.0
+    ],
+    [
+      1.0,
+      0.8019377358048382,
+      0.4450418679126287
+    ]
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "example": "example5",
+  "agent": "codex-gpt-5.5",
+  "prompt_type": "brain",
+  "input": {
+    "ground_motion_file": "input_data/Northridge_01_NO_968.txt",
+    "ground_motion_rows": 1900,
+    "time_step_s": 0.01,
+    "target_pga_m_s2": 3.924
+  },
+  "parameters": {
+    "source_files": [
+      "supplementary/Example5_1.m",
+      "supplementary/Example5_2.m",
+      "supplementary/Example5_3.m",
+      "supplementary/AddInstr_Example5.txt",
+      "supplementary/computeRsStiffness.m"
+    ],
+    "mass_kg": [
+      250000,
+      270000,
+      270000,
+      180000
+    ],
+    "stiffness_N_per_m": [
+      50000000,
+      245000000,
+      195000000,
+      98000000
+    ],
+    "yield_force_N": [
+      500000,
+      1225000,
+      975000,
+      490000
+    ],
+    "hardening_ratio": [
+      0.05,
+      0,
+      0,
+      0
+    ],
+    "damping_ratio": 0.05,
+    "rayleigh_alpha": 0.5059289317336608,
+    "rayleigh_beta": 0.0034765127740739666
+  },
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "script": "verification/matlab/nonlinear_mdof_analysis.m",
+      "response_output": "verification/matlab/matlab_response.json"
+    },
+    "openseespy": {
+      "status": "completed",
+      "script": "verification/openseespy/shear_building_analysis.py",
+      "response_output": "verification/openseespy/openseespy_response.json"
+    },
+    "abaqus": {
+      "status": "completed",
+      "input_file": "verification/abaqus/example5_model.inp",
+      "response_output": "verification/abaqus/abaqus_response.json"
+    }
+  },
+  "peak_response": {
+    "top_displacement": {
+      "unit": "m",
+      "matlab": 0.02814881230096816,
+      "openseespy": 0.028148758863,
+      "abaqus": 0.028150174767
+    },
+    "top_acceleration": {
+      "unit": "m/s^2",
+      "matlab": 5.079157238079672,
+      "openseespy": 5.0792449192,
+      "abaqus": 5.0791354179
+    },
+    "isolation_displacement": {
+      "unit": "m",
+      "matlab": 0.023147668727616606,
+      "openseespy": 0.023147619438,
+      "abaqus": 0.023149391636
+    },
+    "base_shear": {
+      "unit": "N",
+      "matlab": 532869.1718190415,
+      "openseespy": 532869.04859,
+      "abaqus": 532873.5
+    }
+  },
+  "comparisons": {
+    "matlab_vs_openseespy": {
+      "top_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.02814881230096816,
+        "comparison_peak": 0.028148758863,
+        "peak_error_percent": 0.00018984093391495794,
+        "nrmse": 4.224386846494192e-05,
+        "relative_l2_error": 0.00019383505817942387,
+        "sign_applied_to_comparison": 1
+      },
+      "top_acceleration": {
+        "samples": 1899,
+        "reference_peak": 5.079157238079672,
+        "comparison_peak": 5.0792449192,
+        "peak_error_percent": 0.0017262926941993115,
+        "nrmse": 3.2787938680906634e-05,
+        "relative_l2_error": 0.0002856907478265631,
+        "sign_applied_to_comparison": 1
+      },
+      "isolation_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.023147668727616606,
+        "comparison_peak": 0.023147619438,
+        "peak_error_percent": 0.0002129355538433219,
+        "nrmse": 3.7682389915604954e-05,
+        "relative_l2_error": 0.0001820313984683888,
+        "sign_applied_to_comparison": 1
+      },
+      "base_shear": {
+        "samples": 1899,
+        "reference_peak": 532869.1718190415,
+        "comparison_peak": 532869.04859,
+        "peak_error_percent": 2.3125571524826705e-05,
+        "nrmse": 6.840109663874956e-05,
+        "relative_l2_error": 0.00022414163448048285,
+        "sign_applied_to_comparison": -1
+      },
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "top_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.02814881230096816,
+        "comparison_peak": 0.028150174595318704,
+        "peak_error_percent": 0.004839615739305501,
+        "nrmse": 2.6535754341538536e-05,
+        "relative_l2_error": 0.00012175872318359405,
+        "sign_applied_to_comparison": 1
+      },
+      "top_acceleration": {
+        "samples": 1899,
+        "reference_peak": 5.079157238079672,
+        "comparison_peak": 5.079113583875558,
+        "peak_error_percent": 0.000859477312230056,
+        "nrmse": 5.496209035442589e-06,
+        "relative_l2_error": 4.7890051424949365e-05,
+        "sign_applied_to_comparison": 1
+      },
+      "isolation_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.023147668727616606,
+        "comparison_peak": 0.023149390785146075,
+        "peak_error_percent": 0.007439442605360038,
+        "nrmse": 3.2513653332977e-05,
+        "relative_l2_error": 0.0001570629091937514,
+        "sign_applied_to_comparison": 1
+      },
+      "base_shear": {
+        "samples": 1899,
+        "reference_peak": 532869.1718190415,
+        "comparison_peak": 532873.4574584991,
+        "peak_error_percent": 0.0008042573457585602,
+        "nrmse": 7.474008663650778e-06,
+        "relative_l2_error": 2.4491369295429465e-05,
+        "sign_applied_to_comparison": 1
+      },
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "top_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.028148758863,
+        "comparison_peak": 0.028150174595318704,
+        "peak_error_percent": 0.005029466221206104,
+        "nrmse": 5.014256803137082e-05,
+        "relative_l2_error": 0.00023007734974997372,
+        "sign_applied_to_comparison": 1
+      },
+      "top_acceleration": {
+        "samples": 1899,
+        "reference_peak": 5.0792449192,
+        "comparison_peak": 5.079113583875558,
+        "peak_error_percent": 0.0025857253692412262,
+        "nrmse": 3.326617193214155e-05,
+        "relative_l2_error": 0.0002898591112664233,
+        "sign_applied_to_comparison": 1
+      },
+      "isolation_displacement": {
+        "samples": 1899,
+        "reference_peak": 0.023147619438,
+        "comparison_peak": 0.023149390785146075,
+        "peak_error_percent": 0.007652394453871872,
+        "nrmse": 5.01441659788673e-05,
+        "relative_l2_error": 0.00024223011553126833,
+        "sign_applied_to_comparison": 1
+      },
+      "base_shear": {
+        "samples": 1899,
+        "reference_peak": 532869.04859,
+        "comparison_peak": 532873.4574584991,
+        "peak_error_percent": 0.0008273831086204593,
+        "nrmse": 6.884492791303972e-05,
+        "relative_l2_error": 0.00022559426049716623,
+        "sign_applied_to_comparison": -1
+      },
+      "pass": true
+    }
+  },
+  "thresholds": {
+    "peak_response_error_percent": 5.0,
+    "curve_nrmse": 0.05,
+    "convergence_rate": ">=95%",
+    "rationale": "Steel01 is a bilinear kinematic-hardening rule. After representing both alpha*M and beta*K0 damping explicitly in ABAQUS, the nonlinear response should satisfy a stricter 5% peak-response and 5% curve-NRMSE agreement criterion."
+  },
+  "diagnosis_and_fixes": [
+    "MATLAB and OpenSeesPy already agreed because the MATLAB clamp update reproduces the OpenSees Steel01 bilinear kinematic-hardening rule.",
+    "The previous ABAQUS truss-plasticity model used explicit beta*K0 dashpots but relied on *GLOBAL DAMPING for alpha*M; changing the alpha value did not affect the results, showing that alpha*M was not represented consistently for this point-mass/truss model.",
+    "ABAQUS was corrected by adding explicit DASHPOT2 elements from each floor node to the fixed base with c_i = alpha*m_i, while retaining story-to-story DASHPOT2 elements with c_i = beta*k_i for beta*K0.",
+    "After the explicit alpha*M correction, MATLAB, OpenSeesPy, and ABAQUS satisfy the stricter 5% peak-response and 5% curve-NRMSE criteria for all tracked response quantities."
+  ],
+  "diagnostic_artifacts": [
+    "verification/abaqus/diagnose_plasticity.py",
+    "verification/abaqus/diagnose_equation.py",
+    "verification/abaqus/*_explicit_alpha_beta100.txt",
+    "verification/abaqus/*_beta150.txt",
+    "verification/abaqus/*_beta165.txt",
+    "verification/abaqus/*_beta200.txt"
+  ],
+  "convergence": {
+    "matlab_failed_steps": 0,
+    "openseespy_failed_steps": 0,
+    "abaqus_completed": true
+  },
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "conclusion": "MATLAB, OpenSeesPy, and ABAQUS reach tight nonlinear-response agreement for Example 5 after matching the Steel01 bilinear kinematic rule and representing alpha*M plus beta*K0 damping explicitly in ABAQUS."
+}

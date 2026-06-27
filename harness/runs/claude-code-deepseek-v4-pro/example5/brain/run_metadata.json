@@ -1,0 +1,12 @@
+﻿{
+    "agent":  "claude-code-deepseek-v4-pro",
+    "agent_kind":  "claude_code_cli",
+    "model_backend":  "DeepSeek V4 Pro (per user VSCode Claude Code configuration)",
+    "prompt_type":  "brain",
+    "example":  "example5",
+    "run_id":  "example5/brain",
+    "invocation":  "claude -p --permission-mode bypassPermissions --output-format json",
+    "mcp_status":  "claude mcp list reported no MCP servers configured; used claude -p CLI entrypoint.",
+    "started_at_local":  "2026-06-21T04:55:07.5271339+08:00",
+    "manual_edits":  0
+}

@@ -1,0 +1,117 @@
+For nonlinear isolated MDOF structures, their structural dynamic analysis can be performed using the incremental form of the Newmark-β method. The Newmark-β method parameters are also $\beta = 0.25$ and $\gamma = 0.5$. The initial displacement, velocity, and restoring force are all set to zero vectors with length $n$ (the number of stories):
+
+$$
+{{\mathbf{u}}_{1}}={{\mathbf{0}}_{n\times 1}}, \quad {{\mathbf{\dot{u}}}_{1}}={{\mathbf{0}}_{n\times 1}}, \quad {{\mathbf{R}}_{\text{s},1}}={{\mathbf{0}}_{n\times 1}}
+$$
+
+The initial acceleration is calculated by:
+
+$$
+{{\mathbf{\ddot{u}}}_{1}}={{\mathbf{M}}^{-1}}\left( -{{{\ddot{u}}}_{\text{gm},1}}\cdot \mathbf{M}\cdot \mathbf{I}-\mathbf{C}\cdot {{{\mathbf{\dot{u}}}}_{1}}-{{\mathbf{R}}_{\text{s},1}} \right)
+$$
+
+where ${{\ddot{u}}_{\text{gm},1}}$ is the first data point of the ground motion acceleration, and $\mathbf{I}$ is a unit column vector with the same number of rows as the number of columns in $\mathbf{M}$.
+
+The initial effective stiffness matrix is given by:
+
+$$
+{{\mathbf{\tilde{K}}}_{1}}=\mathbf{K}_{1}^{\text{t}}+\frac{1}{{{\beta }_{n}}\Delta {{t}^{2}}}\mathbf{M}+\frac{\gamma }{{{\beta }_{n}}\Delta t}\mathbf{C}
+$$
+
+where $\mathbf{K}_{1}^{\text{t}}$ is the tangent stiffness matrix at the first time point. Note that this should be the secant stiffness from the first to the second time points, so this approximation will lead to errors.
+
+For the $j$-th time step $(j \ge 1)$, the integration process is as follows. Firstly, the external force increment is:
+
+$$
+\Delta {{\mathbf{P}}_{j}}=-({{\ddot{u}}_{\text{gm},j+1}}-{{\ddot{u}}_{\text{gm},j}})\cdot \mathbf{M}\cdot \mathbf{I}
+$$
+
+where ${{\ddot{u}}_{\text{gm},j+1}}$ and ${{\ddot{u}}_{\text{gm},j}}$ are the $j+1$-th and $j$-th data points of the ground motion acceleration, respectively.
+
+The effective force increment can be expressed as:
+
+$$
+\Delta {{\mathbf{\tilde{P}}}_{j}}=\Delta {{\mathbf{P}}_{j}}+\left( \frac{\mathbf{M}}{{{\beta }_{n}}\Delta t}+\frac{\gamma }{{{\beta }_{n}}}\mathbf{C} \right){{\mathbf{\dot{u}}}_{j}}+\left[ \frac{\mathbf{M}}{2{{\beta }_{n}}}+\Delta t\left( \frac{\gamma }{2{{\beta }_{n}}}-1 \right)\mathbf{C} \right]{{\mathbf{\ddot{u}}}_{j}}
+$$
+
+where $\Delta t$ is the time step.
+
+Since stiffness approximation is involved, the Newton-Raphson iteration is introduced for the $j$-th step to minimize the errors. For the iteration process, the initial trial displacement and restoring force for the $j+1$-th step are set as those at the $j$-th step:
+
+$$
+\mathbf{u}_{j+1}^{1}={{\mathbf{u}}_{j}}, \quad \mathbf{R}_{\text{s},j+1}^{1}={{\mathbf{R}}_{\text{s},j}}
+$$
+
+The initial residual force is:
+
+$$
+\Delta \mathbf{R}_{j+1}^{1}=\Delta {{\mathbf{\tilde{P}}}_{j}}
+$$
+
+The initial effective stiffness matrix is:
+
+$$
+\mathbf{\tilde{K}}_{j+1}^{1}={{\mathbf{\tilde{K}}}_{j}}
+$$
+
+During the $m$-th iteration step, the convergence criterion involves checking whether the sum of the absolute values of each element of $\Delta \mathbf{R}_{j+1}^{m}$ is less than a set threshold, such as $1\times 10^{-5} \text{ N}$. If not, iterate the calculations per Eqs. (30) ~ (34) until the threshold is reached.
+
+The displacement increment is first determined by:
+
+$$
+\Delta \mathbf{u}_{j+1}^{m}={{(\mathbf{\tilde{K}}_{j+1}^{m})}^{-1}}\Delta \mathbf{R}_{j+1}^{m}
+$$
+
+The trial displacement is then updated:
+
+$$
+\mathbf{u}_{j+1}^{m+1}=\mathbf{u}_{j+1}^{m}+\Delta \mathbf{u}_{j+1}^{m}
+$$
+
+$\mathbf{R}_{\text{s},j+1}^{m+1}$ and $\mathbf{k}_{j+1}^{m+1}$ are calculated using $\mathbf{u}_{j+1}^{m+1}$, $\mathbf{u}_{j+1}^{m}$, and $\mathbf{R}_{\text{s},j+1}^{m}$ via the function named computeRsStiffness. $\mathbf{k}_{j+1}^{m+1}$ is a vector composed of the stiffness of all stories at the current step, which is used for updating the stiffness matrix $\mathbf{K}_{j+1}^{m+1}$ via the function named computeStiffnessMatrix. The effective stiffness matrix is further updated:
+
+$$
+\mathbf{\tilde{K}}_{j+1}^{m+1}=\mathbf{K}_{j+1}^{m+1}+\frac{1}{{{\beta }_{n}}\Delta {{t}^{2}}}\mathbf{M}+\frac{\gamma }{{{\beta }_{n}}\Delta t}\mathbf{C}
+$$
+
+The force increment is calculated as:
+
+$$
+\Delta \mathbf{F}_{j+1}^{m}=\mathbf{R}_{\text{s},j+1}^{m+1}-\mathbf{R}_{\text{s},j+1}^{m}+\frac{\gamma }{{{\beta }_{n}}\Delta t}\mathbf{C}\Delta \mathbf{u}_{j+1}^{m}+\frac{1}{{{\beta }_{n}}\Delta {{t}^{2}}}\mathbf{M}\Delta \mathbf{u}_{j+1}^{m}
+$$
+
+The residual force is then updated:
+
+$$
+\Delta \mathbf{R}_{j+1}^{m+1}=\Delta \mathbf{R}_{j+1}^{m}-\Delta \mathbf{F}_{j+1}^{m}
+$$
+
+Assuming a maximum of $p$ steps, after the iteration concludes, the displacement, restoring force, and stiffness are updated:
+
+$$
+{{\mathbf{u}}_{j+1}}=\mathbf{u}_{j+1}^{p}, \quad {{\mathbf{R}}_{\text{s},j+1}}=\mathbf{R}_{\text{s},j+1}^{p}, \quad {{\mathbf{\tilde{K}}}_{j+1}}=\mathbf{\tilde{K}}_{j+1}^{p}
+$$
+
+The displacement increment is calculated as:
+
+$$
+\Delta {{\mathbf{u}}_{j}}={{\mathbf{u}}_{j+1}}-{{\mathbf{u}}_{j}}
+$$
+
+The velocity increment is determined by:
+
+$$
+\Delta {{\mathbf{\dot{u}}}_{j}}=\frac{\gamma }{{{\beta }_{n}}\Delta t}\Delta {{\mathbf{u}}_{j}}-\frac{\gamma }{{{\beta }_{n}}}{{\mathbf{\dot{u}}}_{j}}+\left( 1-\frac{\gamma }{2{{\beta }_{n}}} \right)\Delta t{{\mathbf{\ddot{u}}}_{j}}
+$$
+
+The acceleration increment is given by:
+
+$$
+\Delta {{\mathbf{\ddot{u}}}_{j}}=\frac{1}{{{\beta }_{n}}\Delta {{t}^{2}}}\Delta {{\mathbf{u}}_{j}}-\frac{1}{{{\beta }_{n}}\Delta t}{{\mathbf{\dot{u}}}_{j}}-\frac{1}{2{{\beta }_{n}}}{{\mathbf{\ddot{u}}}_{j}}
+$$
+
+Finally, the velocity and acceleration are updated as follows:
+
+$$
+{{\mathbf{\dot{u}}}_{j+1}}={{\mathbf{\dot{u}}}_{j}}+\Delta {{\mathbf{\dot{u}}}_{j}}, \quad {{\mathbf{\ddot{u}}}_{j+1}}={{\mathbf{\ddot{u}}}_{j}}+\Delta {{\mathbf{\ddot{u}}}_{j}}
+$$

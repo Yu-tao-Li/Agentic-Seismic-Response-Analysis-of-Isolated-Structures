@@ -1,0 +1,16 @@
+{
+    "prompt_type":  "brain",
+    "example":  "example1",
+    "mcp_status":  "not checked; used claude -p CLI entrypoint",
+    "invocation":  "Get-Content agent_io/claude_input.txt | claude -p --permission-mode bypassPermissions --output-format json",
+    "agent":  "claude-code-mimo-v2.5-pro",
+    "agent_kind":  "claude_code_cli",
+    "model_backend":  "Mimo V2.5 Pro (per current user Claude Code configuration)",
+    "run_id":  "example1/brain",
+    "run_root":  "harness\\runs\\claude-code-mimo-v2.5-pro\\example1\\brain",
+    "manual_edits":  0,
+    "started_at_local":  "2026-06-26T10:39:59.7326440+08:00",
+    "finished_at_local":  "2026-06-26T11:14:57.1403417+08:00",
+    "returncode":  0,
+    "duration_ms":  2097408
+}

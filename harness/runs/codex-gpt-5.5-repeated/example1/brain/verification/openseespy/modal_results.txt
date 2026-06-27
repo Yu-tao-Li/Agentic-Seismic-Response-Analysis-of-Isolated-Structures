@@ -1,0 +1,12 @@
+Three-story shear building modal analysis - OpenSeesPy
+Units: kg, N, m, s
+Story mass: 1000 kg
+Story stiffness: 500000 N/m
+
+Model: 1D floor nodes with lumped masses and zeroLength Elastic story springs.
+
+Mode results:
+Mode, circular_frequency_rad_per_s, period_s, normalized_floor_1, normalized_floor_2, normalized_floor_3
+1, 9.95143869486121, 0.631384616821701, 0.445041867912629, 0.801937735804838, 1
+2, 27.8833116046801, 0.225338560794371, -1, -0.445041867912629, 0.801937735804838
+3, 40.2925526848167, 0.155939122455928, 0.801937735804838, -1, 0.445041867912629

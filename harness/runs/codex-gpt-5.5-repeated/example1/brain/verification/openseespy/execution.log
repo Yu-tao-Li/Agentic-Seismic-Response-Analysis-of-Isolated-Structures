@@ -1,0 +1,10 @@
+OpenSeesPy modal analysis completed.
+harness\runs\codex-gpt-5.5-repeated\example1\brain\verification\openseespy\modal_results.json
+<python_env>\python.exe : WARNING - the 'fullGenLapack' eigen solver is VERY SLOW. Consider using the defau
+lt eigen solver.
+At line:2 char:36
++ ... 'Continue'; <python_env>\python.exe run_modal_analysis.py ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING - the '...t eigen solver.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,50 @@
+Background:
+Structural seismic response analysis computes displacement, velocity, and acceleration histories under ground motion. In this harness, the generated result must be checked across MATLAB, Python + OpenSeesPy, and ABAQUS.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for the three software paths and explain any discrepancies.
+
+Aims:
+Establish a three-story linear shear building and calculate the top-story displacement and acceleration responses. Each story has a mass of 1000 kg and a stiffness of 500 kN/m. Rayleigh damping is used with a damping ratio of 0.05. The ground motion is read from `GM1.txt`, which contains one column of acceleration data. The time interval is 0.02 s. Normalize the peak ground acceleration to 0.40 g.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same mass, stiffness, damping, input normalization, time step, and output definitions in all three software implementations.
+
+1. MATLAB
+   - Implement the linear MDOF equation of motion.
+   - Use Newmark-beta time integration.
+   - Output top-story displacement and acceleration time histories.
+
+2. Python + OpenSeesPy
+   - Build the equivalent three-story shear model.
+   - Apply the same normalized ground-motion input.
+   - Use a transient analysis setup consistent with the MATLAB model.
+
+3. ABAQUS
+   - Build an equivalent lumped-mass and spring model.
+   - Apply the same base excitation or equivalent ground-motion input.
+   - Post-process top-story displacement and acceleration.
+
+Harness verification requirements:
+For each software, write machine-readable response output containing:
+- time vector
+- top-story displacement
+- top-story acceleration
+- input PGA after normalization
+- time step and number of samples
+
+Preserve the manuscript output names where applicable:
+- `topStoDis.txt`
+- `topStoAcc.txt`
+
+Then create `cross_validation_report.json` comparing MATLAB, OpenSeesPy, and ABAQUS by time-vector consistency, peak response error, NRMSE or normalized L2 error, and response trend.
+
+The agent may propose task-specific consistency thresholds for displacement, acceleration, and curve error. Record the thresholds and reasoning in `cross_validation_report.json` or `report.md` before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Software-specific response outputs and logs.
+- `cross_validation_report.json`.
+- `report.md` describing modeling assumptions, input normalization, encountered issues, corrections, adopted consistency criteria, and final agreement.

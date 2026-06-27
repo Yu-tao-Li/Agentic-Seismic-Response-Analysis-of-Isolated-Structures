@@ -1,0 +1,113 @@
+You are running inside a coding-agent harness. Work only inside this run directory:
+harness\runs\codex-gpt-5.5-repeated\example3\brain
+
+This is an independent repeated Codex run. Use the task prompt below as the input. Do not copy generated outputs,
+scripts, reports, or response files from other agents or from the previous codex-gpt-5.5 run. You may use the files
+provided inside this run directory as inputs, and you may inspect software documentation or logs as needed.
+
+Required final structure:
+- verification/matlab/ with executable MATLAB code, logs, and machine-readable output
+- verification/openseespy/ with executable Python + OpenSeesPy code, logs, and machine-readable output
+- verification/abaqus/ with ABAQUS input/post-processing files, logs, and machine-readable output
+- cross_validation_report.json
+- report.md
+
+Record failures honestly. Do not declare PASS if any required generated software output is missing, empty, copied
+from another run, or not physically comparable. Save stdout/stderr logs where useful.
+
+Base task prompt:
+
+Background:
+Seismic isolation changes structural dynamic response by adding a flexible and damped isolation layer. In this harness, the isolated-building response must be verified across MATLAB, Python + OpenSeesPy, and ABAQUS.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for the three software paths and diagnose any differences.
+
+Aims:
+Establish a four-story seismically isolated structure and calculate the top-story displacement and acceleration responses. The first layer is the isolation layer, with mass 500 kg, stiffness 200 kN/m, and damping coefficient 2 kN/(m*s^-1). Stories 2 to 4 each have mass 1000 kg and stiffness 500 kN/m. Rayleigh damping is considered with damping ratio 0.05. The ground motion is read from `GM1.txt`, which contains one column of acceleration data. The time interval is 0.02 s. Normalize the peak ground acceleration to 0.40 g.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same physical model and SI units in all software implementations.
+
+1. MATLAB
+   - Implement the linear isolated MDOF equation of motion.
+   - Use Newmark-beta time integration.
+   - Add the isolation-layer damping coefficient to the first row and first column term of the damping matrix after forming Rayleigh damping.
+
+2. Python + OpenSeesPy
+   - Build the equivalent isolated shear-building model.
+   - Use elastic springs and a damping representation consistent with the MATLAB model.
+   - Apply the same normalized ground-motion input and time step.
+
+3. ABAQUS
+   - Build an equivalent spring-mass-damper model.
+   - Apply the same base excitation or equivalent input.
+   - Post-process top-story displacement, top-story acceleration, and isolation-layer displacement.
+
+Harness verification requirements:
+For each software, write machine-readable response output containing:
+- time vector
+- top-story displacement
+- top-story acceleration
+- isolation-layer displacement
+- input PGA after normalization
+- time step and number of samples
+
+Preserve the manuscript output names where applicable:
+- `topStoDis.txt`
+- `topStoAcc.txt`
+
+Then create `cross_validation_report.json` comparing MATLAB, OpenSeesPy, and ABAQUS by input consistency, peak response error, isolation displacement error, NRMSE or normalized L2 error, and response trend.
+
+The agent may propose task-specific consistency thresholds. Record the thresholds and reasoning before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Software-specific response outputs and logs.
+- `cross_validation_report.json`.
+- `report.md` describing modeling assumptions, damping treatment, input normalization, encountered issues, corrections, adopted consistency criteria, and final agreement.
+
+Additional harness execution instructions:
+
+Work only inside the current run directory.
+
+Do not treat reference files as generated software results. Reference files may be used only to understand parameters or to diagnose discrepancies. The final pass/fail must be based on outputs generated in this run by MATLAB, OpenSeesPy, and ABAQUS.
+
+You must actually run the generated analysis paths when the software is available. A script that is written but not executed does not count as a completed software result.
+
+Use this directory layout:
+- verification/matlab/
+- verification/openseespy/
+- verification/abaqus/
+
+Each software folder must contain:
+- the source/input file used for that software
+- an execution log
+- machine-readable response or modal result JSON
+- manuscript-style txt outputs when requested
+
+The final `cross_validation_report.json` must compare only these generated outputs:
+- verification/matlab/*
+- verification/openseespy/*
+- verification/abaqus/*
+
+If any software path fails, read the error log, identify the root cause, modify that software path, rerun it, and repeat until either:
+1. all three generated outputs agree within adopted thresholds, or
+2. a true external blocker remains.
+
+Do not declare PASS if any of MATLAB, OpenSeesPy, or ABAQUS output is missing.
+
+For ABAQUS:
+- Ensure the model has valid inertia/mass definitions.
+- Ensure spring/connector elements have valid section/property definitions.
+- Ensure output extraction produces the same physical quantities and units as MATLAB and OpenSeesPy.
+- If ODB extraction fails, inspect the `.dat`, `.msg`, `.sta`, and `.odb`/postprocessing logs before revising.
+
+The report must include:
+- generated output files used in validation
+- errors encountered
+- corrections made
+- final pairwise metrics
+- whether the final result is a strict three-software pass

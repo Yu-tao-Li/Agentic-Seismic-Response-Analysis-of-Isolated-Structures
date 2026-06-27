@@ -1,0 +1,33 @@
+{
+  "software": "ABAQUS",
+  "input_file": "harness\runs\\codex-gpt-5.5-repeated\\example3\\brain\\verification\\abaqus\\isolated_building.inp",
+  "source_ground_motion": "harness\runs\\codex-gpt-5.5-repeated\\example3\\brain\\input_data\\GM1.txt",
+  "time_step": 0.02,
+  "number_of_samples": 2686,
+  "target_pga_mps2": 3.92266,
+  "pga_after_normalization_mps2": 3.92266,
+  "pga_after_normalization_g": 0.4,
+  "masses_kg": [
+    500.0,
+    1000.0,
+    1000.0,
+    1000.0
+  ],
+  "stiffnesses_N_per_m": [
+    200000.0,
+    500000.0,
+    500000.0,
+    500000.0
+  ],
+  "isolation_damping_Ns_per_m": 2000.0,
+  "rayleigh_damping_ratio": 0.05,
+  "rayleigh_alpha_mass": 0.48198710795011424,
+  "rayleigh_beta_stiffness": 0.0035628079927067843,
+  "modal_frequencies_rad_per_s": [
+    6.181059614325391,
+    21.886689252496556,
+    36.5041791348621,
+    45.27926944307636
+  ],
+  "damping_realization": "Rayleigh matrix implemented with physical dashpot elements: beta*K as story dashpots and alpha*M as ground dashpots, plus isolation dashpot."
+}

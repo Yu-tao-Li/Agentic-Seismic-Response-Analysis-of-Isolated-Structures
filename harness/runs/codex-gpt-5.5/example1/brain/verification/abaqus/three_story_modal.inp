@@ -1,0 +1,37 @@
+*Heading
+Example 1 three-story shear building modal verification
+*Preprint, echo=NO, model=NO, history=NO, contact=NO
+*Node
+1, 0., 0., 0.
+2, 0., 1., 0.
+3, 0., 2., 0.
+4, 0., 3., 0.
+*Nset, nset=ALLNODES
+1, 2, 3, 4
+*Element, type=SPRING2, elset=STORY_SPRINGS
+1, 1, 2
+2, 2, 3
+3, 3, 4
+*Spring, elset=STORY_SPRINGS
+2, 2
+500000.
+*Element, type=MASS, elset=FLOOR_MASS
+101, 2
+102, 3
+103, 4
+*Mass, elset=FLOOR_MASS
+1000.
+*Boundary
+1, 1, 6
+2, 1, 1
+2, 3, 6
+3, 1, 1
+3, 3, 6
+4, 1, 1
+4, 3, 6
+*Step, name=Frequency
+*Frequency, eigensolver=Lanczos, normalization=displacement, sim=NO
+3
+*Node File, nset=ALLNODES
+U
+*End Step

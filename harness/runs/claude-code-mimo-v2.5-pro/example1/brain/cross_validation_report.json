@@ -1,0 +1,309 @@
+{
+  "thresholds": {
+    "frequency_relative_difference": 0.01,
+    "period_relative_difference": 0.01,
+    "mac_minimum": 0.99,
+    "mode_shape_max_absolute_difference": 0.05,
+    "rationale": "For a well-posed linear eigenvalue problem (3-DOF shear building), all three software packages should produce essentially identical results. 1% frequency/period tolerance accounts for minor numerical precision differences. MAC > 0.99 and max element-wise difference < 0.05 confirm mode shape agreement."
+  },
+  "software_comparison": {
+    "MATLAB_vs_OpenSeesPy": {
+      "frequency_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_rad_s": 9.951438694861201,
+          "OpenSeesPy_rad_s": 9.951438694861205,
+          "relative_difference": 3.5700503090423267e-16,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_rad_s": 27.883311604680056,
+          "OpenSeesPy_rad_s": 27.883311604680063,
+          "relative_difference": 2.548272406929023e-16,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_rad_s": 40.29255268481675,
+          "OpenSeesPy_rad_s": 40.292552684816755,
+          "relative_difference": 1.763459221157389e-16,
+          "pass": true
+        }
+      ],
+      "period_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_s": 0.6313846168217009,
+          "OpenSeesPy_s": 0.6313846168217007,
+          "relative_difference": 3.5167883253597757e-16,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_s": 0.22533856079437095,
+          "OpenSeesPy_s": 0.2253385607943709,
+          "relative_difference": 2.4634554794158655e-16,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_s": 0.15593912245592842,
+          "OpenSeesPy_s": 0.1559391224559284,
+          "relative_difference": 1.7798981537473513e-16,
+          "pass": true
+        }
+      ],
+      "mode_shape_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_shape": [
+            0.4450418679126289,
+            0.8019377358048384,
+            1
+          ],
+          "OpenSeesPy_shape_corrected": [
+            0.4450418679126289,
+            0.8019377358048386,
+            1.0
+          ],
+          "mac": 1.0,
+          "max_absolute_difference": 2.220446049250313e-16,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_shape": [
+            -1.2469796037174667,
+            -0.554958132087371,
+            1
+          ],
+          "OpenSeesPy_shape_corrected": [
+            -1.2469796037174667,
+            -0.5549581320873711,
+            1.0
+          ],
+          "mac": 1.0000000000000002,
+          "max_absolute_difference": 1.1102230246251565e-16,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_shape": [
+            1.801937735804839,
+            -2.246979603717467,
+            1
+          ],
+          "OpenSeesPy_shape_corrected": [
+            1.801937735804839,
+            -2.2469796037174676,
+            1.0
+          ],
+          "mac": 0.9999999999999999,
+          "max_absolute_difference": 4.440892098500626e-16,
+          "pass": true
+        }
+      ],
+      "pair_pass": true
+    },
+    "MATLAB_vs_ABAQUS": {
+      "frequency_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_rad_s": 9.951438694861201,
+          "ABAQUS_rad_s": 9.951438955502349,
+          "relative_difference": 2.6191302478077584e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_rad_s": 27.883311604680056,
+          "ABAQUS_rad_s": 27.883312592096164,
+          "relative_difference": 3.541243906110142e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_rad_s": 40.29255268481675,
+          "ABAQUS_rad_s": 40.29255204160875,
+          "relative_difference": 1.5963446201033806e-08,
+          "pass": true
+        }
+      ],
+      "period_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_s": 0.6313846168217009,
+          "ABAQUS_s": 0.6313846002849154,
+          "relative_difference": 2.6191302505525714e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_s": 0.22533856079437095,
+          "ABAQUS_s": 0.22533855281458293,
+          "relative_difference": 3.5412438939313164e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_s": 0.15593912245592842,
+          "ABAQUS_s": 0.15593912494525425,
+          "relative_difference": 1.5963446182455634e-08,
+          "pass": true
+        }
+      ],
+      "mode_shape_comparison": [
+        {
+          "mode": 1,
+          "MATLAB_shape": [
+            0.4450418679126289,
+            0.8019377358048384,
+            1
+          ],
+          "ABAQUS_shape_corrected": [
+            0.4450418533455702,
+            0.8019377228228192,
+            1.0
+          ],
+          "mac": 0.9999999999999999,
+          "max_absolute_difference": 1.4567058670422739e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "MATLAB_shape": [
+            -1.2469796037174667,
+            -0.554958132087371,
+            1
+          ],
+          "ABAQUS_shape_corrected": [
+            -1.2469796239039634,
+            -0.554958122906382,
+            1.0
+          ],
+          "mac": 1.0,
+          "max_absolute_difference": 2.018649669643935e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "MATLAB_shape": [
+            1.801937735804839,
+            -2.246979603717467,
+            1
+          ],
+          "ABAQUS_shape_corrected": [
+            1.8019377656153233,
+            -2.2469796772653443,
+            1.0
+          ],
+          "mac": 1.0,
+          "max_absolute_difference": 7.354787712188227e-08,
+          "pass": true
+        }
+      ],
+      "pair_pass": true
+    },
+    "OpenSeesPy_vs_ABAQUS": {
+      "frequency_comparison": [
+        {
+          "mode": 1,
+          "OpenSeesPy_rad_s": 9.951438694861205,
+          "ABAQUS_rad_s": 9.951438955502349,
+          "relative_difference": 2.6191302121072563e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "OpenSeesPy_rad_s": 27.883311604680063,
+          "ABAQUS_rad_s": 27.883312592096164,
+          "relative_difference": 3.541243880627419e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "OpenSeesPy_rad_s": 40.292552684816755,
+          "ABAQUS_rad_s": 40.29255204160875,
+          "relative_difference": 1.5963446377379726e-08,
+          "pass": true
+        }
+      ],
+      "period_comparison": [
+        {
+          "mode": 1,
+          "OpenSeesPy_s": 0.6313846168217007,
+          "ABAQUS_s": 0.6313846002849154,
+          "relative_difference": 2.6191302153846892e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "OpenSeesPy_s": 0.2253385607943709,
+          "ABAQUS_s": 0.22533855281458293,
+          "relative_difference": 3.541243869296763e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "OpenSeesPy_s": 0.1559391224559284,
+          "ABAQUS_s": 0.15593912494525425,
+          "relative_difference": 1.5963446360445446e-08,
+          "pass": true
+        }
+      ],
+      "mode_shape_comparison": [
+        {
+          "mode": 1,
+          "OpenSeesPy_shape": [
+            0.4450418679126289,
+            0.8019377358048386,
+            1.0
+          ],
+          "ABAQUS_shape_corrected": [
+            0.4450418533455702,
+            0.8019377228228192,
+            1.0
+          ],
+          "mac": 1.0,
+          "max_absolute_difference": 1.4567058670422739e-08,
+          "pass": true
+        },
+        {
+          "mode": 2,
+          "OpenSeesPy_shape": [
+            -1.2469796037174667,
+            -0.5549581320873711,
+            1.0
+          ],
+          "ABAQUS_shape_corrected": [
+            -1.2469796239039634,
+            -0.554958122906382,
+            1.0
+          ],
+          "mac": 0.9999999999999998,
+          "max_absolute_difference": 2.018649669643935e-08,
+          "pass": true
+        },
+        {
+          "mode": 3,
+          "OpenSeesPy_shape": [
+            1.801937735804839,
+            -2.2469796037174676,
+            1.0
+          ],
+          "ABAQUS_shape_corrected": [
+            1.8019377656153233,
+            -2.2469796772653443,
+            1.0
+          ],
+          "mac": 1.0000000000000002,
+          "max_absolute_difference": 7.354787667779306e-08,
+          "pass": true
+        }
+      ],
+      "pair_pass": true
+    }
+  },
+  "overall_pass": true
+}

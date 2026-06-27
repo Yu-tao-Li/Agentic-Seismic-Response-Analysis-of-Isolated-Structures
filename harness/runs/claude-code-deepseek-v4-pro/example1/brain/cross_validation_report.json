@@ -1,0 +1,117 @@
+{
+  "model": {
+    "description": "Three-story shear building, lumped-mass model",
+    "num_stories": 3,
+    "mass_per_story_kg": 1000.0,
+    "story_stiffness_N_per_m": 500000.0,
+    "units": "SI (kg, m, s, N)"
+  },
+  "results": {
+    "matlab": {
+      "circular_frequencies_rad_per_s": [
+        9.951439,
+        27.883312,
+        40.292553
+      ],
+      "periods_s": [
+        0.631385,
+        0.225339,
+        0.155939
+      ],
+      "natural_frequencies_Hz": [
+        1.583821,
+        4.437767,
+        6.412759
+      ]
+    },
+    "openseespy": {
+      "circular_frequencies_rad_per_s": [
+        9.951439,
+        27.883312,
+        40.292553
+      ],
+      "periods_s": [
+        0.631385,
+        0.225339,
+        0.155939
+      ],
+      "natural_frequencies_Hz": [
+        1.583821,
+        4.437767,
+        6.412759
+      ]
+    },
+    "abaqus": {
+      "circular_frequencies_rad_per_s": [
+        9.951309,
+        27.88352,
+        40.292811
+      ],
+      "periods_s": [
+        0.631393,
+        0.225337,
+        0.155938
+      ],
+      "natural_frequencies_Hz": [
+        1.5838,
+        4.4378,
+        6.4128
+      ]
+    }
+  },
+  "comparisons": {
+    "matlab_vs_openseespy": {
+      "frequency_relative_error": [
+        5.4e-16,
+        2.5e-16,
+        1.8e-16
+      ],
+      "mac_diagonal": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mac_off_diagonal_max": 8.2e-33,
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "frequency_relative_error": [
+        1.3e-05,
+        7.47e-06,
+        6.4e-06
+      ],
+      "mac_diagonal": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mac_off_diagonal_max": 1.3e-16,
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "frequency_relative_error": [
+        1.3e-05,
+        7.47e-06,
+        6.4e-06
+      ],
+      "mac_diagonal": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mac_off_diagonal_max": 1.3e-16,
+      "pass": true
+    }
+  },
+  "thresholds": {
+    "frequency_relative_tolerance": 0.0001,
+    "mac_diagonal_minimum": 0.9999,
+    "rationale": "Frequency tolerance of 1e-4 (0.01%) accounts for differences between Lanczos (ABAQUS) and direct generalized eigenvalue solvers (MATLAB, OpenSeesPy fullGenLapack). MAC diagonal minimum of 0.9999 is standard for near-perfect mode shape correlation. Both thresholds are conservative relative to observed errors (max frequency error 1.3e-5, min MAC diagonal 1.0)."
+  },
+  "overall_verdict": "PASS",
+  "overall_pass": true,
+  "audit_notes": [
+    "Mode shapes are compared after interpreting normalized_mode_shapes as rows = stories and columns = modes.",
+    "Each mode-shape vector is sign-aligned to the MATLAB reference before plotting and visual comparison, because eigenvector signs are arbitrary in modal analysis."
+  ]
+}

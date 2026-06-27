@@ -1,0 +1,674 @@
+{
+  "generated_at": "2026-06-25T00:45:08",
+  "basis": "Only generated outputs under verification/matlab, verification/openseespy, and verification/abaqus were compared.",
+  "thresholds": {
+    "input_consistency_required": true,
+    "peak_relative_error_limit": 0.01,
+    "curve_rms_norm_limit": 0.02,
+    "curve_max_norm_limit": 0.06,
+    "isolation_peak_relative_error_limit": 0.01,
+    "first_yield_time_error_limit_s": 0.02,
+    "convergence_failed_step_limit": 0,
+    "reasoning": "MATLAB and OpenSeesPy use average-acceleration Newmark and should match nearly exactly. ABAQUS/Standard is configured with HHT alpha = 0.0, the Newmark average-acceleration limit. The retained 1% peak and 2% normalized RMS curve limits are tight enough to catch modeling errors while allowing small solver implementation and ODB interpolation differences."
+  },
+  "software_status": {
+    "matlab": {
+      "response_file": "verification/matlab/response_matlab.json",
+      "response_file_bytes": 714011,
+      "failed_step_count": 0,
+      "time_points": 1900,
+      "topStoDisIso1_bytes": 50425,
+      "topStoAccIso1_bytes": 47385
+    },
+    "openseespy": {
+      "response_file": "verification/openseespy/response_openseespy.json",
+      "response_file_bytes": 752704,
+      "failed_step_count": 0,
+      "time_points": 1900,
+      "topStoDisIso1_bytes": 67436,
+      "topStoAccIso1_bytes": 67474
+    },
+    "abaqus": {
+      "response_file": "verification/abaqus/response_abaqus.json",
+      "response_file_bytes": 707322,
+      "failed_step_count": 0,
+      "time_points": 1900,
+      "topStoDisIso1_bytes": 67432,
+      "topStoAccIso1_bytes": 67478
+    }
+  },
+  "input_consistency": {
+    "consistent": true,
+    "details": {
+      "raw_count": {
+        "matlab": 1900,
+        "openseespy": 1900,
+        "abaqus": 1900
+      },
+      "dt": {
+        "matlab": 0.01,
+        "openseespy": 0.01,
+        "abaqus": 0.01
+      },
+      "scale_to_mps2": {
+        "matlab": 0.024791352089006263,
+        "openseespy": 0.024791352089006263,
+        "abaqus": 0.024791352089006263
+      },
+      "normalized_pga_mps2": {
+        "matlab": 3.9240000000000004,
+        "openseespy": 3.9240000000000004,
+        "abaqus": 3.9240000000000004
+      },
+      "target_pga_g": {
+        "matlab": 0.4,
+        "openseespy": 0.4,
+        "abaqus": 0.4
+      },
+      "masses_kg": {
+        "matlab": [
+          250000,
+          270000,
+          270000,
+          180000
+        ],
+        "openseespy": [
+          250000.0,
+          270000.0,
+          270000.0,
+          180000.0
+        ],
+        "abaqus": [
+          250000.0,
+          270000.0,
+          270000.0,
+          180000.0
+        ]
+      },
+      "story_stiffness_N_per_m": {
+        "matlab": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ],
+        "openseespy": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ],
+        "abaqus": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ]
+      },
+      "yield_forces_N": {
+        "matlab": [
+          null,
+          1225000.0,
+          975000,
+          490000
+        ],
+        "openseespy": [
+          null,
+          1225000.0,
+          975000.0,
+          490000.0
+        ],
+        "abaqus": [
+          null,
+          1225000.0,
+          975000.0,
+          490000.0
+        ]
+      },
+      "post_yield_ratios": {
+        "matlab": [
+          null,
+          0,
+          0,
+          0
+        ],
+        "openseespy": [
+          null,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "abaqus": [
+          null,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "isolation_dashpot_Ns_per_m": {
+        "matlab": 1000000.0,
+        "openseespy": 1000000.0,
+        "abaqus": 1000000.0
+      },
+      "rayleigh_alpha_beta": {
+        "matlab": {
+          "alpha_mass": 0.5807292965956246,
+          "beta_initial_stiffness": 0.0017337982046407966
+        },
+        "openseespy": {
+          "alpha_mass": 0.5807292965956242,
+          "beta_initial_stiffness": 0.0017337982046407969
+        },
+        "abaqus": {
+          "alpha_mass": 0.5807292965956242,
+          "beta_initial_stiffness": 0.0017337982046407969
+        }
+      }
+    }
+  },
+  "summaries": {
+    "matlab": {
+      "peak_top_displacement_m": 0.0358984692742315,
+      "peak_top_displacement_time_s": 12.56,
+      "peak_top_acceleration_mps2": 2.789795375163174,
+      "peak_top_acceleration_g": 0.28438281092387097,
+      "peak_top_acceleration_time_s": 7.0200000000000005,
+      "peak_isolation_displacement_m": 0.025041303339640022,
+      "peak_isolation_displacement_time_s": 12.57,
+      "peak_base_shear_N": 1252065.1669820012,
+      "peak_base_shear_time_s": 12.57,
+      "first_yield_time_s": [
+        null,
+        null,
+        6.58
+      ],
+      "failed_step_count": 0
+    },
+    "openseespy": {
+      "peak_top_displacement_m": 0.03589846465307523,
+      "peak_top_displacement_time_s": 12.56,
+      "peak_top_acceleration_mps2": 2.7897954470484136,
+      "peak_top_acceleration_g": 0.28438281825162215,
+      "peak_top_acceleration_time_s": 7.0200000000000005,
+      "peak_isolation_displacement_m": 0.02504130369797952,
+      "peak_isolation_displacement_time_s": 12.57,
+      "peak_base_shear_N": 1252065.184898976,
+      "peak_base_shear_time_s": 12.57,
+      "first_yield_time_s": [
+        null,
+        null,
+        6.58
+      ],
+      "failed_step_count": 0
+    },
+    "abaqus": {
+      "peak_top_displacement_m": 0.035898469388484955,
+      "peak_top_displacement_time_s": 12.5600004196167,
+      "peak_top_acceleration_mps2": 2.78979532251443,
+      "peak_top_acceleration_g": 0.2843828055570265,
+      "peak_top_acceleration_time_s": 7.019999980926514,
+      "peak_isolation_displacement_m": 0.025041302666068077,
+      "peak_isolation_displacement_time_s": 12.569999694824219,
+      "peak_base_shear_N": 1252065.125,
+      "peak_base_shear_time_s": 12.569999694824219,
+      "first_yield_time_s": [
+        null,
+        null,
+        6.579999923706055
+      ],
+      "failed_step_count": 0
+    }
+  },
+  "pairwise_metrics": {
+    "matlab_vs_openseespy": {
+      "peak_response_error": {
+        "peak_top_displacement_m": {
+          "a": 0.0358984692742315,
+          "b": 0.03589846465307523,
+          "abs_error": 4.621156270145921e-09,
+          "relative_error": 1.28728504684824e-07
+        },
+        "peak_top_acceleration_mps2": {
+          "a": 2.789795375163174,
+          "b": 2.7897954470484136,
+          "abs_error": 7.188523953871595e-08,
+          "relative_error": 2.5767207991815347e-08
+        },
+        "peak_isolation_displacement_m": {
+          "a": 0.025041303339640022,
+          "b": 0.02504130369797952,
+          "abs_error": 3.5833949696417733e-10,
+          "relative_error": 1.4309937744698583e-08
+        },
+        "peak_base_shear_N": {
+          "a": 1252065.1669820012,
+          "b": 1252065.184898976,
+          "abs_error": 0.017916974844411016,
+          "relative_error": 1.4309937741665313e-08
+        }
+      },
+      "curve_error": {
+        "top_story_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 1.4579814895624904e-06,
+          "rms_norm_by_pair_peak": 4.061402948479835e-05,
+          "max_abs": 9.424293894820986e-06,
+          "max_norm_by_pair_peak": 0.0002625263440295956
+        },
+        "top_story_acceleration": {
+          "sample_count": 1900,
+          "rms_abs": 0.000111351545620191,
+          "rms_norm_by_pair_peak": 3.9913874595368684e-05,
+          "max_abs": 0.0037759623178667545,
+          "max_norm_by_pair_peak": 0.001353490744944298
+        },
+        "isolation_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 1.036993558372361e-06,
+          "rms_norm_by_pair_peak": 4.141132470095952e-05,
+          "max_abs": 6.255507178429219e-06,
+          "max_norm_by_pair_peak": 0.00024980756808336594
+        },
+        "base_shear": {
+          "sample_count": 1900,
+          "rms_abs": 51.84967791861802,
+          "rms_norm_by_pair_peak": 4.141132470095949e-05,
+          "max_abs": 312.7753589214609,
+          "max_norm_by_pair_peak": 0.0002498075680833659
+        }
+      },
+      "yielding_sequence": {
+        "per_story": [
+          {
+            "story": 2,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 3,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 4,
+            "a_first_yield_time_s": 6.58,
+            "b_first_yield_time_s": 6.58,
+            "yielded_match": true,
+            "time_error_s": 0.0
+          }
+        ],
+        "all_yielded_flags_match": true,
+        "max_first_yield_time_error_s": 0.0
+      },
+      "convergence": {
+        "matlab": 0,
+        "openseespy": 0
+      },
+      "pass_checks": {
+        "peak_errors_within_limit": true,
+        "curve_rms_within_limit": true,
+        "curve_max_within_limit": true,
+        "isolation_peak_within_limit": true,
+        "yield_sequence_within_limit": true,
+        "convergence_within_limit": true
+      },
+      "pair_pass": true
+    },
+    "matlab_vs_abaqus": {
+      "peak_response_error": {
+        "peak_top_displacement_m": {
+          "a": 0.0358984692742315,
+          "b": 0.035898469388484955,
+          "abs_error": 1.1425345392002129e-10,
+          "relative_error": 3.1826831579808253e-09
+        },
+        "peak_top_acceleration_mps2": {
+          "a": 2.789795375163174,
+          "b": 2.78979532251443,
+          "abs_error": 5.264874403110298e-08,
+          "relative_error": 1.8871901681327998e-08
+        },
+        "peak_isolation_displacement_m": {
+          "a": 0.025041303339640022,
+          "b": 0.025041302666068077,
+          "abs_error": 6.735719447481525e-10,
+          "relative_error": 2.689843797714386e-08
+        },
+        "peak_base_shear_N": {
+          "a": 1252065.1669820012,
+          "b": 1252065.125,
+          "abs_error": 0.04198200115934014,
+          "relative_error": 3.353020455040233e-08
+        }
+      },
+      "curve_error": {
+        "top_story_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 2.4026363766263528e-08,
+          "rms_norm_by_pair_peak": 6.692902257290705e-07,
+          "max_abs": 1.0559313080166222e-07,
+          "max_norm_by_pair_peak": 2.941454272365511e-06
+        },
+        "top_story_acceleration": {
+          "sample_count": 1900,
+          "rms_abs": 6.006420649422752e-06,
+          "rms_norm_by_pair_peak": 2.1534137478955455e-06,
+          "max_abs": 0.00018873771973337838,
+          "max_norm_by_pair_peak": 6.766599013663379e-05
+        },
+        "isolation_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 1.6675526743574997e-08,
+          "rms_norm_by_pair_peak": 6.660568994765033e-07,
+          "max_abs": 7.174092843658525e-08,
+          "max_norm_by_pair_peak": 2.8654891143662647e-06
+        },
+        "base_shear": {
+          "sample_count": 1900,
+          "rms_abs": 0.8330301033220219,
+          "rms_norm_by_pair_peak": 6.654607753281753e-07,
+          "max_abs": 3.5817353424208704,
+          "max_norm_by_pair_peak": 2.861246392516425e-06
+        }
+      },
+      "yielding_sequence": {
+        "per_story": [
+          {
+            "story": 2,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 3,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 4,
+            "a_first_yield_time_s": 6.58,
+            "b_first_yield_time_s": 6.579999923706055,
+            "yielded_match": true,
+            "time_error_s": 7.629394538355427e-08
+          }
+        ],
+        "all_yielded_flags_match": true,
+        "max_first_yield_time_error_s": 7.629394538355427e-08
+      },
+      "convergence": {
+        "matlab": 0,
+        "abaqus": 0
+      },
+      "pass_checks": {
+        "peak_errors_within_limit": true,
+        "curve_rms_within_limit": true,
+        "curve_max_within_limit": true,
+        "isolation_peak_within_limit": true,
+        "yield_sequence_within_limit": true,
+        "convergence_within_limit": true
+      },
+      "pair_pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "peak_response_error": {
+        "peak_top_displacement_m": {
+          "a": 0.03589846465307523,
+          "b": 0.035898469388484955,
+          "abs_error": 4.735409724065942e-09,
+          "relative_error": 1.319111874331028e-07
+        },
+        "peak_top_acceleration_mps2": {
+          "a": 2.7897954470484136,
+          "b": 2.78979532251443,
+          "abs_error": 1.2453398356981893e-07,
+          "relative_error": 4.4639109186867127e-08
+        },
+        "peak_isolation_displacement_m": {
+          "a": 0.02504130369797952,
+          "b": 0.025041302666068077,
+          "abs_error": 1.0319114417123298e-09,
+          "relative_error": 4.120837533692747e-08
+        },
+        "peak_base_shear_N": {
+          "a": 1252065.184898976,
+          "b": 1252065.125,
+          "abs_error": 0.05989897600375116,
+          "relative_error": 4.78401418122525e-08
+        }
+      },
+      "curve_error": {
+        "top_story_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 1.4582167217465535e-06,
+          "rms_norm_by_pair_peak": 4.0620803395562446e-05,
+          "max_abs": 9.424251328637413e-06,
+          "max_norm_by_pair_peak": 0.00026252658789458383
+        },
+        "top_story_acceleration": {
+          "sample_count": 1900,
+          "rms_abs": 0.0001115871986792278,
+          "rms_norm_by_pair_peak": 4.0006089420905694e-05,
+          "max_abs": 0.0037759720793345553,
+          "max_norm_by_pair_peak": 0.0013537563308758096
+        },
+        "isolation_displacement": {
+          "sample_count": 1900,
+          "rms_abs": 1.037128505658238e-06,
+          "rms_norm_by_pair_peak": 4.1425173399607285e-05,
+          "max_abs": 6.255483072460919e-06,
+          "max_norm_by_pair_peak": 0.00024985763052625374
+        },
+        "base_shear": {
+          "sample_count": 1900,
+          "rms_abs": 51.85639407539441,
+          "rms_norm_by_pair_peak": 4.14251484696817e-05,
+          "max_abs": 312.7742065657218,
+          "max_norm_by_pair_peak": 0.00024985767281917145
+        }
+      },
+      "yielding_sequence": {
+        "per_story": [
+          {
+            "story": 2,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 3,
+            "a_first_yield_time_s": null,
+            "b_first_yield_time_s": null,
+            "yielded_match": true,
+            "time_error_s": null
+          },
+          {
+            "story": 4,
+            "a_first_yield_time_s": 6.58,
+            "b_first_yield_time_s": 6.579999923706055,
+            "yielded_match": true,
+            "time_error_s": 7.629394538355427e-08
+          }
+        ],
+        "all_yielded_flags_match": true,
+        "max_first_yield_time_error_s": 7.629394538355427e-08
+      },
+      "convergence": {
+        "openseespy": 0,
+        "abaqus": 0
+      },
+      "pass_checks": {
+        "peak_errors_within_limit": true,
+        "curve_rms_within_limit": true,
+        "curve_max_within_limit": true,
+        "isolation_peak_within_limit": true,
+        "yield_sequence_within_limit": true,
+        "convergence_within_limit": true
+      },
+      "pair_pass": true
+    }
+  },
+  "file_manifest": {
+    "matlab": {
+      "baseShearIso1.txt": {
+        "bytes": 45093,
+        "relative_path": "verification/matlab/baseShearIso1.txt"
+      },
+      "isoDisIso1.txt": {
+        "bytes": 50731,
+        "relative_path": "verification/matlab/isoDisIso1.txt"
+      },
+      "matlab_internal_log.txt": {
+        "bytes": 118,
+        "relative_path": "verification/matlab/matlab_internal_log.txt"
+      },
+      "matlab_run.log": {
+        "bytes": 242,
+        "relative_path": "verification/matlab/matlab_run.log"
+      },
+      "response_matlab.json": {
+        "bytes": 714011,
+        "relative_path": "verification/matlab/response_matlab.json"
+      },
+      "run_matlab_analysis.m": {
+        "bytes": 9807,
+        "relative_path": "verification/matlab/run_matlab_analysis.m"
+      },
+      "topStoAccIso1.txt": {
+        "bytes": 47385,
+        "relative_path": "verification/matlab/topStoAccIso1.txt"
+      },
+      "topStoDisIso1.txt": {
+        "bytes": 50425,
+        "relative_path": "verification/matlab/topStoDisIso1.txt"
+      }
+    },
+    "openseespy": {
+      "baseShearIso1.txt": {
+        "bytes": 67442,
+        "relative_path": "verification/openseespy/baseShearIso1.txt"
+      },
+      "isoDisIso1.txt": {
+        "bytes": 67442,
+        "relative_path": "verification/openseespy/isoDisIso1.txt"
+      },
+      "openseespy_internal_log.txt": {
+        "bytes": 117,
+        "relative_path": "verification/openseespy/openseespy_internal_log.txt"
+      },
+      "openseespy_run.log": {
+        "bytes": 0,
+        "relative_path": "verification/openseespy/openseespy_run.log"
+      },
+      "response_openseespy.json": {
+        "bytes": 752704,
+        "relative_path": "verification/openseespy/response_openseespy.json"
+      },
+      "run_openseespy_analysis.py": {
+        "bytes": 13008,
+        "relative_path": "verification/openseespy/run_openseespy_analysis.py"
+      },
+      "topStoAccIso1.txt": {
+        "bytes": 67474,
+        "relative_path": "verification/openseespy/topStoAccIso1.txt"
+      },
+      "topStoDisIso1.txt": {
+        "bytes": 67436,
+        "relative_path": "verification/openseespy/topStoDisIso1.txt"
+      }
+    },
+    "abaqus": {
+      "abaqus_generate.log": {
+        "bytes": 330,
+        "relative_path": "verification/abaqus/abaqus_generate.log"
+      },
+      "abaqus_input_metadata.json": {
+        "bytes": 1410,
+        "relative_path": "verification/abaqus/abaqus_input_metadata.json"
+      },
+      "abaqus_postprocess.log": {
+        "bytes": 113,
+        "relative_path": "verification/abaqus/abaqus_postprocess.log"
+      },
+      "abaqus_postprocess_stdout.log": {
+        "bytes": 0,
+        "relative_path": "verification/abaqus/abaqus_postprocess_stdout.log"
+      },
+      "abaqus_run.log": {
+        "bytes": 2372,
+        "relative_path": "verification/abaqus/abaqus_run.log"
+      },
+      "baseShearIso1.txt": {
+        "bytes": 67438,
+        "relative_path": "verification/abaqus/baseShearIso1.txt"
+      },
+      "generate_abaqus_input.py": {
+        "bytes": 6691,
+        "relative_path": "verification/abaqus/generate_abaqus_input.py"
+      },
+      "isoDisIso1.txt": {
+        "bytes": 67438,
+        "relative_path": "verification/abaqus/isoDisIso1.txt"
+      },
+      "isolated_shear_building.com": {
+        "bytes": 3450,
+        "relative_path": "verification/abaqus/isolated_shear_building.com"
+      },
+      "isolated_shear_building.dat": {
+        "bytes": 16574,
+        "relative_path": "verification/abaqus/isolated_shear_building.dat"
+      },
+      "isolated_shear_building.inp": {
+        "bytes": 79931,
+        "relative_path": "verification/abaqus/isolated_shear_building.inp"
+      },
+      "isolated_shear_building.msg": {
+        "bytes": 2338624,
+        "relative_path": "verification/abaqus/isolated_shear_building.msg"
+      },
+      "isolated_shear_building.odb": {
+        "bytes": 22365944,
+        "relative_path": "verification/abaqus/isolated_shear_building.odb"
+      },
+      "isolated_shear_building.prt": {
+        "bytes": 1312,
+        "relative_path": "verification/abaqus/isolated_shear_building.prt"
+      },
+      "isolated_shear_building.sta": {
+        "bytes": 129507,
+        "relative_path": "verification/abaqus/isolated_shear_building.sta"
+      },
+      "postprocess_abaqus_odb.py": {
+        "bytes": 8587,
+        "relative_path": "verification/abaqus/postprocess_abaqus_odb.py"
+      },
+      "response_abaqus.json": {
+        "bytes": 707322,
+        "relative_path": "verification/abaqus/response_abaqus.json"
+      },
+      "run_abaqus_analysis.ps1": {
+        "bytes": 1311,
+        "relative_path": "verification/abaqus/run_abaqus_analysis.ps1"
+      },
+      "topStoAccIso1.txt": {
+        "bytes": 67478,
+        "relative_path": "verification/abaqus/topStoAccIso1.txt"
+      },
+      "topStoDisIso1.txt": {
+        "bytes": 67432,
+        "relative_path": "verification/abaqus/topStoDisIso1.txt"
+      }
+    }
+  },
+  "final_result": {
+    "strict_three_software_pass": true,
+    "reason": "All required generated outputs are present and pairwise metrics meet adopted thresholds."
+  }
+}

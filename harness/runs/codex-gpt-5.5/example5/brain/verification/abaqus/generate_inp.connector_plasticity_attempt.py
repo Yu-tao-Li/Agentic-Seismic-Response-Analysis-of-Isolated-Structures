@@ -1,0 +1,136 @@
+"""
+Generate ABAQUS input file for Example 5:
+4-story seismically isolated structure.
+CONN3D2 connector elements for nonlinear shear springs.
+Ground motion via *DLOAD GRAV on mass elements.
+"""
+import numpy as np
+
+m = np.array([250, 270, 270, 180]) * 1e3
+k = np.array([50, 245, 195, 98]) * 1e6
+fy = np.array([500, 1225, 975, 490]) * 1e3
+b_hard = [0.05, 0.0, 0.0, 0.0]
+dt = 0.01
+g = 9.81
+PGA = 0.40 * g
+n_stories = 4
+
+acc_raw = np.loadtxt('../../input_data/Northridge_01_NO_968.txt')
+acc_norm = acc_raw / np.max(np.abs(acc_raw)) * PGA
+n_steps = len(acc_norm)
+total_time = (n_steps - 1) * dt
+
+M_mat = np.diag(m)
+K0_mat = np.zeros((4, 4))
+K0_mat[0,0]=k[0]+k[1]; K0_mat[0,1]=-k[1]
+K0_mat[1,0]=-k[1]; K0_mat[1,1]=k[1]+k[2]; K0_mat[1,2]=-k[2]
+K0_mat[2,1]=-k[2]; K0_mat[2,2]=k[2]+k[3]; K0_mat[2,3]=-k[3]
+K0_mat[3,2]=-k[3]; K0_mat[3,3]=k[3]
+eigvals, _ = np.linalg.eig(np.linalg.solve(M_mat, K0_mat))
+omega = np.sqrt(np.sort(np.real(eigvals)))
+w1, w2 = omega[0], omega[1]
+alpha_m = 2 * 0.05 * w1 * w2 / (w1 + w2)
+beta_k = 2 * 0.05 / (w1 + w2)
+print(f'Damping: alpha={alpha_m:.6f}, beta={beta_k:.6f}')
+
+lines = []
+def L(s=''):
+    lines.append(s)
+
+L('*HEADING')
+L('Example 5: 4-story seismically isolated structure')
+L('*PREPRINT,ECHO=NO,MODEL=NO,HISTORY=NO')
+
+# Nodes (co-located for shear building)
+L('*NODE')
+for i in range(5):
+    L(f'{i+1}, 0.0, 0.0, 0.0')
+L('*NSET,NSET=BASE')
+L('1')
+L('*NSET,NSET=TOP')
+L('5')
+
+# CONN3D2 elements
+for i in range(4):
+    L(f'*ELEMENT,TYPE=CONN3D2,ELSET=E{i+1}')
+    L(f'{i+1}, {i+1}, {i+2}')
+
+# Mass elements (separate ELSETs for different masses)
+for i in range(4):
+    L(f'*ELEMENT,TYPE=MASS,ELSET=MASS{i+1}')
+    L(f'{100+i+1}, {i+2}')
+    L(f'*MASS,ELSET=MASS{i+1}')
+    L(f'{m[i]:.1f},')
+
+# Combined mass elset for loading
+L('*ELSET,ELSET=MASSEL')
+L('MASS1,MASS2,MASS3,MASS4')
+
+# Connector behaviors and sections
+for i in range(4):
+    L(f'*CONNECTOR BEHAVIOR,NAME=BHV{i+1}')
+    L('*CONNECTOR ELASTICITY,COMPONENT=1')
+    L(f'{k[i]:.1f},')
+    L('*CONNECTOR PLASTICITY,COMPONENT=1')
+    L(f'{fy[i]:.1f},')
+    if i == 0:
+        # Linear kinematic hardening for the isolation layer. Abaqus uses the
+        # plastic hardening modulus C; to obtain total post-yield tangent b*k,
+        # C = b*k / (1-b).
+        Hkin = b_hard[i] * k[i] / (1.0 - b_hard[i])
+        L('*CONNECTOR HARDENING, TYPE=KINEMATIC, DEFINITION=PARAMETERS')
+        L(f'{fy[i]:.1f}, {Hkin:.6f}, 0.0')
+    else:
+        # Isotropic hardening with constant yield force (perfect plasticity)
+        # Data: yield_force, equiv_plastic_motion
+        L('*CONNECTOR HARDENING')
+        L(f'{fy[i]:.1f}, 0.0')
+        L(f'{fy[i]:.1f}, 1.0')
+    L(f'*CONNECTOR SECTION,ELSET=E{i+1},BEHAVIOR=BHV{i+1}')
+    L('CARTESIAN,')
+
+# Boundary conditions. The shear-building model has only horizontal X motion;
+# Y/Z are restrained by nodal boundary conditions rather than connector
+# constraint-like stiff components, which avoids Abaqus connector warnings.
+L('*BOUNDARY')
+L('BASE, 1, 3')
+L('2, 2, 3')
+L('3, 2, 3')
+L('4, 2, 3')
+L('5, 2, 3')
+
+# Ground motion amplitude: unit-normalized acceleration (-1 to 1)
+acc_unit = acc_raw / np.max(np.abs(acc_raw))
+L('*AMPLITUDE,NAME=GM,TIME=TOTAL TIME')
+for i, a in enumerate(acc_unit):
+    t = i * dt
+    L(f'{t:.6f}, {a:.6e}')
+
+# Step: implicit dynamic analysis
+L(f'*STEP,NAME=DYNAMIC,NLGEOM=NO,INC={n_steps+10}')
+L('*DYNAMIC,ALPHA=0.0,DIRECT')
+L(f'{dt:.6f},{total_time:.6f},{dt/100:.6f},{dt:.6f}')
+
+# Rayleigh damping
+L(f'*GLOBAL DAMPING, ALPHA={alpha_m:.6f}, BETA={beta_k:.6f}')
+
+# Ground motion: concentrated forces at each mass node
+# F_i = -m_i * ug(t) = -m_i * PGA * unit_acc(t)
+# CLOAD: node, DOF, magnitude * AMPLITUDE
+L('*CLOAD, AMPLITUDE=GM')
+for i in range(4):
+    peak_force = -m[i] * PGA
+    L(f'{i+2}, 1, {peak_force:.6f}')
+
+# Output at every increment
+L(f'*OUTPUT, FIELD, FREQUENCY=1')
+L('*NODE OUTPUT')
+L('U, V, A')
+L('*ELEMENT OUTPUT')
+L('CTF,')
+L('*END STEP')
+
+with open('example5_model.inp', 'w') as f:
+    f.write('\n'.join(lines) + '\n')
+
+print(f'ABAQUS input file: example5_model.inp ({n_steps} steps)')

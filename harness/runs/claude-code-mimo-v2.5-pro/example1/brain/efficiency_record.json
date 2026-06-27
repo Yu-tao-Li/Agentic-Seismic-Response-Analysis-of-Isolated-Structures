@@ -1,0 +1,48 @@
+{
+    "agent":  "claude-code-mimo-v2.5-pro",
+    "example":  "example1",
+    "prompt_type":  "brain",
+    "formal_harness_run":  true,
+    "run_root":  "harness\\runs\\claude-code-mimo-v2.5-pro\\example1\\brain",
+    "result":  "three-software pass",
+    "strict_three_software_agreement":  true,
+    "total_agent_duration_ms":  2091987,
+    "total_agent_duration_readable":  "34m 51s",
+    "total_wall_clock_duration_ms":  2097408,
+    "total_wall_clock_duration_readable":  "34m 57s",
+    "total_num_turns":  82,
+    "final_round_agent_duration_ms":  2091987,
+    "final_round_agent_duration_readable":  "34m 51s",
+    "final_round_wall_clock_duration_ms":  2097408,
+    "final_round_wall_clock_duration_readable":  "34m 57s",
+    "final_round_num_turns":  82,
+    "api_error_status":  null,
+    "returncode":  0,
+    "terminal_reason":  "completed",
+    "total_cost_usd":  4.689524,
+    "cross_validation_report":  "harness\\runs\\claude-code-mimo-v2.5-pro\\example1\\brain\\cross_validation_report.json",
+    "cross_validation_root_level":  true,
+    "notes":  "Root-level cross_validation_report.json reports overall_pass=true.",
+    "rounds":  [
+                   {
+                       "name":  "initial",
+                       "agent_ms":  2091987,
+                       "wall_ms":  2097408,
+                       "turns":  82,
+                       "api":  null,
+                       "returncode":  0,
+                       "stdout":  "agent_io/claude_stdout.json",
+                       "call":  "agent_io/claude_call.json",
+                       "agent_readable":  "34m 51s",
+                       "wall_readable":  "34m 57s"
+                   }
+               ],
+    "evidence_files":  [
+                           "sent_prompt.txt",
+                           "agent_io/claude_input.txt",
+                           "agent_io/claude_stdout.json",
+                           "agent_io/claude_call.json",
+                           "run_metadata.json",
+                           "efficiency_record.json"
+                       ]
+}

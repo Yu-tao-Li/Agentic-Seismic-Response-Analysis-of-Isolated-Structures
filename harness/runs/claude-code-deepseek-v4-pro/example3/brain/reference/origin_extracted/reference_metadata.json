@@ -1,0 +1,47 @@
+{
+  "example": "example3",
+  "origin_project": "gpt3.opju",
+  "cached_project": "<origin_project_cache>\\reference_export\\gpt3.opju",
+  "worksheet_shape": [
+    2686,
+    11
+  ],
+  "groups": {
+    "matlab": {
+      "topStoDis.txt": {
+        "source": "MATLAB displacement",
+        "rows": 2686,
+        "peak_abs": 0.142048930447545
+      },
+      "topStoAcc.txt": {
+        "source": "MATLAB acceleration",
+        "rows": 2686,
+        "peak_abs": 7.91625919811523
+      }
+    },
+    "openseespy": {
+      "topStoDis.txt": {
+        "source": "OpenSeesPy displacement",
+        "rows": 2686,
+        "peak_abs": 0.142076
+      },
+      "topStoAcc.txt": {
+        "source": "OpenSeesPy acceleration",
+        "rows": 2686,
+        "peak_abs": 7.91684
+      }
+    },
+    "reference": {
+      "topStoDis.txt": {
+        "source": "OpenSeesPy displacement",
+        "rows": 2686,
+        "peak_abs": 0.142076
+      },
+      "topStoAcc.txt": {
+        "source": "OpenSeesPy acceleration",
+        "rows": 2686,
+        "peak_abs": 7.91684
+      }
+    }
+  }
+}

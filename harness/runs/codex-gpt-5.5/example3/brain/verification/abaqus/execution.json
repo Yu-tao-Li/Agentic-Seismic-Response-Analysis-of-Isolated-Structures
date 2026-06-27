@@ -1,0 +1,7 @@
+{
+  "cmd": "abaqus job=model input=model.inp interactive",
+  "returncode": 0,
+  "stdout": "Analysis initiated from SIMULIA established products\nAbaqus JOB model\nAbaqus 2025\nBegin Analysis Input File Processor\n6/21/2026 9:17:34 AM\nRun pre.exe\n6/21/2026 9:17:43 AM\nEnd Analysis Input File Processor\nBegin Abaqus/Standard Analysis\n6/21/2026 9:17:43 AM\nRun standard.exe\n6/21/2026 9:18:24 AM\nEnd Abaqus/Standard Analysis\nBegin SIM Wrap-up\n6/21/2026 9:18:24 AM\nRun SMASimUtility.exe\n6/21/2026 9:18:24 AM\nEnd SIM Wrap-up\nAbaqus JOB model COMPLETED\n",
+  "stderr": "Abaqus License Manager checked out the following licenses:\nAbaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.\n<license availability redacted>.\n",
+  "timed_out": false
+}

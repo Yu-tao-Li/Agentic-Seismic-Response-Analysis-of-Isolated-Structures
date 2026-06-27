@@ -1,0 +1,360 @@
+1
+
+   Abaqus 2025                                  Date 22-6��-2026   Time 21:32:03
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *USER ELEMENT, NODES=2, TYPE=U1, PROPERTIES=8, COORDINATES=2, VARIABLES=4
+  *ELEMENT, TYPE=B21, ELSET=COLUMNS
+  *ELEMENT, TYPE=B21, ELSET=BEAMS
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR1
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR2
+  *ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR3
+  *ELEMENT, TYPE=MASS, ELSET=MASS_BASE
+  *ELEMENT, TYPE=U1, ELSET=ISOLATORS
+  *heading
+          2D Base-Isolated Frame - UEL damping v12                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  *material, name=STEEL
+  *elastic
+  *density
+  *damping, alpha=0.18647, beta=0.00707
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+
+ ***NOTE: I(22) WAS NOT SPECIFIED IN THE SECTION DEFINITION. I(11) WILL BE USED 
+          INSTEAD.  THIS WILL NOT AFFECT THE RESULTS OF A 2D BEAM ANALYSIS.
+  *mass, elset=MASS_FLOOR1
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_FLOOR2
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_FLOOR3
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *mass, elset=MASS_BASE
+
+ ***WARNING: NONZERO SECOND DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+
+ ***WARNING: NONZERO THIRD DATA IS SPECIFIED FOR THIS DEFAULT *MASS OPTION 
+             WHICH IS ISOTROPIC TYPE. PLEASE MAKE SURE THIS IS THE TYPE YOU 
+             WANTED.
+  *userelement, nodes=2, type=U1, properties=8, variables=4, coordinates=2
+  *beamgeneralsection, elset=COLUMNS, material=STEEL, section=GENERAL
+  *beamgeneralsection, elset=BEAMS, material=STEEL, section=GENERAL
+  *mass, elset=MASS_FLOOR1
+  *mass, elset=MASS_FLOOR2
+  *mass, elset=MASS_FLOOR3
+  *mass, elset=MASS_BASE
+  *boundary
+  *boundary
+  *uelproperty, elset=ISOLATORS
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *output, field, frequency=100
+  *output, history, frequency=10
+ 
+      ELEMENT CONSTRUCTION EXECUTED IN PARALLEL USING 4 THREADS
+ 
+      ELEMENT GEOMETRY CALCULATIONS EXECUTED IN PARALLEL USING 4 THREADS
+  *step, name=DYNAMIC, inc=2000
+  *step, name=DYNAMIC, inc=2000
+  *output, field, frequency=100
+  *output, history, frequency=10
+  *step, name=DYNAMIC, inc=2000
+  *step, name=DYNAMIC, inc=2000
+  *dynamic, alpha=-0.05, haftol=100000000
+  *output, field, frequency=100
+  *nodeoutput
+  *output, history, frequency=10
+  *nodeoutput, nset=ROOF_CENTER
+  *nodeoutput, nset=ISO_TOP
+  *endstep
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *boundary
+  *step, name=DYNAMIC, inc=2000
+  *dynamic, alpha=-0.05, haftol=100000000
+  *cload, amplitude=ACCEL_HIST
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    30
+          NUMBER OF NODES IS                                       45
+          NUMBER OF NODES DEFINED BY THE USER                      15
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        30
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   54
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.20    
+       SYSTEM TIME (SEC)    =     0.20    
+       TOTAL CPU TIME (SEC) =     0.40    
+       WALLCLOCK TIME (SEC) =            0
+1
+
+   Abaqus 2025                                  Date 22-6��-2026   Time 21:32:14
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+     2D Base-Isolated Frame - UEL damping v12                                                  STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     D Y N A M I C   A N A L Y S I S - I M P L I C I T  I N T E G R A T I O N
+
+
+                                                                                          
+
+          DYNAMIC APPLICATION PACKED SCHEME IS                 TRANSIENT FIDELITY  
+          HILBER-HUGHES-TAYLOR (HHT) TIME INTEGRATOR IS USED
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                1.000E-02
+          AND A TOTAL TIME PERIOD OF                            19.0    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-09
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                1.000E-02
+          TOLERANCE (ABSOLUTE VALUE) ON HALF-INCREMENT RESIDUAL     1.000E+08
+
+          HILBER-HUGHES-TAYLOR METHOD PARAMETERS:  ALPHA   IS  -5.000000E-02
+                                                   BETA    IS   0.275625    
+                                                   GAMMA   IS   0.550000    
+          SINGULAR MASS TREATMENT TYPE IS                     ERROR
+          CONSERVATIVE TIME INCREMENTATION IS USED
+          STEP AMPLITUDE IS                                    STEP
+
+
+
+                    TOTAL MASS OF MODEL
+
+                           (MASS MAY BE DIFFERENT IN EACH CARTESIAN DIRECTION 
+                            IF MATRIX INPUT OR USER ELEMENTS ARE USED)
+
+                           MASS ASSOCIATED WITH DIRECTION:
+                             X                   Y                   Z  
+
+                       759328.8           759328.8           750003.0    
+
+
+                    LOCATION OF THE CENTER OF MASS OF THE MODEL
+
+                       6.000000           7.187913           0.000000    
+
+
+                    MOMENT OF INERTIA ABOUT THE ORIGIN
+                           I(ZZ)
+
+                      9.1360358E+07
+
+
+                    PRODUCT OF INERTIA ABOUT THE ORIGIN
+                           I(XY)
+
+                     -3.2747936E+07
+
+
+                    MOMENT OF INERTIA ABOUT THE CENTER OF MASS
+                           I(ZZ)
+
+                      2.4792969E+07
+
+
+                    PRODUCT OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XY)
+
+                       402198.2    
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          9.74E+03               17                 24
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          9.74E+03               17                 24
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      2 ERROR MESSAGES ON THE MSG FILE
+                              AND       9 WARNING MESSAGES ON THE DAT FILE
+                              AND      10 WARNING MESSAGES ON THE MSG FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      53.    
+       SYSTEM TIME (SEC)    =      46.    
+       TOTAL CPU TIME (SEC) =      99.    
+       WALLCLOCK TIME (SEC) =           38

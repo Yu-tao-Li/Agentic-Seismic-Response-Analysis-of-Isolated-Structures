@@ -1,0 +1,100 @@
+{
+  "analysis_description": "3-story shear building modal analysis cross-validation",
+  "model_parameters": {
+    "story_mass_kg": 1000.0,
+    "story_stiffness_N_per_m": 500000.0,
+    "num_stories": 3
+  },
+  "consistency_thresholds": {
+    "max_circular_frequency_relative_error": 0.001,
+    "min_mode_shape_MAC": 0.99,
+    "rationale": "0.1% freq tolerance covers floating-point and solver differences; MAC >= 0.99 ensures mode shapes are essentially identical up to sign"
+  },
+  "frequency_comparisons": {
+    "matlab_vs_openseespy": {
+      "circular_freq_relative_errors": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_relative_error": 0.0
+    },
+    "matlab_vs_abaqus": {
+      "circular_freq_relative_errors": [
+        1.30439e-05,
+        7.4651e-06,
+        6.4045e-06
+      ],
+      "max_relative_error": 1.30439e-05
+    },
+    "openseespy_vs_abaqus": {
+      "circular_freq_relative_errors": [
+        1.30439e-05,
+        7.4651e-06,
+        6.4045e-06
+      ],
+      "max_relative_error": 1.30439e-05
+    }
+  },
+  "mode_shape_comparisons": {
+    "matlab_vs_openseespy": {
+      "mode_matches": {
+        "0": {
+          "matched_mode": 0,
+          "mac": 1.0
+        },
+        "1": {
+          "matched_mode": 1,
+          "mac": 1.0
+        },
+        "2": {
+          "matched_mode": 2,
+          "mac": 1.0
+        }
+      },
+      "min_mac": 1.0,
+      "all_mac_above_099": true
+    },
+    "matlab_vs_abaqus": {
+      "mode_matches": {
+        "0": {
+          "matched_mode": 0,
+          "mac": 1.0
+        },
+        "1": {
+          "matched_mode": 1,
+          "mac": 1.0
+        },
+        "2": {
+          "matched_mode": 2,
+          "mac": 1.0
+        }
+      },
+      "min_mac": 1.0,
+      "all_mac_above_099": true
+    },
+    "openseespy_vs_abaqus": {
+      "mode_matches": {
+        "0": {
+          "matched_mode": 0,
+          "mac": 1.0
+        },
+        "1": {
+          "matched_mode": 1,
+          "mac": 1.0
+        },
+        "2": {
+          "matched_mode": 2,
+          "mac": 1.0
+        }
+      },
+      "min_mac": 1.0,
+      "all_mac_above_099": true
+    }
+  },
+  "pass_fail": {
+    "frequency_check": "PASS",
+    "mode_shape_check": "PASS",
+    "overall": "PASS"
+  }
+}

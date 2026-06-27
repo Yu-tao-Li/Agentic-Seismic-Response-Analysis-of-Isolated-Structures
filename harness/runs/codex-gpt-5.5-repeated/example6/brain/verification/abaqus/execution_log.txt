@@ -1,0 +1,14 @@
+ABAQUS Bouc-Wen benchmark attempt started
+Wrote intended ABAQUS input: example6_boucwen.inp
+Wrote intended Bouc-Wen UEL: boucwen_uel.for
+Wrote postprocessor: postprocess_abaqus.py
+Input samples: 1900, raw PGA: 158.281, scale: 0.024791352089, normalized PGA: 3.924 m/s^2
+Running command: set "VS2022INSTALLDIR=<visual_studio_buildtools>" && call "<visual_studio_buildtools>\VC\Auxiliary\Build\vcvars64.bat" && call "<intel_oneapi>\setvars.bat" intel64 --force && "abaqus" information=system
+Command exit code 0; log: abaqus_system.log
+Running command: set "VS2022INSTALLDIR=<visual_studio_buildtools>" && call "<visual_studio_buildtools>\VC\Auxiliary\Build\vcvars64.bat" && call "<intel_oneapi>\setvars.bat" intel64 --force && "abaqus" make library=boucwen_uel.for
+Command exit code 0; log: abaqus_make.log
+Running command: set "VS2022INSTALLDIR=<visual_studio_buildtools>" && call "<visual_studio_buildtools>\VC\Auxiliary\Build\vcvars64.bat" && call "<intel_oneapi>\setvars.bat" intel64 --force && "abaqus" job=example6_boucwen input=example6_boucwen.inp user=boucwen_uel.for interactive
+Command exit code 0; log: abaqus_job.log
+Running command: set "VS2022INSTALLDIR=<visual_studio_buildtools>" && call "<visual_studio_buildtools>\VC\Auxiliary\Build\vcvars64.bat" && call "<intel_oneapi>\setvars.bat" intel64 --force && "abaqus" python postprocess_abaqus.py
+Command exit code 0; log: abaqus_postprocess.log
+Postprocessor wrote abaqus_results.json

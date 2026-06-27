@@ -1,0 +1,316 @@
+{
+  "schema_version": "example6-cross-validation-v1",
+  "generated_at_utc": "2026-06-21T15:48:21.427005+00:00",
+  "run_root": "harness\runs\\codex-gpt-5.5\\example6\\brain",
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "path": "verification/matlab/response_output.json",
+      "message": null
+    },
+    "openseespy": {
+      "status": "completed",
+      "path": "verification/openseespy/response_output.json",
+      "message": null
+    },
+    "abaqus": {
+      "status": "completed",
+      "path": "verification/abaqus/response_output.json",
+      "message": null
+    }
+  },
+  "required_software": [
+    "matlab",
+    "openseespy",
+    "abaqus"
+  ],
+  "completed_software": [
+    "matlab",
+    "openseespy",
+    "abaqus"
+  ],
+  "thresholds": {
+    "fundamental_period_relative_error": 0.03,
+    "peak_roof_displacement_relative_error": 0.1,
+    "peak_interstory_drift_relative_error": 0.1,
+    "peak_isolation_displacement_relative_error": 0.1,
+    "peak_base_shear_relative_error": 0.15,
+    "roof_displacement_nrmse": 0.05,
+    "isolation_displacement_nrmse": 0.05,
+    "base_shear_nrmse": 0.1,
+    "hysteresis_loop_area_relative_error": 0.15,
+    "failed_step_rate": 0.05
+  },
+  "input_consistency": {
+    "pass": true,
+    "software": {
+      "matlab": {
+        "normalized_peak_abs_m_per_s2": 3.9240000000000004,
+        "target_pga_m_per_s2": 3.9240000000000004,
+        "pga_normalization_pass": true,
+        "dt_s": 0.01,
+        "dt_pass": true,
+        "sample_count": 1900,
+        "pass": true
+      },
+      "openseespy": {
+        "normalized_peak_abs_m_per_s2": 3.9240000000000004,
+        "target_pga_m_per_s2": 3.9240000000000004,
+        "pga_normalization_pass": true,
+        "dt_s": 0.01,
+        "dt_pass": true,
+        "sample_count": 1900,
+        "pass": true
+      },
+      "abaqus": {
+        "normalized_peak_abs_m_per_s2": 3.9240000000000004,
+        "target_pga_m_per_s2": 3.9240000000000004,
+        "pga_normalization_pass": true,
+        "dt_s": 0.01,
+        "dt_pass": true,
+        "sample_count": 1900,
+        "pass": true
+      }
+    }
+  },
+  "metrics": {
+    "fundamental_period_relative_error": {
+      "metric": "fundamental_period_relative_error",
+      "threshold": 0.03,
+      "max_pairwise_value": 4.7020667530398396e-14,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 3.9366140258008257e-14,
+          "threshold": 0.03,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 7.654527272390436e-15,
+          "threshold": 0.03,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 4.7020667530398396e-14,
+          "threshold": 0.03,
+          "pass": true
+        }
+      }
+    },
+    "peak_roof_displacement_relative_error": {
+      "metric": "peak_roof_displacement_relative_error",
+      "threshold": 0.1,
+      "max_pairwise_value": 0.0015656380290314808,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 4.525578626796725e-09,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0015656335105382515,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.0015656380290314808,
+          "threshold": 0.1,
+          "pass": true
+        }
+      }
+    },
+    "peak_interstory_drift_relative_error": {
+      "metric": "peak_interstory_drift_relative_error",
+      "threshold": 0.1,
+      "max_pairwise_value": 0.00022454664507281507,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 2.701615525893666e-09,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.00022454394406392058,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.00022454664507281507,
+          "threshold": 0.1,
+          "pass": true
+        }
+      }
+    },
+    "peak_isolation_displacement_relative_error": {
+      "metric": "peak_isolation_displacement_relative_error",
+      "threshold": 0.1,
+      "max_pairwise_value": 0.003066390303348122,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 6.178383483371674e-10,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0030663896874043067,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.003066390303348122,
+          "threshold": 0.1,
+          "pass": true
+        }
+      }
+    },
+    "peak_base_shear_relative_error": {
+      "metric": "peak_base_shear_relative_error",
+      "threshold": 0.15,
+      "max_pairwise_value": 0.0006223777327971256,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 4.212291975760247e-09,
+          "threshold": 0.15,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0006223735231267689,
+          "threshold": 0.15,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.0006223777327971256,
+          "threshold": 0.15,
+          "pass": true
+        }
+      }
+    },
+    "hysteresis_loop_area_relative_error": {
+      "metric": "hysteresis_loop_area_relative_error",
+      "threshold": 0.15,
+      "max_pairwise_value": 0.002357576226396812,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 2.3058078467161041e-07,
+          "threshold": 0.15,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0023573461891708745,
+          "threshold": 0.15,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.002357576226396812,
+          "threshold": 0.15,
+          "pass": true
+        }
+      }
+    },
+    "roof_displacement_nrmse": {
+      "metric": "roof_displacement_nrmse",
+      "threshold": 0.05,
+      "max_pairwise_value": 0.0016968252534440018,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 1.2017354103336905e-07,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0016968252534440018,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.0016968241657724552,
+          "threshold": 0.05,
+          "pass": true
+        }
+      }
+    },
+    "isolation_displacement_nrmse": {
+      "metric": "isolation_displacement_nrmse",
+      "threshold": 0.05,
+      "max_pairwise_value": 0.0020572328504596376,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 1.2248819906216545e-07,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0020572328504596376,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.002057232425509638,
+          "threshold": 0.05,
+          "pass": true
+        }
+      }
+    },
+    "base_shear_nrmse": {
+      "metric": "base_shear_nrmse",
+      "threshold": 0.1,
+      "max_pairwise_value": 0.0018193694508727596,
+      "pass": true,
+      "pairs": {
+        "matlab_vs_openseespy": {
+          "value": 3.1996980074639044e-07,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "matlab_vs_abaqus": {
+          "value": 0.0018193694508727596,
+          "threshold": 0.1,
+          "pass": true
+        },
+        "openseespy_vs_abaqus": {
+          "value": 0.001819350390522542,
+          "threshold": 0.1,
+          "pass": true
+        }
+      }
+    }
+  },
+  "convergence": {
+    "pass": true,
+    "software": {
+      "matlab": {
+        "failed_step_rate": 0.0,
+        "threshold": 0.05,
+        "pass": true,
+        "failed_step_count": 0,
+        "completed_steps": 1899
+      },
+      "openseespy": {
+        "failed_step_rate": 0.0,
+        "threshold": 0.05,
+        "pass": true,
+        "failed_step_count": 0,
+        "completed_steps": 1899
+      },
+      "abaqus": {
+        "failed_step_rate": 0.0,
+        "threshold": 0.05,
+        "pass": true,
+        "failed_step_count": 0,
+        "completed_steps": 1902
+      }
+    }
+  },
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "blockers": [],
+  "conclusion": "MATLAB, OpenSeesPy, and ABAQUS completed Example 6 and satisfied all recorded cross-software agreement thresholds.",
+  "policy": "PASS is allowed only when MATLAB, OpenSeesPy, and ABAQUS all complete and every threshold check passes."
+}

@@ -1,0 +1,134 @@
+{
+  "pass": true,
+  "error_type": "none",
+  "software_outputs": {
+    "MATLAB": "runs/codex-gpt-5.5/example1/brain/verification/matlab/modal_results.json",
+    "OpenSeesPy": "runs/codex-gpt-5.5/example1/brain/verification/openseespy/modal_results.json",
+    "ABAQUS": "runs/codex-gpt-5.5/example1/brain/verification/abaqus/modal_results.json"
+  },
+  "metrics": {
+    "max_frequency_relative_error_against_reference": 1.3043389304194012e-05,
+    "max_period_relative_error_against_reference": 1.3039014013624891e-05,
+    "max_mode_shape_absolute_error_against_reference": 1.8922576949798042e-08,
+    "max_pairwise_frequency_relative_difference": 1.3044047935629403e-05,
+    "max_pairwise_period_relative_difference": 1.3043877790547255e-05,
+    "max_pairwise_mode_shape_absolute_difference": 2.311773883434398e-08
+  },
+  "against_reference": {
+    "MATLAB": {
+      "software": "MATLAB",
+      "max_frequency_relative_error": 4.884923045575873e-10,
+      "max_period_relative_error": 1.5749277236160654e-08,
+      "max_mode_shape_absolute_error": 4.195161551479032e-09,
+      "frequency_relative_errors": [
+        4.884923045575873e-10,
+        1.6784438296933845e-10,
+        1.1954437157878394e-10
+      ],
+      "period_relative_errors": [
+        5.033855700149533e-09,
+        3.5252331332093854e-09,
+        1.5749277236160654e-08
+      ]
+    },
+    "OpenSeesPy": {
+      "software": "OpenSeesPy",
+      "max_frequency_relative_error": 4.884928400651339e-10,
+      "max_period_relative_error": 1.5749277414150473e-08,
+      "max_mode_shape_absolute_error": 4.195161884545939e-09,
+      "frequency_relative_errors": [
+        4.884928400651339e-10,
+        1.678446377965792e-10,
+        1.195441952328618e-10
+      ],
+      "period_relative_errors": [
+        5.033856227667779e-09,
+        3.5252328868638366e-09,
+        1.5749277414150473e-08
+      ]
+    },
+    "ABAQUS": {
+      "software": "ABAQUS",
+      "max_frequency_relative_error": 1.3043389304194012e-05,
+      "max_period_relative_error": 1.3039014013624891e-05,
+      "max_mode_shape_absolute_error": 1.8922576949798042e-08,
+      "frequency_relative_errors": [
+        1.3043389304194012e-05,
+        7.4652611051287305e-06,
+        6.404604922812203e-06
+      ],
+      "period_relative_errors": [
+        1.3039014013624891e-05,
+        7.461512325382332e-06,
+        6.388695184146713e-06
+      ]
+    }
+  },
+  "pairwise": [
+    {
+      "pair": [
+        "MATLAB",
+        "OpenSeesPy"
+      ],
+      "max_frequency_relative_difference": 5.3550754635634885e-16,
+      "max_period_relative_difference": 5.275182488039666e-16,
+      "max_mode_shape_absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "pair": [
+        "MATLAB",
+        "ABAQUS"
+      ],
+      "max_frequency_relative_difference": 1.3044047935093888e-05,
+      "max_period_relative_difference": 1.3043877790019743e-05,
+      "max_mode_shape_absolute_difference": 2.3117738501277074e-08
+    },
+    {
+      "pair": [
+        "OpenSeesPy",
+        "ABAQUS"
+      ],
+      "max_frequency_relative_difference": 1.3044047935629403e-05,
+      "max_period_relative_difference": 1.3043877790547255e-05,
+      "max_mode_shape_absolute_difference": 2.311773883434398e-08
+    }
+  ],
+  "failed_metrics": {},
+  "sanity_checks": {
+    "software_count": 3,
+    "all_modal_results_present": true,
+    "frequency_count_per_software": 3,
+    "period_count_per_software": 3,
+    "mode_shape_matrix_shape": [
+      3,
+      3
+    ],
+    "mode_shape_sign_handling": "absolute normalized amplitudes",
+    "shared_assumptions": {
+      "story_mass_kg": 1000.0,
+      "story_stiffness_n_per_m": 500000.0,
+      "fixed_base": true,
+      "three_lumped_floor_dofs": true
+    }
+  },
+  "example": "example1",
+  "agent": "codex-gpt-5.5",
+  "prompt_type": "brain",
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "response_output": "verification/matlab/modal_results.json"
+    },
+    "openseespy": {
+      "status": "completed",
+      "response_output": "verification/openseespy/modal_results.json"
+    },
+    "abaqus": {
+      "status": "completed",
+      "response_output": "verification/abaqus/modal_results.json"
+    }
+  },
+  "conclusion": "MATLAB, OpenSeesPy, and ABAQUS reached auditable agreement for Example 1 modal frequencies, periods, and mode shapes."
+}

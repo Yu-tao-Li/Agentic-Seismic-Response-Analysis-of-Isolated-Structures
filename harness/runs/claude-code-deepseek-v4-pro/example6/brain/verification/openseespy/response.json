@@ -1,0 +1,38 @@
+{
+  "software": "OpenSeesPy",
+  "fundamental_period_s": 2.8428188055790145,
+  "periods_s": [
+    2.8428188055790145,
+    0.5264406645041203,
+    0.21301027966653016,
+    0.12418379009298482,
+    0.12308680411668077,
+    0.12043177875367347
+  ],
+  "frequencies_hz": [
+    0.3517635376681434,
+    1.8995493080724453,
+    4.694609112600155,
+    8.052580769609563,
+    8.124347749349678,
+    8.303456200255594
+  ],
+  "rayleigh_alpha_m": 0.18648564656329517,
+  "rayleigh_beta_k": 0.007069428106938198,
+  "peak_roof_displacement_m": 0.0182119,
+  "peak_isolation_displacement_m": 0.0140431,
+  "peak_base_shear_N": 31613.4,
+  "peak_drift_ratio_story1": 0.0007045277777777778,
+  "peak_drift_ratio_story2": 0.0007542611111111111,
+  "peak_drift_ratio_story3": 0.0006963888888888891,
+  "failed_steps": 0,
+  "total_steps": 1900,
+  "convergence_tolerance": 1e-08,
+  "integration_scheme": "Newmark_average_acceleration",
+  "n_steps": 1900,
+  "dt_s": 0.01,
+  "pga_target_m_s2": 3.9240000000000004,
+  "model_type": "2D_elastic_beamColumn_with_BoucWen_zeroLength_isolators",
+  "diaphragm_method": "equalDOF",
+  "analysis_status": "success"
+}

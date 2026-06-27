@@ -1,0 +1,227 @@
+﻿{
+    "agent":  "codex-gpt-5.5-repeated",
+    "agent_kind":  "codex_cli",
+    "model":  "gpt-5.5",
+    "example":  "example6",
+    "prompt_type":  "brain",
+    "run_id":  "example6/brain",
+    "prompt_file":  "prompts/example6_brain.txt",
+    "started_at_local":  "2026-06-25T01:15:33.557945+08:00",
+    "finished_at_local":  "2026-06-25T04:01:05.0880544+08:00",
+    "duration_ms":  7456560,
+    "duration_minutes":  124.276,
+    "initial_duration_minutes":  25.586,
+    "followup_duration_minutes":  98.69,
+    "num_agent_turns_recorded_from_codex_events":  1,
+    "num_turns_recorded_from_codex_events":  1,
+    "codex_exec_invocations":  2,
+    "codex_event_stats":  {
+                              "total_events":  185,
+                              "event_type_counts":  {
+                                                        "thread.started":  1,
+                                                        "turn.started":  1,
+                                                        "item.completed":  111,
+                                                        "item.started":  68,
+                                                        "item.updated":  3,
+                                                        "turn.completed":  1
+                                                    },
+                              "item_type_counts":  {
+                                                       "agent_message":  43,
+                                                       "command_execution":  112,
+                                                       "todo_list":  5,
+                                                       "file_change":  22
+                                                   },
+                              "item_started":  68,
+                              "item_completed":  111,
+                              "item_updated":  3,
+                              "command_execution_started":  56,
+                              "command_execution_completed":  56,
+                              "command_execution_failed":  12,
+                              "command_status_counts":  {
+                                                            "completed":  44,
+                                                            "failed":  12
+                                                        },
+                              "agent_messages":  43,
+                              "todo_updates":  3,
+                              "efficiency_action_count":  111,
+                              "efficiency_action_count_basis":  "Codex CLI item.completed events; this is closer to an action/event count than num_turns from one-shot codex exec."
+                          },
+    "codex_efficiency_action_count":  513,
+    "codex_efficiency_action_count_basis":  "Initial repeated run item.completed events plus follow-up item.completed events; Codex CLI turns remain one per exec invocation.",
+    "command_execution_completed_total":  277,
+    "agent_messages_total":  166,
+    "manual_feedback_cycles":  1,
+    "first_pass_attempt":  false,
+    "initial_attempt_pass":  false,
+    "final_pass":  true,
+    "final_pass_basis":  "after one neutral tool-location reminder: strict_three_software_pass=True, final_result=PASS",
+    "initial_repeated_attempt":  {
+                                     "started_at_local":  "2026-06-25T01:15:33.557945+08:00",
+                                     "finished_at_local":  "2026-06-25T01:41:08.697947+08:00",
+                                     "duration_minutes":  25.586,
+                                     "num_agent_turns_recorded_from_codex_events":  1,
+                                     "codex_event_stats":  {
+                                                               "total_events":  185,
+                                                               "event_type_counts":  {
+                                                                                         "thread.started":  1,
+                                                                                         "turn.started":  1,
+                                                                                         "item.completed":  111,
+                                                                                         "item.started":  68,
+                                                                                         "item.updated":  3,
+                                                                                         "turn.completed":  1
+                                                                                     },
+                                                               "item_type_counts":  {
+                                                                                        "agent_message":  43,
+                                                                                        "command_execution":  112,
+                                                                                        "todo_list":  5,
+                                                                                        "file_change":  22
+                                                                                    },
+                                                               "item_started":  68,
+                                                               "item_completed":  111,
+                                                               "item_updated":  3,
+                                                               "command_execution_started":  56,
+                                                               "command_execution_completed":  56,
+                                                               "command_execution_failed":  12,
+                                                               "command_status_counts":  {
+                                                                                             "completed":  44,
+                                                                                             "failed":  12
+                                                                                         },
+                                                               "agent_messages":  43,
+                                                               "todo_updates":  3,
+                                                               "efficiency_action_count":  111,
+                                                               "efficiency_action_count_basis":  "Codex CLI item.completed events; this is closer to an action/event count than num_turns from one-shot codex exec."
+                                                           },
+                                     "codex_efficiency_action_count":  111,
+                                     "final_pass":  false,
+                                     "final_pass_basis":  "strict_three_software_pass=False",
+                                     "note":  "Initial repeated run using the same BRAIN prompt ended as a strict three-software failure before the follow-up reminder."
+                                 },
+    "repair_followups":  [
+                             {
+                                 "followup_id":  "codex_followup_tool_hint_20260625",
+                                 "purpose":  "Neutral reminder that local compiler/user-subroutine tools existed; no technical modeling fix was supplied.",
+                                 "started_at_local":  "2026-06-25T02:22:23.7106674+08:00",
+                                 "finished_at_local":  "2026-06-25T04:01:05.0880544+08:00",
+                                 "duration_minutes":  98.69,
+                                 "process_pid":  39748,
+                                 "process_running_after_check":  false,
+                                 "returncode_observed":  null,
+                                 "completion_evidence":  [
+                                                             "stdout contains turn.completed",
+                                                             "last_message produced",
+                                                             "cross_validation_report.json updated after follow-up"
+                                                         ],
+                                 "files":  {
+                                               "prompt":  "agent_io\\codex_followup_tool_hint_20260625_prompt.txt",
+                                               "input_tmp":  "agent_io\\codex_followup_tool_hint_20260625_input.tmp.txt",
+                                               "stdout_jsonl":  "agent_io\\codex_followup_tool_hint_20260625_stdout.jsonl",
+                                               "stderr":  "agent_io\\codex_followup_tool_hint_20260625_stderr.txt",
+                                               "last_message":  "agent_io\\codex_followup_tool_hint_20260625_last_message.txt",
+                                               "process":  "agent_io\\codex_followup_tool_hint_20260625_process.json",
+                                               "tool_locations":  "agent_io\\codex_followup_tool_hint_20260625_tool_locations.txt",
+                                               "oneapi_check_log":  "agent_io\\codex_followup_tool_hint_20260625_oneapi_check.log",
+                                               "visual_studio_check_log":  "agent_io\\codex_followup_tool_hint_20260625_vs_check.log"
+                                           },
+                                 "event_stats":  {
+                                                     "parsed_events":  686,
+                                                     "unparsed_jsonl_line_count":  0,
+                                                     "unparsed_jsonl_lines":  [
+
+                                                                              ],
+                                                     "event_type_counts":  {
+                                                                               "item.started":  279,
+                                                                               "item.completed":  402,
+                                                                               "turn.started":  1,
+                                                                               "thread.started":  1,
+                                                                               "turn.completed":  1,
+                                                                               "item.updated":  2
+                                                                           },
+                                                     "item_type_counts":  {
+                                                                              "web_search":  40,
+                                                                              "agent_message":  123,
+                                                                              "file_change":  74,
+                                                                              "command_execution":  442,
+                                                                              "todo_list":  4
+                                                                          },
+                                                     "command_execution_started":  221,
+                                                     "command_execution_completed":  221,
+                                                     "command_execution_failed":  14,
+                                                     "command_status_counts":  {
+                                                                                   "completed":  207,
+                                                                                   "failed":  14
+                                                                               },
+                                                     "agent_messages":  123,
+                                                     "todo_updates":  2,
+                                                     "efficiency_action_count":  402,
+                                                     "efficiency_action_count_basis":  "Parsed Codex CLI item.completed events from follow-up stdout JSONL.",
+                                                     "turn_completed":  true,
+                                                     "token_usage":  {
+                                                                         "input_tokens":  20180720,
+                                                                         "cached_input_tokens":  19291008,
+                                                                         "output_tokens":  172686,
+                                                                         "reasoning_output_tokens":  103790
+                                                                     }
+                                                 },
+                                 "result":  {
+                                                "final_pass":  true,
+                                                "final_pass_basis":  "after one neutral tool-location reminder: strict_three_software_pass=True, final_result=PASS",
+                                                "software_status":  {
+                                                                        "matlab":  "OK",
+                                                                        "openseespy":  "OK",
+                                                                        "abaqus":  "OK"
+                                                                    },
+                                                "source_outputs_used":  {
+                                                                            "matlab":  "verification\\matlab\\matlab_results.json",
+                                                                            "openseespy":  "verification\\openseespy\\opensees_results.json",
+                                                                            "abaqus":  "verification\\abaqus\\abaqus_results.json"
+                                                                        }
+                                            }
+                             }
+                         ],
+    "software_output_status":  {
+                                   "matlab":  {
+                                                  "folder_exists":  true,
+                                                  "accepted_outputs":  [
+                                                                           "verification\\matlab\\matlab_results.json"
+                                                                       ],
+                                                  "selected_output":  "verification\\matlab\\matlab_results.json",
+                                                  "output_exists":  true,
+                                                  "output_size_bytes":  1000672
+                                              },
+                                   "openseespy":  {
+                                                      "folder_exists":  true,
+                                                      "accepted_outputs":  [
+                                                                               "verification\\openseespy\\opensees_results.json"
+                                                                           ],
+                                                      "selected_output":  "verification\\openseespy\\opensees_results.json",
+                                                      "output_exists":  true,
+                                                      "output_size_bytes":  1228105
+                                                  },
+                                   "abaqus":  {
+                                                  "folder_exists":  true,
+                                                  "accepted_outputs":  [
+                                                                           "verification\\abaqus\\abaqus_results.json"
+                                                                       ],
+                                                  "selected_output":  "verification\\abaqus\\abaqus_results.json",
+                                                  "output_exists":  true,
+                                                  "output_size_bytes":  1628938
+                                              }
+                               },
+    "final_cross_validation_report":  {
+                                          "file":  "cross_validation_report.json",
+                                          "strict_three_software_pass":  true,
+                                          "final_result":  "PASS",
+                                          "failure_reason":  null,
+                                          "software_status":  {
+                                                                  "matlab":  "OK",
+                                                                  "openseespy":  "OK",
+                                                                  "abaqus":  "OK"
+                                                              },
+                                          "source_outputs_used":  {
+                                                                      "matlab":  "verification\\matlab\\matlab_results.json",
+                                                                      "openseespy":  "verification\\openseespy\\opensees_results.json",
+                                                                      "abaqus":  "verification\\abaqus\\abaqus_results.json"
+                                                                  }
+                                      },
+    "harness_note":  "Independent repeated run using the same BRAIN prompt and a fresh run directory. No generated outputs from previous runs are copied. Example 6 required one neutral follow-up reminder about local compiler/user-subroutine tool availability."
+}

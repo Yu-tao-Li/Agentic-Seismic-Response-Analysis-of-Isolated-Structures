@@ -1,0 +1,117 @@
+{
+  "agent": "codex-gpt-5.5",
+  "agent_kind": "codex_cli",
+  "model": "gpt-5.5",
+  "example": "example1",
+  "prompt_type": "brain",
+  "started_at_utc": "2026-06-20T17:46:30.313324+00:00",
+  "manual_edits": 0,
+  "rounds": [
+    {
+      "round": 0,
+      "status": "execution_error",
+      "usage": {
+        "input_tokens": 12258,
+        "cached_input_tokens": 1920,
+        "output_tokens": 993,
+        "reasoning_output_tokens": 516
+      }
+    },
+    {
+      "round": 1,
+      "status": "execution_error",
+      "usage": {
+        "input_tokens": 12920,
+        "cached_input_tokens": 11648,
+        "output_tokens": 1052,
+        "reasoning_output_tokens": 516
+      }
+    },
+    {
+      "round": 2,
+      "status": "numerical_error",
+      "usage": {
+        "input_tokens": 12982,
+        "cached_input_tokens": 1920,
+        "output_tokens": 3768,
+        "reasoning_output_tokens": 516
+      },
+      "metrics": {
+        "max_frequency_relative_error": 4.408307317816553e-05,
+        "max_period_relative_error": 0.0015024503573644375,
+        "max_mode_shape_absolute_error": 6.226000000009169e-05,
+        "frequency_relative_errors": [
+          4.408307317816553e-05,
+          1.1175143199269646e-05,
+          1.1101803441242077e-05
+        ],
+        "period_relative_errors": [
+          0.0006091690988607653,
+          0.0015024503573644375,
+          0.00039040876978152213
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "status": "passed",
+      "usage": {
+        "input_tokens": 15765,
+        "cached_input_tokens": 1920,
+        "output_tokens": 1129,
+        "reasoning_output_tokens": 516
+      },
+      "metrics": {
+        "max_frequency_relative_error": 4.884923045575873e-10,
+        "max_period_relative_error": 1.5749277236160654e-08,
+        "max_mode_shape_absolute_error": 4.195161551479032e-09,
+        "frequency_relative_errors": [
+          4.884923045575873e-10,
+          1.6784438296933845e-10,
+          1.1954437157878394e-10
+        ],
+        "period_relative_errors": [
+          5.033855700149533e-09,
+          3.5252331332093854e-09,
+          1.5749277236160654e-08
+        ]
+      }
+    }
+  ],
+  "finished_at_utc": "2026-06-20T17:49:57.975638+00:00",
+  "first_pass_executable": false,
+  "first_pass_correct": false,
+  "final_success": true,
+  "final_report": {
+    "pass": true,
+    "error_type": "none",
+    "metrics": {
+      "max_frequency_relative_error": 4.884923045575873e-10,
+      "max_period_relative_error": 1.5749277236160654e-08,
+      "max_mode_shape_absolute_error": 4.195161551479032e-09,
+      "frequency_relative_errors": [
+        4.884923045575873e-10,
+        1.6784438296933845e-10,
+        1.1954437157878394e-10
+      ],
+      "period_relative_errors": [
+        5.033855700149533e-09,
+        3.5252331332093854e-09,
+        1.5749277236160654e-08
+      ]
+    },
+    "failed_metrics": {},
+    "sanity_checks": {
+      "modal_results_json_present": true,
+      "frequency_count": 3,
+      "period_count": 3,
+      "mode_shape_matrix_shape": [
+        3,
+        3
+      ],
+      "mode_shape_sign_handling": "absolute normalized amplitudes"
+    }
+  },
+  "run_id": "example1/brain",
+  "legacy_round_logs": "round_00..round_03 retained as debugging logs from the earlier prototype runner"
+}

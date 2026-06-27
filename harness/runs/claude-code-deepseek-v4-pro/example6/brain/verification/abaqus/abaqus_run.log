@@ -1,0 +1,50 @@
+=== ABAQUS UEL COMPILATION AND RUN LOG ===
+Date: 2026-06-22
+Job: frame_bw_dynamic
+Model: 2D Base-Isolated Frame with Bouc-Wen UEL Isolators
+
+=== COMPILATION ===
+Fortran Compiler: Intel Fortran Classic 2021.13.1
+  Path: <intel_oneapi>\compiler\2024.2\bin\ifort.exe
+Linker: MSVC 14.44.35207
+  Path: <visual_studio_buildtools>\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\link.exe
+
+Compilation: SUCCESS
+Linking: SUCCESS (standardU.lib created)
+
+=== INPUT PROCESSING ===
+Input file: frame_bw_dynamic.inp
+Status: PASS (no errors)
+
+=== ANALYSIS PROGRESS (from STA file) ===
+Increments attempted: 100
+Simulation time reached: 0.0192 s (out of 19.0 s)
+Time step stabilized at: 0.0001341 s
+Newton iterations per increment: 8-9
+Error: TOO MANY INCREMENTS NEEDED TO COMPLETE THE STEP
+
+First 10 increments:
+INC  1: t=0.00100, dt=0.001000, iter=1
+INC  2: t=0.00200, dt=0.001000, iter=1
+INC  3: t=0.00300, dt=0.001000, iter=1
+INC  4: t=0.00425, dt=0.001250, iter=1
+INC  5: t=0.00581, dt=0.001563, iter=1
+INC  6: t=0.00593, dt=0.000122, iter=4 (cutback x3)
+INC  7: t=0.00609, dt=0.000153, iter=1
+INC  8: t=0.00628, dt=0.000191, iter=2
+INC  9: t=0.00652, dt=0.000238, iter=6
+INC 10: t=0.00675, dt=0.000238, iter=10
+
+Last 5 increments:
+INC 96: t=0.0187, dt=0.0001341, iter=9
+INC 97: t=0.0188, dt=0.0001341, iter=9
+INC 98: t=0.0189, dt=0.0001341, iter=9
+INC 99: t=0.0191, dt=0.0001341, iter=9
+INC 100: t=0.0192, dt=0.0001341, iter=9
+
+=== ENVIRONMENT SETUP ===
+1. vcvars64.bat (MSVC 2022 BuildTools)
+2. Intel oneAPI compiler 2024.2/bin added to PATH
+3. Intel oneAPI compiler 2024.2/lib added to LIB
+4. <abaqus_install>\Commands added to PATH
+5. abaqus job=frame_bw_dynamic user=bw_isolator.f interactive ask_delete=OFF

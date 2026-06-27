@@ -1,0 +1,116 @@
+{
+  "example": "example3",
+  "agent": "codex-gpt-5.5",
+  "prompt_type": "brain",
+  "input": {
+    "ground_motion_file": "input_data/GM1.txt",
+    "ground_motion_rows": 2686,
+    "time_step_s": 0.02,
+    "target_pga_m_s2": 3.9240000000000004,
+    "raw_pga_m_s2": 0.35692433,
+    "scale_factor": 10.99392692002812
+  },
+  "model": {
+    "masses_kg": [
+      500.0,
+      1000.0,
+      1000.0,
+      1000.0
+    ],
+    "story_stiffness_N_per_m": [
+      200000.0,
+      500000.0,
+      500000.0,
+      500000.0
+    ],
+    "rayleigh_alpha": 0.48198710795011424,
+    "rayleigh_beta": 0.003562807992706784,
+    "extra_diagonal_damping_N_s_per_m": {
+      "0": 2000.0
+    }
+  },
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "script": "verification/matlab/main.m"
+    },
+    "openseespy": {
+      "status": "completed",
+      "script": "verification/openseespy/main.py",
+      "execution_environment": "conda run -n ops312 python"
+    },
+    "abaqus": {
+      "status": "completed",
+      "input_file": "verification/abaqus/model.inp",
+      "extractor": "verification/abaqus/extract_results.py"
+    }
+  },
+  "thresholds": {
+    "peak_displacement_relative_error": 0.02,
+    "peak_acceleration_relative_error": 0.03,
+    "curve_nrmse": 0.03,
+    "rationale": "Linear systems with matched matrices and input should agree closely. Example 3 allows slightly looser acceleration/curve error because isolation damping is represented by discrete dashpot elements in OpenSeesPy/ABAQUS and matrix damping in MATLAB."
+  },
+  "comparisons": {
+    "matlab_vs_openseespy": {
+      "displacement": {
+        "samples": 2686,
+        "reference_peak": 0.14206176312882868,
+        "comparison_peak": 0.1420756846594449,
+        "peak_relative_error": 9.799632434234233e-05,
+        "nrmse": 4.176800734468903e-05,
+        "relative_l2_error": 0.0004531790291879544
+      },
+      "acceleration": {
+        "samples": 2686,
+        "reference_peak": 7.916517626453697,
+        "comparison_peak": 7.916839152729523,
+        "peak_relative_error": 4.06146099835158e-05,
+        "nrmse": 8.675204623977934e-05,
+        "relative_l2_error": 0.001181389278379969
+      },
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "displacement": {
+        "samples": 2686,
+        "reference_peak": 0.14206176312882868,
+        "comparison_peak": 0.14201416075229645,
+        "peak_relative_error": 0.00033508225917949194,
+        "nrmse": 0.00016877359622700583,
+        "relative_l2_error": 0.0018311779601915734
+      },
+      "acceleration": {
+        "samples": 2686,
+        "reference_peak": 7.916517626453697,
+        "comparison_peak": 7.890005588531494,
+        "peak_relative_error": 0.0033489520485131515,
+        "nrmse": 0.001167577685761192,
+        "relative_l2_error": 0.01590007174956381
+      },
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "displacement": {
+        "samples": 2686,
+        "reference_peak": 0.1420756846594449,
+        "comparison_peak": 0.14201416075229645,
+        "peak_relative_error": 0.00043303614757106494,
+        "nrmse": 0.0001802464593543893,
+        "relative_l2_error": 0.0019557077650797644
+      },
+      "acceleration": {
+        "samples": 2686,
+        "reference_peak": 7.916839152729523,
+        "comparison_peak": 7.890005588531494,
+        "peak_relative_error": 0.0033894289981598403,
+        "nrmse": 0.0011731323378490787,
+        "relative_l2_error": 0.01597533420537158
+      },
+      "pass": true
+    }
+  },
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "conclusion": "The three software paths reached the adopted agreement criteria."
+}

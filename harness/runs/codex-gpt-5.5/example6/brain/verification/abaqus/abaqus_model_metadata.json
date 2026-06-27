@@ -1,0 +1,72 @@
+{
+  "input": {
+    "dt_s": 0.01,
+    "sample_count": 1900,
+    "raw_peak_abs": 158.281,
+    "target_pga_m_per_s2": 3.9240000000000004,
+    "target_pga_g": 0.4,
+    "normalization_scale": 0.024791352089006263,
+    "normalized_peak_abs_m_per_s2": 3.9240000000000004,
+    "source_file": "input_data/Northridge_01_NO_968.txt"
+  },
+  "model": {
+    "g": 9.81,
+    "target_pga_g": 0.4,
+    "dt": 0.01,
+    "stories": 3,
+    "bays": 2,
+    "bay_width_m": 6.0,
+    "story_height_m": 3.6,
+    "E_Pa": 206000000000.0,
+    "nu": 0.3,
+    "rho_kg_per_m3": 7850.0,
+    "column_area_m2": 0.02,
+    "column_I_m4": 0.0008,
+    "beam_area_m2": 0.015,
+    "beam_I_m4": 0.00045,
+    "floor_mass_kg": 250000.0,
+    "isolator_k0_N_per_m": 2000000.0,
+    "isolator_characteristic_yield_force_N": 10000.0,
+    "isolator_characteristic_yield_displacement_m": 0.005,
+    "boucwen_alpha": 0.05,
+    "boucwen_n": 2.0,
+    "boucwen_beta": 20000.0,
+    "boucwen_gamma": 20000.0,
+    "boucwen_Ao": 1.0,
+    "boucwen_deltaA": 0.0,
+    "boucwen_deltaNu": 0.0,
+    "boucwen_deltaEta": 0.0,
+    "isolator_kv_N_per_m": 10000000000.0,
+    "damping_ratio": 0.05,
+    "rayleigh_alpha_mass": 0.1864969750851659,
+    "rayleigh_beta_stiffness": 0.0070671988247071145,
+    "abaqus_density_placeholder_kg_per_m3": 1e-09,
+    "newmark_beta": 0.25,
+    "newmark_gamma": 0.5
+  },
+  "files": {
+    "input_deck": "example6_model.inp",
+    "uel": "boucwen_uel.for",
+    "normalized_ground_motion": "normalized_ground_motion.txt"
+  },
+  "sections": {
+    "column_rect_width_m": 0.028867513459481287,
+    "column_rect_height_m": 0.6928203230275509,
+    "beam_rect_width_m": 0.024999999999999994,
+    "beam_rect_height_m": 0.6000000000000001,
+    "section_note": "Rectangular B23 sections are back-calculated to match the specified A and out-of-plane I."
+  },
+  "damping": {
+    "rayleigh_alpha_mass": 0.1864969750851659,
+    "rayleigh_beta_stiffness": 0.0070671988247071145,
+    "dashpot_coefficient_per_mass_node_Ns_per_m": 15541.414590430491,
+    "uel_uses_betaK_initial_stiffness_velocity_term": true
+  },
+  "time_integration_note": "Abaqus uses automatic time incrementation with maximum increment equal to the ground-motion sampling interval 0.01 s; smaller internal cutbacks are allowed only for nonlinear convergence.",
+  "mass_model_note": "Abaqus/Standard requires a nonzero active material density in a general dynamic step. A tiny numerical placeholder density is therefore assigned to B23 frame elements; the benchmark inertia remains the prescribed horizontal anisotropic floor MASS elements.",
+  "abaqus_boucwen_implementation": {
+    "direct_boucwen_state_evolution": true,
+    "substituted_bilinear_model": false,
+    "implementation": "Abaqus/Standard UEL in boucwen_uel.for"
+  }
+}

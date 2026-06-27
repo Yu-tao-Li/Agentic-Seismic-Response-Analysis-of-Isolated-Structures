@@ -1,0 +1,73 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.35
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+:: initializing oneAPI environment...
+   Initializing Visual Studio command-line environment...
+   Visual Studio version 17.14.35 environment configured.
+   "<visual_studio_buildtools>\"
+   Visual Studio command-line environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  ipp -- latest
+:  ippcp -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  ocloc -- latest
+:  pti -- latest
+:  tbb -- latest
+:  umf -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+ABAQUS_JOB_WITH_ENV 
+Analysis initiated from SIMULIA established products
+Abaqus JOB example6_boucwen
+Abaqus 2025
+cmd.exe : Abaqus License Manager checked out the following licenses:
+At line:4 char:5
++ '@; & cmd.exe /v:on /c $cmd 2>&1 | Tee-Object -FilePath abaqus_job_wi ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Abaqus License ...owing licenses::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Compiling Abaqus/Standard User Subroutines
+6/25/2026 2:27:08 AM
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.13.1 Build 20240703
+_000000
+Copyright (C) 1985-2024 Intel Corporation.  All rights reserved.
+
+ifort: remark #10448: Intel(R) Fortran Compiler Classic (ifort) is now deprecated and will be discontinued late 2024. I
+ntel recommends that customers transition now to using the LLVM-based Intel(R) Fortran Compiler (ifx) for continued Win
+dows* and Linux* support, new language support, new language features, and optimizations. Use '/Qdiag-disable:10448' to
+ disable this message.
+End Compiling Abaqus/Standard User Subroutines
+Begin Linking Abaqus/Standard User Subroutines
+  Creating library standardU.lib and object standardU.exp
+libirc.lib(fast_mem_ops.c.obj) : warning LNK4210: .CRT section present; possible unhandled static initializer or terminator
+End Linking Abaqus/Standard User Subroutines
+6/25/2026 2:27:09 AM
+Begin Analysis Input File Processor
+6/25/2026 2:27:09 AM
+Run pre.exe
+6/25/2026 2:27:18 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/25/2026 2:27:18 AM
+Run standard.exe
+6/25/2026 2:27:41 AM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+6/25/2026 2:27:43 AM
+Run SMASimUtility.exe
+6/25/2026 2:27:43 AM
+End SIM Wrap-up
+Abaqus JOB example6_boucwen COMPLETED

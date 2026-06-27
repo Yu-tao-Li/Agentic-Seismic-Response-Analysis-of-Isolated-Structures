@@ -1,0 +1,12 @@
+Three-story shear building modal analysis - ABAQUS
+Units: kg, N, m, s
+Story mass: 1000 kg
+Story stiffness: 500000 N/m
+
+Model: MASS elements at floor nodes and SPRING2 elements in global U1.
+
+Mode results:
+Mode, circular_frequency_rad_per_s, period_s, normalized_floor_1, normalized_floor_2, normalized_floor_3
+1, 9.95130888951103, 0.631392852632908, 0.44504185334557, 0.801937722822819, 1
+2, 27.8835197562016, 0.225336878633557, -1, -0.44504185334557, 0.801937722822819
+3, 40.2928107378812, 0.155938123752495, 0.801937722822819, -1, 0.44504185334557

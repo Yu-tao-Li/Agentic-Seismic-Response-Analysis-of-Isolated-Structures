@@ -1,0 +1,53 @@
+{
+  "software": "ABAQUS",
+  "status": "PARTIAL",
+  "abaqus_version": "Abaqus 2025",
+  "uel_compilation": {
+    "status": "VERIFIED",
+    "fortran_compiler": "Intel Fortran Classic 2021.13.1 (ifort)",
+    "compiler_path": "<intel_oneapi>\\compiler\\2024.2\\bin\\ifort.exe",
+    "linker": "MSVC 14.44.35207 (link.exe)",
+    "linker_path": "<visual_studio_buildtools>\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe",
+    "compilation_result": "SUCCESS",
+    "linking_result": "SUCCESS"
+  },
+  "input_processor": {
+    "status": "PASS",
+    "model_type": "2D_B21_frame_with_BoucWen_UEL_isolators"
+  },
+  "dynamic_analysis": {
+    "status": "PARTIAL",
+    "max_increments_completed": 100,
+    "max_simulation_time_s": 0.0192,
+    "total_simulation_time_s": 19.0,
+    "completion_pct": 0.1,
+    "error": "TOO MANY INCREMENTS NEEDED TO COMPLETE THE STEP",
+    "time_step_stabilized_s": 0.0001341,
+    "iterations_per_increment": "8-9",
+    "estimated_increments_needed": 146000,
+    "root_cause": "Slow Newton convergence (8-9 iterations/step) with persistent small time step. Likely caused by stiffness disparity between stiff B21 frame rotational DOFs and soft isolation horizontal DOFs, combined with unconditionally-stable implicit dynamics requiring positive-definite effective mass matrix.",
+    "warnings": [
+      "SINGULAR MASS TREATMENT TYPE IS ERROR (informational)",
+      "FORCE EQUILIBRIUM ACCEPTED USING THE ALTERNATE TOLERANCE (6 warnings)",
+      "THE ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS"
+    ]
+  },
+  "uel_implementation": {
+    "element_type": "U1",
+    "nodes_per_element": 2,
+    "dofs_per_node": 2,
+    "properties": ["k0=2e6 N/m", "kv=1e10 N/m", "alpha=0.05", "n=2.0", "beta=20000", "gamma=20000", "Ao=1.0"],
+    "state_variables": ["z (Bouc-Wen state)", "u_prev (previous displacement)", "F_h (horizontal force)", "F_v (vertical force)"],
+    "integration": "Backward-Euler with Newton sub-iteration (max 30 iterations, tol 1e-14)",
+    "tangent_stiffness": "Consistent tangent derived from converged Bouc-Wen state",
+    "force_convention": "F_h = alpha*k0*u + (1-alpha)*k0*z",
+    "stiffness_convention": "k_tan = alpha*k0 + (1-alpha)*k0 * dz/du"
+  },
+  "model_files": [
+    "frame_bw_dynamic.inp",
+    "bw_isolator.f",
+    "accel_amp.inp"
+  ],
+  "run_command": "abaqus job=frame_bw_dynamic user=bw_isolator.f interactive ask_delete=OFF",
+  "environment_setup": "vcvars64.bat (MSVC 2022 BuildTools) + Intel oneAPI compiler 2024.2/bin in PATH + Intel oneAPI compiler 2024.2/lib in LIB"
+}

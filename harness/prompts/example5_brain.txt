@@ -1,0 +1,71 @@
+Background:
+Nonlinear seismic response analysis of isolated structures requires consistent modeling of superstructure yielding, isolation-layer hysteresis, and state-variable updates. In this harness, correctness must be supported by cross-software verification.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for MATLAB, Python + OpenSeesPy, and ABAQUS, then compare the three results.
+
+Aims:
+Establish a four-story seismically isolated structure and calculate the top-story displacement and acceleration responses. Layer 1 is the isolation layer with bilinear kinematic hardening, and stories 2 to 4 are superstructure stories with ideal elastic-plastic restoring forces. Rayleigh damping is considered with damping ratio 0.05. The ground motion is read from `Northridge_01_NO_968.txt`, which contains one column of acceleration data. The time interval is 0.01 s. Normalize the peak ground acceleration to 0.40 g.
+
+Use the following fixed model parameters in all software implementations. Do not invent or infer alternative engineering constants.
+
+- Masses:
+  - Isolation layer mass: m1 = 250 t = 2.50e5 kg.
+  - Story masses: m2 = 270 t = 2.70e5 kg, m3 = 270 t = 2.70e5 kg, m4 = 180 t = 1.80e5 kg.
+- Story stiffness:
+  - k1 = 50e6 N/m for the isolation layer.
+  - k2 = 245e6 N/m.
+  - k3 = 195e6 N/m.
+  - k4 = 98e6 N/m.
+- Yield capacities:
+  - fy1 = 500e3 N for the isolation layer.
+  - fy2 = 1225e3 N.
+  - fy3 = 975e3 N.
+  - fy4 = 490e3 N.
+- Post-yield stiffness ratios:
+  - b1 = 0.05 for the bilinear kinematic-hardening isolation layer.
+  - b2 = b3 = b4 = 0.0 for the ideal elastic-plastic superstructure stories.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same physical model, units, input normalization, and output definitions in all software implementations.
+
+1. MATLAB
+   - Implement nonlinear MDOF time-history analysis.
+   - Use Newmark-beta integration with an appropriate nonlinear iteration/update scheme.
+   - Track superstructure yielding, isolation-layer kinematic hardening, restoring forces, and convergence status.
+
+2. Python + OpenSeesPy
+   - Build an equivalent nonlinear isolated shear-building model.
+   - Use material and element definitions that reproduce the ideal elastic-plastic superstructure and bilinear kinematic-hardening isolation layer.
+   - Apply the same normalized ground motion.
+
+3. ABAQUS
+   - Build an equivalent nonlinear model suitable for independent verification.
+   - Post-process top-story displacement, top-story acceleration, isolation displacement, base shear, and hysteresis quantities.
+
+Harness verification requirements:
+For each software, write machine-readable response output containing:
+- time vector
+- top-story displacement
+- top-story acceleration
+- isolation-layer displacement
+- base shear or isolation restoring force
+- isolation hysteresis data
+- yielding indicators where available
+- convergence or failed-step count
+
+Preserve the manuscript output names where applicable:
+- `topStoDisIso2.txt`
+- `topStoAccIso2.txt`
+
+Then create `cross_validation_report.json` comparing MATLAB, OpenSeesPy, and ABAQUS by input consistency, peak response error, curve error, isolation displacement, base shear, hysteresis loop area, yielding sequence, and convergence behavior.
+
+The agent may propose task-specific consistency thresholds for nonlinear and hysteretic response quantities. Record the thresholds and reasoning before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Software-specific response outputs and logs.
+- `cross_validation_report.json`.
+- `report.md` describing modeling assumptions, nonlinear update rules, missing-input checks, encountered issues, corrections, adopted consistency criteria, and final agreement.

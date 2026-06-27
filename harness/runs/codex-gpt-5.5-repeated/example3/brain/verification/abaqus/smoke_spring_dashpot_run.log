@@ -1,0 +1,28 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB smoke_spring_dashpot
+Abaqus 2025
+abaqus : Abaqus License Manager checked out the following licenses:
+At line:2 char:108
++ ... lyContinue; abaqus job=smoke_spring_dashpot input=smoke_spring_dashpo ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Abaqus License ...owing licenses::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Analysis Input File Processor
+6/25/2026 12:00:33 AM
+Run pre.exe
+6/25/2026 12:00:42 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/25/2026 12:00:42 AM
+Run standard.exe
+6/25/2026 12:00:51 AM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+6/25/2026 12:00:53 AM
+Run SMASimUtility.exe
+6/25/2026 12:00:53 AM
+End SIM Wrap-up
+Abaqus JOB smoke_spring_dashpot COMPLETED

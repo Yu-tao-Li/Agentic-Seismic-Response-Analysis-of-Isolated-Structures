@@ -1,0 +1,15 @@
+{
+  "software": "OpenSeesPy",
+  "time_step": 0.02,
+  "n_samples": 2685,
+  "input_pga_normalized_m_s2": 3.9240000000000004,
+  "raw_pga_m_s2": 0.35692433,
+  "scale_factor": 10.99392692002812,
+  "top_displacement_peak_m": 0.1090218086606272,
+  "top_acceleration_peak_m_s2": 13.728940115935089,
+  "omega1_rad_s": 9.951438694861205,
+  "omega2_rad_s": 27.883311604680056,
+  "omega3_rad_s": 40.292552684816755,
+  "rayleigh_alpha": 0.7333973763454439,
+  "rayleigh_beta": 0.0026430728155542363
+}

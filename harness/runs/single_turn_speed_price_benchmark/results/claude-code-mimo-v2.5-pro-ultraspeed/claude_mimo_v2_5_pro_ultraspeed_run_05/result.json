@@ -1,0 +1,20 @@
+﻿{
+    "run_id":  "claude_mimo_v2_5_pro_ultraspeed_run_05",
+    "model":  "mimo-v2.5-pro-ultraspeed",
+    "api_time_s":  8.386006999993697,
+    "input_tokens":  1184,
+    "output_tokens":  2905,
+    "output_tokens_per_s":  346.41039531712573,
+    "input_cost":  0.0015451199999999999,
+    "output_cost":  0.00758205,
+    "total_cost":  0.00912717,
+    "cost_per_1k_output_tokens":  0.003141882960413081,
+    "completed":  true,
+    "notes":  "Request and model response successful; output violation: Markdown fences and explanatory text; inner code passes syntax and required-function checks.",
+    "started_at":  "2026-06-27T20:45:58.308248+08:00",
+    "ended_at":  "2026-06-27T20:46:06.694321+08:00",
+    "claude_code_version":  "2.1.112",
+    "method":  "claude --print --output-format json --tools empty",
+    "model_verified_from_response":  true
+}
+

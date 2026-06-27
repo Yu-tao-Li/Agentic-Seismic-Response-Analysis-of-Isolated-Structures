@@ -1,0 +1,322 @@
+{
+  "generated_in_this_run": true,
+  "source_outputs_used": {
+    "matlab": "verification\\matlab\\matlab_results.json",
+    "openseespy": "verification\\openseespy\\opensees_results.json",
+    "abaqus": "verification\\abaqus\\abaqus_results.json"
+  },
+  "input_consistency": {
+    "consistent": true,
+    "values": {
+      "matlab": {
+        "status": "OK",
+        "input_file": "input_data\\Northridge_01_NO_968.txt",
+        "time_step": 0.01,
+        "num_input_samples": 1900,
+        "raw_pga": 158.281,
+        "normalization_scale": 0.024791352089006263,
+        "normalized_pga": 3.9240000000000004
+      },
+      "openseespy": {
+        "status": "OK",
+        "input_file": "input_data\\Northridge_01_NO_968.txt",
+        "time_step": 0.01,
+        "num_input_samples": 1900,
+        "raw_pga": 158.281,
+        "normalization_scale": 0.024791352089006263,
+        "normalized_pga": 3.9240000000000004
+      },
+      "abaqus": {
+        "status": "OK",
+        "input_file": "input_data\\Northridge_01_NO_968.txt",
+        "time_step": 0.01,
+        "num_input_samples": 1900,
+        "raw_pga": 158.281,
+        "normalization_scale": 0.024791352089006263,
+        "normalized_pga": 3.9240000000000004
+      }
+    }
+  },
+  "thresholds": {
+    "fundamental_period_relative": 1e-06,
+    "peak_response_relative": 0.005,
+    "base_shear_peak_relative": 0.005,
+    "curve_nrmse": 0.005,
+    "base_shear_curve_nrmse": 0.01,
+    "hysteresis_area_relative": 0.01,
+    "reasoning": "MATLAB and OpenSeesPy use the same physical model but independent assemblers/solvers and different Bouc-Wen implementations. A 0.5% tolerance is used for nonlinear peak responses, 1% for base-shear curve and hysteresis area because resisting-force records are sensitive to element-level output timing, and a tight 1e-6 period tolerance is used for the initial elastic eigenproblem."
+  },
+  "pairs": {
+    "matlab_vs_openseespy": {
+      "software_a": "matlab",
+      "software_b": "openseespy",
+      "physically_comparable": true,
+      "status_a": "OK",
+      "status_b": "OK",
+      "scalar_metrics": {
+        "fundamental_period": {
+          "a": 2.842810601922031,
+          "b": 2.842810601921918,
+          "relative_difference": 3.967856994259571e-14
+        },
+        "peak_roof_displacement": {
+          "a": 0.018101163126630196,
+          "b": 0.018101162931594292,
+          "relative_difference": 1.077477191544167e-08
+        },
+        "maximum_interstory_drift_ratio": {
+          "a": 0.000861114248055281,
+          "b": 0.0008611142368534213,
+          "relative_difference": 1.3008563936299515e-08
+        },
+        "peak_isolation_displacement": {
+          "a": 0.01386227411207498,
+          "b": 0.013862273913930162,
+          "relative_difference": 1.4293817641999786e-08
+        },
+        "peak_total_base_shear": {
+          "a": 31613.522594868366,
+          "b": 31613.522588263786,
+          "relative_difference": 2.0891628003337892e-10
+        },
+        "total_isolator_hysteresis_loop_area": {
+          "a": 1826.768431061133,
+          "b": 1826.7672803268078,
+          "relative_difference": 6.299289530072869e-07
+        }
+      },
+      "curve_metrics": {
+        "roof_displacement_nrmse": 7.255510740701096e-08,
+        "isolation_displacement_nrmse": 8.504132508855697e-08,
+        "base_shear_nrmse": 1.648340098660138e-07
+      },
+      "convergence": {
+        "a": {
+          "relative_residual_tolerance": 1e-08,
+          "max_iterations_per_step": 35,
+          "failed_step_count": 0,
+          "max_relative_residual": 9.987038147036856e-09,
+          "max_iterations_observed": 4,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 2.0,
+            "max": 4.0,
+            "mean": 3.256977356503423
+          },
+          "relative_residual_history_summary": {
+            "count": 1899,
+            "max": 9.987038147036856e-09,
+            "mean": 5.440215190129565e-10
+          }
+        },
+        "b": {
+          "test_type": "NormUnbalance",
+          "tolerance": 1e-08,
+          "max_iterations_per_step": 35,
+          "failed_step_count": 0,
+          "fallback_step_count": 0,
+          "max_iterations_observed": 4,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 1.0,
+            "max": 4.0,
+            "mean": 2.1600842548709847
+          }
+        }
+      },
+      "checks": {
+        "fundamental_period": true,
+        "peak_roof_displacement": true,
+        "maximum_interstory_drift_ratio": true,
+        "peak_isolation_displacement": true,
+        "peak_total_base_shear": true,
+        "total_isolator_hysteresis_loop_area": true,
+        "roof_displacement_nrmse": true,
+        "isolation_displacement_nrmse": true,
+        "base_shear_nrmse": true,
+        "convergence": true
+      },
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "software_a": "matlab",
+      "software_b": "abaqus",
+      "physically_comparable": true,
+      "status_a": "OK",
+      "status_b": "OK",
+      "scalar_metrics": {
+        "fundamental_period": {
+          "a": 2.842810601922031,
+          "b": 2.842810601922031,
+          "relative_difference": 0.0
+        },
+        "peak_roof_displacement": {
+          "a": 0.018101163126630196,
+          "b": 0.018101494759321213,
+          "relative_difference": 1.8320735134103193e-05
+        },
+        "maximum_interstory_drift_ratio": {
+          "a": 0.000861114248055281,
+          "b": 0.0008611319828088638,
+          "relative_difference": 2.059469853266933e-05
+        },
+        "peak_isolation_displacement": {
+          "a": 0.01386227411207498,
+          "b": 0.013862383551895618,
+          "relative_difference": 7.894733270682764e-06
+        },
+        "peak_total_base_shear": {
+          "a": 31613.522594868366,
+          "b": 31613.45911893851,
+          "relative_difference": 2.0078727280391436e-06
+        },
+        "total_isolator_hysteresis_loop_area": {
+          "a": 1826.768431061133,
+          "b": 1826.7566762821016,
+          "relative_difference": 6.434739527771795e-06
+        }
+      },
+      "curve_metrics": {
+        "roof_displacement_nrmse": 2.5677850048343697e-05,
+        "isolation_displacement_nrmse": 2.3947855829177854e-05,
+        "base_shear_nrmse": 3.880533629355637e-05
+      },
+      "convergence": {
+        "a": {
+          "relative_residual_tolerance": 1e-08,
+          "max_iterations_per_step": 35,
+          "failed_step_count": 0,
+          "max_relative_residual": 9.987038147036856e-09,
+          "max_iterations_observed": 4,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 2.0,
+            "max": 4.0,
+            "mean": 3.256977356503423
+          },
+          "relative_residual_history_summary": {
+            "count": 1899,
+            "max": 9.987038147036856e-09,
+            "mean": 5.440215190129565e-10
+          }
+        },
+        "b": {
+          "test_type": "Abaqus/Standard equilibrium checks",
+          "failed_step_count": 0,
+          "max_iterations_observed": 1,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 1.0,
+            "max": 1.0,
+            "mean": 1.0
+          }
+        }
+      },
+      "checks": {
+        "fundamental_period": true,
+        "peak_roof_displacement": true,
+        "maximum_interstory_drift_ratio": true,
+        "peak_isolation_displacement": true,
+        "peak_total_base_shear": true,
+        "total_isolator_hysteresis_loop_area": true,
+        "roof_displacement_nrmse": true,
+        "isolation_displacement_nrmse": true,
+        "base_shear_nrmse": true,
+        "convergence": true
+      },
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "software_a": "openseespy",
+      "software_b": "abaqus",
+      "physically_comparable": true,
+      "status_a": "OK",
+      "status_b": "OK",
+      "scalar_metrics": {
+        "fundamental_period": {
+          "a": 2.842810601921918,
+          "b": 2.842810601922031,
+          "relative_difference": 3.967856994259571e-14
+        },
+        "peak_roof_displacement": {
+          "a": 0.018101162931594292,
+          "b": 0.018101494759321213,
+          "relative_difference": 1.833150970861689e-05
+        },
+        "maximum_interstory_drift_ratio": {
+          "a": 0.0008611142368534213,
+          "b": 0.0008611319828088638,
+          "relative_difference": 2.0607706828698176e-05
+        },
+        "peak_isolation_displacement": {
+          "a": 0.013862273913930162,
+          "b": 0.013862383551895618,
+          "relative_difference": 7.909026975478886e-06
+        },
+        "peak_total_base_shear": {
+          "a": 31613.522588263786,
+          "b": 31613.45911893851,
+          "relative_difference": 2.007663812178544e-06
+        },
+        "total_isolator_hysteresis_loop_area": {
+          "a": 1826.7672803268078,
+          "b": 1826.7566762821016,
+          "relative_difference": 5.804814231385059e-06
+        }
+      },
+      "curve_metrics": {
+        "roof_displacement_nrmse": 2.567751635223817e-05,
+        "isolation_displacement_nrmse": 2.394700314463006e-05,
+        "base_shear_nrmse": 3.880577090837919e-05
+      },
+      "convergence": {
+        "a": {
+          "test_type": "NormUnbalance",
+          "tolerance": 1e-08,
+          "max_iterations_per_step": 35,
+          "failed_step_count": 0,
+          "fallback_step_count": 0,
+          "max_iterations_observed": 4,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 1.0,
+            "max": 4.0,
+            "mean": 2.1600842548709847
+          }
+        },
+        "b": {
+          "test_type": "Abaqus/Standard equilibrium checks",
+          "failed_step_count": 0,
+          "max_iterations_observed": 1,
+          "iteration_history_summary": {
+            "count": 1899,
+            "min": 1.0,
+            "max": 1.0,
+            "mean": 1.0
+          }
+        }
+      },
+      "checks": {
+        "fundamental_period": true,
+        "peak_roof_displacement": true,
+        "maximum_interstory_drift_ratio": true,
+        "peak_isolation_displacement": true,
+        "peak_total_base_shear": true,
+        "total_isolator_hysteresis_loop_area": true,
+        "roof_displacement_nrmse": true,
+        "isolation_displacement_nrmse": true,
+        "base_shear_nrmse": true,
+        "convergence": true
+      },
+      "pass": true
+    }
+  },
+  "software_status": {
+    "matlab": "OK",
+    "openseespy": "OK",
+    "abaqus": "OK"
+  },
+  "strict_three_software_pass": true,
+  "final_result": "PASS",
+  "failure_reason": null
+}

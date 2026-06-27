@@ -1,0 +1,16 @@
+{
+  "model": "deepseek-v4-pro[1m]",
+  "runs": 5,
+  "mean_api_time_s": 31.279643159988336,
+  "mean_input_tokens": 6317,
+  "mean_output_tokens": 3189,
+  "mean_output_tokens_per_s": 101.69969072419674,
+  "std_output_tokens_per_s": 3.1781063292880716,
+  "mean_cost": 0.005522325,
+  "mean_cost_per_1k_output_tokens": 0.0018308375000925482,
+  "completion_rate": 1.0,
+  "total_cost": 0.027611625,
+  "input_price_per_million": 0.435,
+  "output_price_per_million": 0.87,
+  "pricing_policy": "Reference cost uses Xiaomi's published pay-as-you-go USD rates. Cached-input details are not recorded in formal results. The active endpoint is DeepSeek's official Anthropic-compatible API. Reference cost uses the current published USD rates."
+}

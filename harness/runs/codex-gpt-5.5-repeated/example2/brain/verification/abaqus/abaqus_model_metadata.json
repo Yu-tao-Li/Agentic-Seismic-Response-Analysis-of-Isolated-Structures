@@ -1,0 +1,18 @@
+{
+  "dt": 0.02,
+  "num_samples": 2686,
+  "input_pga_after_normalization": 3.9240000000000004,
+  "mass_per_story_kg": 1000.0,
+  "story_stiffness_N_per_m": 500000.0,
+  "damping_ratio": 0.05,
+  "rayleigh_alpha_m": 0.7333973763454437,
+  "rayleigh_beta_k": 0.0026430728155542376,
+  "dashpot_story_coeff_N_s_per_m": 1321.5364077771187,
+  "dashpot_mass_coeff_N_s_per_m": 733.3973763454437,
+  "circular_frequencies_rad_s": [
+    9.951438694861201,
+    27.883311604680046,
+    40.292552684816734
+  ],
+  "forcing": "CLOAD amplitude contains -mass_per_story * normalized_ground_acceleration for each floor node"
+}

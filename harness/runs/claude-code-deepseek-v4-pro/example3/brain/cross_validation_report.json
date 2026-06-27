@@ -1,0 +1,179 @@
+{
+  "example": "example3",
+  "agent": "claude-code-deepseek-v4-pro",
+  "prompt_type": "brain",
+  "input": {
+    "ground_motion_file": "input_data/GM1.txt",
+    "ground_motion_rows": 2686,
+    "time_step_s": 0.02,
+    "target_pga_m_s2": 3.924,
+    "source_note": "Full GM1.txt copied from Supplementary files."
+  },
+  "model": {
+    "dof": 4,
+    "isolation_layer": {
+      "mass_kg": 500,
+      "stiffness_N_per_m": 200000,
+      "added_damping_N_s_per_m": 2000
+    },
+    "upper_stories": {
+      "mass_kg_each": 1000,
+      "stiffness_N_per_m_each": 500000
+    },
+    "rayleigh_damping": {
+      "damping_ratio": 0.05,
+      "modes_used": [
+        1,
+        2
+      ],
+      "alpha": 0.48198710795011523,
+      "beta": 0.0035628079927067817
+    }
+  },
+  "software_status": {
+    "matlab": {
+      "status": "completed",
+      "script": "verification/matlab/isolated_building.m",
+      "response_output": "verification/matlab/response.json"
+    },
+    "openseespy": {
+      "status": "completed",
+      "script": "verification/openseespy/isolated_building.py",
+      "execution_environment": "conda run -n ops312 python",
+      "response_output": "verification/openseespy/response.json"
+    },
+    "abaqus": {
+      "status": "completed",
+      "input_file": "verification/abaqus/isolated_building.inp",
+      "execution_environment": "Abaqus 2025 (Standard license), command: abaqus job=isolated_building input=isolated_building.inp interactive",
+      "response_output": "verification/abaqus/response.json",
+      "approach": "Direct implicit dynamics (*DYNAMIC, ALPHA=0 = Newmark average acceleration). Rayleigh damping implemented via explicit DASHPOT2 elements (mass-proportional dampers to ground, stiffness-proportional dampers parallel to springs). Additional isolation damper (c=2000 N*s/m) combined into node pair 1-2 dashpot. Equivalent forces F_i = -m_i * a_g applied as *CLOAD with ground motion amplitude.",
+      "key_fix": "SPRING2/DASHPOT2 data format requires DOF1,DOF2 on first line and stiffness/coefficient on second line. Step increment limit increased to 3000 via INC parameter.",
+      "verification": "2686 history output points extracted via abaqus python ODB API from history regions."
+    }
+  },
+  "thresholds": {
+    "displacement_peak_relative_error": 2.0,
+    "acceleration_peak_relative_error": 2.0,
+    "isolation_displacement_peak_relative_error": 2.0,
+    "displacement_nrmse": 0.02,
+    "acceleration_nrmse": 0.03,
+    "rationale": "Peak error below 2% and curve NRMSE below 2-3% are conservative engineering thresholds for checking equivalent modeling and output conventions across three independent structural analysis packages with different numerical implementations."
+  },
+  "comparisons": {
+    "matlab_vs_openseespy": {
+      "top_displacement": {
+        "matlab_peak_m": 0.14206176313,
+        "openseespy_peak_m": 0.14207568466,
+        "peak_error_percent": 0.00979963,
+        "nrmse": 7.65286e-05,
+        "pass": true,
+        "matlab_peak_peak_m": 0.14206176313,
+        "openseespy_peak_peak_m": 0.14207568466,
+        "correlation": 0.9999999055
+      },
+      "top_relative_acceleration": {
+        "matlab_peak_m_s2": 7.9165176265,
+        "openseespy_peak_m_s2": 7.9168391527,
+        "peak_error_percent": 0.00406146,
+        "nrmse": 0.0001044498,
+        "pass": true,
+        "matlab_peak_peak_m_s2": 7.9165176265,
+        "openseespy_peak_peak_m_s2": 7.9168391527,
+        "correlation": 0.9999997492
+      },
+      "isolation_displacement": {
+        "matlab_peak_m": 0.079860073772,
+        "openseespy_peak_m": 0.079868619027,
+        "peak_error_percent": 0.01070028,
+        "nrmse": 7.76263e-05,
+        "pass": true,
+        "matlab_peak_peak_m": 0.079860073772,
+        "openseespy_peak_peak_m": 0.079868619027,
+        "correlation": 0.9999999048
+      },
+      "overall": "PASS"
+    },
+    "matlab_vs_abaqus": {
+      "top_displacement": {
+        "matlab_peak_m": 0.14206176313,
+        "abaqus_peak_m": 0.14206176996,
+        "peak_error_percent": 3.33e-06,
+        "nrmse": 3.05e-07,
+        "pass": true,
+        "matlab_peak_peak_m": 0.14206176313,
+        "abaqus_peak_peak_m": 0.14206176786532235,
+        "correlation": 1.0
+      },
+      "top_relative_acceleration": {
+        "matlab_peak_m_s2": 7.9165176265,
+        "abaqus_peak_m_s2": 7.9165177345,
+        "peak_error_percent": 5.31e-06,
+        "nrmse": 5.501e-07,
+        "pass": true,
+        "matlab_peak_peak_m_s2": 7.9165176265,
+        "abaqus_peak_peak_m_s2": 7.916517205818492,
+        "correlation": 1.0
+      },
+      "isolation_displacement": {
+        "matlab_peak_m": 0.079860073772,
+        "abaqus_peak_m": 0.079860076308,
+        "peak_error_percent": 1.64e-06,
+        "nrmse": 3.077e-07,
+        "pass": true,
+        "matlab_peak_peak_m": 0.079860073772,
+        "abaqus_peak_peak_m": 0.07986007245856037,
+        "correlation": 1.0
+      },
+      "overall": "PASS",
+      "note": "MATLAB and ABAQUS use mathematically identical formulations (same Newmark average acceleration, same equivalent force approach, same Rayleigh coefficients via explicit dampers). Agreement is nearly exact (machine precision level)."
+    },
+    "openseespy_vs_abaqus": {
+      "top_displacement": {
+        "openseespy_peak_m": 0.14207568466,
+        "abaqus_peak_m": 0.14206176996,
+        "peak_error_percent": 0.00979534,
+        "nrmse": 7.65234e-05,
+        "pass": true,
+        "openseespy_peak_peak_m": 0.14207568466,
+        "abaqus_peak_peak_m": 0.14206176786532235,
+        "correlation": 0.9999999055
+      },
+      "top_relative_acceleration": {
+        "openseespy_peak_m_s2": 7.9168391527,
+        "abaqus_peak_m_s2": 7.9165177345,
+        "peak_error_percent": 0.00406661,
+        "nrmse": 0.0001044502,
+        "pass": true,
+        "openseespy_peak_peak_m_s2": 7.9168391527,
+        "abaqus_peak_peak_m_s2": 7.916517205818492,
+        "correlation": 0.9999997492
+      },
+      "isolation_displacement": {
+        "openseespy_peak_m": 0.079868619027,
+        "abaqus_peak_m": 0.079860076308,
+        "peak_error_percent": 0.01070078,
+        "nrmse": 7.76199e-05,
+        "pass": true,
+        "openseespy_peak_peak_m": 0.079868619027,
+        "abaqus_peak_peak_m": 0.07986007245856037,
+        "correlation": 0.9999999048
+      },
+      "overall": "PASS"
+    }
+  },
+  "reference_comparison": {
+    "reference_matlab_peak_displacement_m": 0.142048930447545,
+    "run_matlab_peak_displacement_m": 0.14206176312882868,
+    "reference_matlab_peak_acceleration_m_s2": 7.91625919811523,
+    "run_matlab_peak_relative_acceleration_m_s2": 7.916517626453697,
+    "displacement_difference_percent": 0.009,
+    "acceleration_difference_percent": 0.003
+  },
+  "overall_pass": true,
+  "overall_verdict": "PASS",
+  "conclusion": "All three software packages (MATLAB, OpenSeesPy, ABAQUS) produce numerically consistent results for the Example 3 isolated four-DOF building model. After correcting the OpenSeesPy output time convention, maximum pairwise peak error is about 0.0107% and maximum pairwise curve NRMSE is about 0.01045%, with correlations essentially 1.0. This confirms that the earlier large curve error was an output time-labeling artifact, not a physical model discrepancy.",
+  "implementation_audit": {
+    "openseespy_time_axis_fix": "OpenSeesPy output originally stored post-analyze responses against the pre-step time index. The script now records the initial state at t=0 and stores each analyze(1, dt) result at the next time sample, matching MATLAB and ABAQUS. This removed an artificial one-step phase shift in curve NRMSE while leaving peak values essentially unchanged."
+  }
+}

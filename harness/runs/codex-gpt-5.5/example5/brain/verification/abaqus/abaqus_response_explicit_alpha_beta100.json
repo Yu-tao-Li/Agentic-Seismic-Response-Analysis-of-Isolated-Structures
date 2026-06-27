@@ -1,0 +1,16 @@
+{
+  "software": "ABAQUS 2025",
+  "model_type": "nonlinear_MDOF_T2D2_kinematic_plasticity_with_explicit_alpha_beta_dashpots",
+  "n_stories": 4,
+  "damping_representation": {
+    "alpha_M": "explicit nodal DASHPOT2 elements to the fixed base",
+    "beta_K0": "explicit story-to-story DASHPOT2 elements"
+  },
+  "results": {
+    "peak_top_displacement_m": 0.028150174766778946,
+    "peak_top_acceleration_ms2": 5.079135417938232,
+    "peak_isolation_displacement_m": 0.023149391636252403,
+    "peak_base_shear_N": 532873.5,
+    "peak_base_reaction_N": 648152.875
+  }
+}

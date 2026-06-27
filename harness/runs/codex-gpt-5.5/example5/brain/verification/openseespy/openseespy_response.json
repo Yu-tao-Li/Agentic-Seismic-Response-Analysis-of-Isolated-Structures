@@ -1,0 +1,59 @@
+{
+  "software": "OpenSeesPy",
+  "model_type": "nonlinear_MDOF_zeroLength_Steel01",
+  "n_stories": 4,
+  "materials": {
+    "story_1_isolation": "Steel01 (bilinear kinematic hardening b=0.05)",
+    "stories_2_3_4": "Steel01 (elastic-perfectly plastic b=1e-8)"
+  },
+  "parameters": {
+    "mass_kg": [
+      250000.0,
+      270000.0,
+      270000.0,
+      180000.0
+    ],
+    "stiffness_Nm": [
+      50000000.0,
+      245000000.0,
+      195000000.0,
+      98000000.0
+    ],
+    "yield_force_N": [
+      500000.0,
+      1225000.0,
+      975000.0,
+      490000.0
+    ],
+    "hardening_ratio": [
+      0.05,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "damping": {
+    "ratio": 0.05,
+    "alpha": 0.5059289317336606,
+    "beta": 0.003476512774073967
+  },
+  "integration": {
+    "method": "Newmark-beta",
+    "beta": 0.25,
+    "gamma": 0.5
+  },
+  "input": {
+    "file": "Northridge_01_NO_968.txt",
+    "n_rows": 1900,
+    "dt": 0.01,
+    "PGA": 3.9240000000000004
+  },
+  "results": {
+    "peak_top_displacement_m": 0.028148758863063148,
+    "peak_top_acceleration_ms2": 5.079244919154233,
+    "peak_isolation_displacement_m": 0.02314761943751003,
+    "peak_base_shear_N": 532869.048593775,
+    "convergence_failures": 0,
+    "convergence_rate_pct": 100.0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "software": "MATLAB",
+  "time_step": 0.020000,
+  "n_samples": 103,
+  "input_pga_normalized": 3.924000,
+  "raw_pga": 0.180010,
+  "scale_factor": 21.798789,
+  "top_displacement_peak": 1.352116e-01,
+  "top_acceleration_peak": 1.302367e+01,
+  "omega1_rad_s": 9.951439,
+  "omega2_rad_s": 27.883312,
+  "omega3_rad_s": 40.292553,
+  "rayleigh_alpha": 0.733397,
+  "rayleigh_beta": 0.00264307
+}

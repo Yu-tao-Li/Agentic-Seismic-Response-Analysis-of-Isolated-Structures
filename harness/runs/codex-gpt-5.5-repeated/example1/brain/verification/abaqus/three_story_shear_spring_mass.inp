@@ -1,0 +1,59 @@
+*Heading
+Three-story shear building spring-mass modal analysis in SI units
+** Rows in post-processed mode shape output are floors 1..3.
+*Preprint, echo=YES, model=YES, history=YES, contact=NO
+**
+** Nodes: node 1 is fixed base; nodes 2, 3, 4 are floors 1, 2, 3.
+*Node
+1, 0.0, 0.0, 0.0
+2, 0.0, 0.0, 0.0
+3, 0.0, 0.0, 0.0
+4, 0.0, 0.0, 0.0
+*Nset, nset=BASE
+1,
+*Nset, nset=FLOORS
+2, 3, 4
+**
+** Lumped floor masses: 1000 kg at each floor node.
+*Element, type=MASS, elset=MASS_FLOOR_1
+101, 2
+*Element, type=MASS, elset=MASS_FLOOR_2
+102, 3
+*Element, type=MASS, elset=MASS_FLOOR_3
+103, 4
+*Mass, elset=MASS_FLOOR_1
+1000.0
+*Mass, elset=MASS_FLOOR_2
+1000.0
+*Mass, elset=MASS_FLOOR_3
+1000.0
+**
+** Story springs: 500 kN/m in global U1 between adjacent story levels.
+*Element, type=SPRING2, elset=STORY_1
+1, 1, 2
+*Element, type=SPRING2, elset=STORY_2
+2, 2, 3
+*Element, type=SPRING2, elset=STORY_3
+3, 3, 4
+*Spring, elset=STORY_1
+1, 1
+500000.0
+*Spring, elset=STORY_2
+1, 1
+500000.0
+*Spring, elset=STORY_3
+1, 1
+500000.0
+**
+** Only global U1 floor translation is active for the shear-building model.
+*Boundary
+BASE, 1, 6, 0.0
+FLOORS, 2, 6, 0.0
+**
+*Step, name=FREQUENCY, perturbation
+*Frequency, eigensolver=Lanczos, normalization=displacement
+3,
+*Output, field
+*Node Output, nset=FLOORS
+U
+*End Step

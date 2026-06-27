@@ -1,0 +1,75 @@
+{
+  "software": "MATLAB",
+  "execution": {
+    "matlab_version": "25.2.0.3177638 (R2025b) Update 5",
+    "source_file": "harness\\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\matlab\\run_modal_analysis.m"
+  },
+  "model": {
+    "description": "Three-story shear building with equal lumped floor masses and equal story stiffnesses.",
+    "units": "SI: kg, N, m, s",
+    "story_mass_kg": 1000,
+    "story_stiffness_N_per_m": 500000,
+    "mass_matrix_kg": [
+      [
+        1000,
+        0,
+        0
+      ],
+      [
+        0,
+        1000,
+        0
+      ],
+      [
+        0,
+        0,
+        1000
+      ]
+    ],
+    "stiffness_matrix_N_per_m": [
+      [
+        1.0E+6,
+        -500000,
+        0
+      ],
+      [
+        -500000,
+        1.0E+6,
+        -500000
+      ],
+      [
+        0,
+        -500000,
+        500000
+      ]
+    ]
+  },
+  "mode_shape_convention": "Rows are floors 1..3; columns are modes 1..3; each mode is normalized to max(abs(component)) = 1 and signed so the roof component is positive.",
+  "circular_frequencies_rad_per_s": [
+    9.951438694861201,
+    27.883311604680056,
+    40.292552684816748
+  ],
+  "periods_s": [
+    0.63138461682170088,
+    0.22533856079437095,
+    0.15593912245592842
+  ],
+  "normalized_mode_shapes": [
+    [
+      0.4450418679126289,
+      -1,
+      0.80193773580483851
+    ],
+    [
+      0.8019377358048384,
+      -0.44504186791262873,
+      -1
+    ],
+    [
+      1,
+      0.80193773580483851,
+      0.44504186791262873
+    ]
+  ]
+}

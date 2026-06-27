@@ -1,0 +1,14 @@
+{
+  "agent": "codex-gpt-5.5",
+  "agent_kind": "Codex manual rebuild in shared workspace",
+  "prompt_type": "brain",
+  "example": "example6",
+  "run_id": "example6/brain",
+  "rebuilt_at_local": "2026-06-21T23:39:58+08:00",
+  "source_prompt": "prompts/example6_brain.txt",
+  "input_motion": "input_data/Northridge_01_NO_968.txt",
+  "formal_run_note": "Old Example 6 artifacts were backed up. The formal harness run was rebuilt from the Bouc-Wen beam-column prompt, with MATLAB, OpenSeesPy, and ABAQUS all completing and passing cross-validation.",
+  "abaqus_note": "ABAQUS uses a compiled Bouc-Wen UEL through run_abaqus.ps1, which initializes Intel oneAPI Fortran and Visual Studio Build Tools before running Abaqus 2025.",
+  "key_correction": "The ABAQUS frame uses B23 elastic beam elements to match the Euler-Bernoulli beam-column stiffness used by the MATLAB assembly and OpenSeesPy elasticBeamColumn model; the earlier B21 trial was too flexible.",
+  "overall_verdict": "PASS"
+}

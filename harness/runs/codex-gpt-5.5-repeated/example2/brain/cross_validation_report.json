@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "thresholds": {
+    "max_time_vector_difference_s": 1e-09,
+    "displacement_peak_relative_error": 0.02,
+    "acceleration_peak_relative_error": 0.05,
+    "displacement_normalized_l2_error": 0.03,
+    "acceleration_normalized_l2_error": 0.05,
+    "minimum_trend_correlation": 0.995
+  },
+  "threshold_reasoning": "All models are linear and use the same mass, stiffness, Rayleigh damping, time step, normalized record, and relative-coordinate inertial forcing. MATLAB and OpenSeesPy use average-acceleration Newmark integration directly, while ABAQUS/Standard direct dynamics may differ slightly in load interpolation and history output. The adopted limits therefore require essentially identical time vectors, <=2% peak displacement error, <=5% peak absolute-acceleration error, small normalized L2 curve errors, and >=0.995 correlation.",
+  "response_files": {
+    "MATLAB": "verification\\matlab\\response.json",
+    "OpenSeesPy": "verification\\openseespy\\response.json",
+    "ABAQUS": "verification\\abaqus\\response.json"
+  },
+  "software": {
+    "MATLAB": {
+      "num_samples": 2686,
+      "dt": 0.02,
+      "input_pga_after_normalization": 3.9240000000000004,
+      "time_start": 0.0,
+      "time_end": 53.7,
+      "peak_abs_top_displacement_m": 0.10902389163889185,
+      "peak_abs_top_acceleration_m_per_s2": 11.684750127951599,
+      "json_path": "verification\\matlab\\response.json"
+    },
+    "OpenSeesPy": {
+      "num_samples": 2686,
+      "dt": 0.02,
+      "input_pga_after_normalization": 3.9240000000000004,
+      "time_start": 0.0,
+      "time_end": 53.7,
+      "peak_abs_top_displacement_m": 0.10902180866062554,
+      "peak_abs_top_acceleration_m_per_s2": 11.684487266814688,
+      "json_path": "verification\\openseespy\\response.json"
+    },
+    "ABAQUS": {
+      "num_samples": 2686,
+      "dt": 0.02,
+      "input_pga_after_normalization": 3.9240000000000004,
+      "time_start": 0.0,
+      "time_end": 53.7,
+      "peak_abs_top_displacement_m": 0.10902389038914513,
+      "peak_abs_top_acceleration_m_per_s2": 11.684750641693519,
+      "json_path": "verification\\abaqus\\response.json"
+    }
+  },
+  "pairwise": {
+    "MATLAB_vs_OpenSeesPy": {
+      "status": "PASS",
+      "checks": {
+        "same_length": true,
+        "time_vector": true,
+        "displacement_peak": true,
+        "acceleration_peak": true,
+        "displacement_curve": true,
+        "acceleration_curve": true,
+        "displacement_trend": true,
+        "acceleration_trend": true
+      },
+      "max_time_vector_difference_s": 0.0,
+      "displacement_peak_relative_error": 1.9105704584595777e-05,
+      "acceleration_peak_relative_error": 2.2496085413211276e-05,
+      "displacement_normalized_l2_error": 0.0003856560270239776,
+      "acceleration_normalized_l2_error": 0.0005655145602650191,
+      "displacement_correlation": 0.9999999261224296,
+      "acceleration_correlation": 0.9999998406277186
+    },
+    "MATLAB_vs_ABAQUS": {
+      "status": "PASS",
+      "checks": {
+        "same_length": true,
+        "time_vector": true,
+        "displacement_peak": true,
+        "acceleration_peak": true,
+        "displacement_curve": true,
+        "acceleration_curve": true,
+        "displacement_trend": true,
+        "acceleration_trend": true
+      },
+      "max_time_vector_difference_s": 7.105427357601002e-15,
+      "displacement_peak_relative_error": 1.1463053684737936e-08,
+      "acceleration_peak_relative_error": 4.396687065645063e-08,
+      "displacement_normalized_l2_error": 2.731783116965995e-06,
+      "acceleration_normalized_l2_error": 4.088533059818343e-06,
+      "displacement_correlation": 0.9999999999962956,
+      "acceleration_correlation": 0.9999999999917077
+    },
+    "OpenSeesPy_vs_ABAQUS": {
+      "status": "PASS",
+      "checks": {
+        "same_length": true,
+        "time_vector": true,
+        "displacement_peak": true,
+        "acceleration_peak": true,
+        "displacement_curve": true,
+        "acceleration_curve": true,
+        "displacement_trend": true,
+        "acceleration_trend": true
+      },
+      "max_time_vector_difference_s": 7.105427357601002e-15,
+      "displacement_peak_relative_error": 1.9094241749789357e-05,
+      "acceleration_peak_relative_error": 2.254005129478525e-05,
+      "displacement_normalized_l2_error": 0.00038565031834152683,
+      "acceleration_normalized_l2_error": 0.0005655073350223325,
+      "displacement_correlation": 0.9999999261178287,
+      "acceleration_correlation": 0.9999998406200911
+    }
+  },
+  "missing_or_invalid_outputs": [],
+  "strict_three_software_pass": true
+}

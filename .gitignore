@@ -1,0 +1,26 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local environments
+.venv/
+venv/
+env/
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Temporary scratch folders
+tmp/
+temp/
+scratch/
+
+# Local-only command transcripts
+*.tmp
+*.bak
+
+# Do not ignore ABAQUS solver evidence in this package.
+# The retained .odb/.msg/.prt/.dat/.com/.sta files directly support the manuscript.

@@ -1,0 +1,20 @@
+﻿{
+    "run_id":  "codex_gpt_5_5_run_04",
+    "model":  "gpt-5.5",
+    "api_time_s":  56.367772299970966,
+    "input_tokens":  10949,
+    "output_tokens":  2749,
+    "output_tokens_per_s":  48.7690019994176,
+    "input_cost":  0.054745,
+    "output_cost":  0.08247,
+    "total_cost":  0.137215,
+    "cost_per_1k_output_tokens":  0.04991451436886141,
+    "completed":  true,
+    "notes":  "static syntax and required-function checks passed; cached_input_tokens=4864 reported but priced as ordinary input per test plan",
+    "started_at":  "2026-06-27T20:24:10.145213+08:00",
+    "ended_at":  "2026-06-27T20:25:06.513009+08:00",
+    "codex_cli_version":  "0.137.0",
+    "method":  "codex exec --ephemeral --json",
+    "tool_call_count":  0
+}
+

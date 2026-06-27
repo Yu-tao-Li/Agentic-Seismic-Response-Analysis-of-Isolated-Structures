@@ -1,0 +1,158 @@
+1
+
+   Abaqus 2025                                  Date 21-6��-2026   Time 03:14:27
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT, TYPE=SPRING2, ELSET=S1
+  *heading
+          SDOF spring-mass test                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+  *spring, elset=S1
+  *mass
+
+ ***ERROR: PARAMETER ELSET IS REQUIRED
+ LINE IMAGE: *mass
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+  *spring, elset=S1
+  *mass
+
+ ***ERROR: THERE IS NO MATERIAL BY THE NAME \MA    A
+  *boundary
+  *boundary
+  *output, field, frequency=1
+  *output, field, frequency=1
+  *output, field, frequency=1
+  *step, name=S1
+  *step, name=S1
+  *output, field, frequency=1
+  *step, name=S1
+  *step, name=S1
+  *dynamic, directusercontrol
+  *output, field, frequency=1
+  *nodeoutput
+  *endstep
+  *boundary
+  *step, name=S1
+  *dynamic, directusercontrol
+  *cload, amplitude=A1
+  *endstep
+
+ ***ERROR: DOF NOT PROPERLY SPECIFIED FOR THE FOLLOWING ELEMENT
+          1   SPRING2       1          1         2
+
+ ***WARNING: Boundary conditions are specified on inactive dof 3 at 1 nodes. 
+             The nodes have been identified in node set WarnNodeBCInactiveDof3.
+
+ ***WARNING: Boundary conditions are specified on inactive dof 2 at 1 nodes. 
+             The nodes have been identified in node set WarnNodeBCInactiveDof2.
+
+ ***ERROR: 1 nodes have inactive dof on which boundary conditions are 
+           specified. The nodes have been identified in node set 
+           ErrNodeBCInactiveDof.
+
+ ***ERROR: THERE ARE NO SOURCES OF INERTIA IN THIS MODEL. IT IS NECESSARY TO 
+           DEFINE A MATERIAL DENSITY OR LUMPED MASS OR INPUT THE MASS MATRIX 
+           FOR A PART OF THE MODEL USING THE MATRIX INPUT CAPABILITY WHEN 
+           INERTIA TERMS ARE REQUIRED IN THE ANALYSIS.
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     1
+          NUMBER OF NODES IS                                        2
+          NUMBER OF NODES DEFINED BY THE USER                       2
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                    1
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     5 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
+       WALLCLOCK TIME (SEC) =            0

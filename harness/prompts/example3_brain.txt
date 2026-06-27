@@ -1,0 +1,51 @@
+Background:
+Seismic isolation changes structural dynamic response by adding a flexible and damped isolation layer. In this harness, the isolated-building response must be verified across MATLAB, Python + OpenSeesPy, and ABAQUS.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for the three software paths and diagnose any differences.
+
+Aims:
+Establish a four-story seismically isolated structure and calculate the top-story displacement and acceleration responses. The first layer is the isolation layer, with mass 500 kg, stiffness 200 kN/m, and damping coefficient 2 kN/(m*s^-1). Stories 2 to 4 each have mass 1000 kg and stiffness 500 kN/m. Rayleigh damping is considered with damping ratio 0.05. The ground motion is read from `GM1.txt`, which contains one column of acceleration data. The time interval is 0.02 s. Normalize the peak ground acceleration to 0.40 g.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same physical model and SI units in all software implementations.
+
+1. MATLAB
+   - Implement the linear isolated MDOF equation of motion.
+   - Use Newmark-beta time integration.
+   - Add the isolation-layer damping coefficient to the first row and first column term of the damping matrix after forming Rayleigh damping.
+
+2. Python + OpenSeesPy
+   - Build the equivalent isolated shear-building model.
+   - Use elastic springs and a damping representation consistent with the MATLAB model.
+   - Apply the same normalized ground-motion input and time step.
+
+3. ABAQUS
+   - Build an equivalent spring-mass-damper model.
+   - Apply the same base excitation or equivalent input.
+   - Post-process top-story displacement, top-story acceleration, and isolation-layer displacement.
+
+Harness verification requirements:
+For each software, write machine-readable response output containing:
+- time vector
+- top-story displacement
+- top-story acceleration
+- isolation-layer displacement
+- input PGA after normalization
+- time step and number of samples
+
+Preserve the manuscript output names where applicable:
+- `topStoDis.txt`
+- `topStoAcc.txt`
+
+Then create `cross_validation_report.json` comparing MATLAB, OpenSeesPy, and ABAQUS by input consistency, peak response error, isolation displacement error, NRMSE or normalized L2 error, and response trend.
+
+The agent may propose task-specific consistency thresholds. Record the thresholds and reasoning before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Software-specific response outputs and logs.
+- `cross_validation_report.json`.
+- `report.md` describing modeling assumptions, damping treatment, input normalization, encountered issues, corrections, adopted consistency criteria, and final agreement.

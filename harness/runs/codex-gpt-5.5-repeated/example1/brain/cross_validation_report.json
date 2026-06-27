@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "strict_three_software_pass": true,
+  "thresholds": {
+    "circular_frequency_relative_tolerance": 5e-05,
+    "period_relative_tolerance": 5e-05,
+    "mode_shape_component_abs_tolerance": 0.0001,
+    "mode_shape_mac_minimum": 0.999999
+  },
+  "threshold_reasoning_recorded_before_pass_fail": "All three implementations represent the same three-DOF linear undamped eigenproblem in SI units. The exact model is small and well conditioned, so MATLAB and OpenSeesPy should agree to near roundoff. In this ABAQUS run the ODB API exposes modal frequency as cycles/time rounded to four decimal places, giving a first-mode relative quantization scale of about 3.2e-5. The adopted relative frequency and period tolerance of 5e-5 and mode-shape component tolerance of 1e-4 account for that documented ABAQUS output precision while remaining strict enough to catch model or unit inconsistencies.",
+  "software_result_files": {
+    "matlab": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\matlab\\modal_results.json",
+    "openseespy": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\openseespy\\modal_results.json",
+    "abaqus": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\abaqus\\modal_results.json"
+  },
+  "software_output_load_errors": {},
+  "pairwise_comparisons": [
+    {
+      "pair": [
+        "matlab",
+        "openseespy"
+      ],
+      "circular_frequency_relative_differences": [
+        5.3550754635634885e-16,
+        2.548272406929023e-16,
+        1.7634592211573894e-16
+      ],
+      "max_circular_frequency_relative_difference": 5.3550754635634885e-16,
+      "period_relative_differences": [
+        5.275182488039663e-16,
+        2.4634554794158655e-16,
+        1.779898153747351e-16
+      ],
+      "max_period_relative_difference": 5.275182488039663e-16,
+      "mode_shape_comparisons": [
+        {
+          "max_abs_component_difference": 3.3306690738754696e-16,
+          "mac": 1.0000000000000002,
+          "sign_corrected_reference": [
+            0.4450418679126289,
+            0.8019377358048384,
+            1.0
+          ],
+          "sign_corrected_candidate": [
+            0.4450418679126287,
+            0.8019377358048381,
+            1.0
+          ]
+        },
+        {
+          "max_abs_component_difference": 3.3306690738754696e-16,
+          "mac": 1.0,
+          "sign_corrected_reference": [
+            -1.0,
+            -0.44504186791262873,
+            0.8019377358048385
+          ],
+          "sign_corrected_candidate": [
+            -1.0,
+            -0.44504186791262873,
+            0.8019377358048382
+          ]
+        },
+        {
+          "max_abs_component_difference": 1.1102230246251565e-16,
+          "mac": 1.0,
+          "sign_corrected_reference": [
+            0.8019377358048385,
+            -1.0,
+            0.44504186791262873
+          ],
+          "sign_corrected_candidate": [
+            0.8019377358048384,
+            -1.0,
+            0.4450418679126287
+          ]
+        }
+      ],
+      "max_mode_shape_component_abs_difference": 3.3306690738754696e-16,
+      "min_mode_shape_mac": 1.0,
+      "pass": true
+    },
+    {
+      "pair": [
+        "matlab",
+        "abaqus"
+      ],
+      "circular_frequency_relative_differences": [
+        1.3043877790126735e-05,
+        7.465037532291423e-06,
+        6.404444360504745e-06
+      ],
+      "max_circular_frequency_relative_difference": 1.3043877790126735e-05,
+      "period_relative_differences": [
+        1.3043877790019743e-05,
+        7.465037532199544e-06,
+        6.404444360517503e-06
+      ],
+      "max_period_relative_difference": 1.3043877790019743e-05,
+      "mode_shape_comparisons": [
+        {
+          "max_abs_component_difference": 1.4567058670422739e-08,
+          "mac": 0.9999999999999999,
+          "sign_corrected_reference": [
+            0.4450418679126289,
+            0.8019377358048384,
+            1.0
+          ],
+          "sign_corrected_candidate": [
+            0.4450418533455702,
+            0.8019377228228192,
+            1.0
+          ]
+        },
+        {
+          "max_abs_component_difference": 1.4567058503889285e-08,
+          "mac": 0.9999999999999999,
+          "sign_corrected_reference": [
+            -1.0,
+            -0.44504186791262873,
+            0.8019377358048385
+          ],
+          "sign_corrected_candidate": [
+            -1.0,
+            -0.4450418533455702,
+            0.8019377228228192
+          ]
+        },
+        {
+          "max_abs_component_difference": 1.4567058503889285e-08,
+          "mac": 0.9999999999999999,
+          "sign_corrected_reference": [
+            0.8019377358048385,
+            -1.0,
+            0.44504186791262873
+          ],
+          "sign_corrected_candidate": [
+            0.8019377228228192,
+            -1.0,
+            0.4450418533455702
+          ]
+        }
+      ],
+      "max_mode_shape_component_abs_difference": 1.4567058670422739e-08,
+      "min_mode_shape_mac": 0.9999999999999999,
+      "pass": true
+    },
+    {
+      "pair": [
+        "openseespy",
+        "abaqus"
+      ],
+      "circular_frequency_relative_differences": [
+        1.3043877790662235e-05,
+        7.465037532036598e-06,
+        6.40444436068109e-06
+      ],
+      "max_circular_frequency_relative_difference": 1.3043877790662235e-05,
+      "period_relative_differences": [
+        1.3043877790547255e-05,
+        7.4650375319532005e-06,
+        6.404444360695492e-06
+      ],
+      "max_period_relative_difference": 1.3043877790547255e-05,
+      "mode_shape_comparisons": [
+        {
+          "max_abs_component_difference": 1.4567058448378134e-08,
+          "mac": 0.9999999999999999,
+          "sign_corrected_reference": [
+            0.4450418679126287,
+            0.8019377358048381,
+            1.0
+          ],
+          "sign_corrected_candidate": [
+            0.4450418533455702,
+            0.8019377228228192,
+            1.0
+          ]
+        },
+        {
+          "max_abs_component_difference": 1.4567058503889285e-08,
+          "mac": 0.9999999999999998,
+          "sign_corrected_reference": [
+            -1.0,
+            -0.44504186791262873,
+            0.8019377358048382
+          ],
+          "sign_corrected_candidate": [
+            -1.0,
+            -0.4450418533455702,
+            0.8019377228228192
+          ]
+        },
+        {
+          "max_abs_component_difference": 1.4567058448378134e-08,
+          "mac": 0.9999999999999996,
+          "sign_corrected_reference": [
+            0.8019377358048384,
+            -1.0,
+            0.4450418679126287
+          ],
+          "sign_corrected_candidate": [
+            0.8019377228228192,
+            -1.0,
+            0.4450418533455702
+          ]
+        }
+      ],
+      "max_mode_shape_component_abs_difference": 1.4567058503889285e-08,
+      "min_mode_shape_mac": 0.9999999999999996,
+      "pass": true
+    }
+  ]
+}

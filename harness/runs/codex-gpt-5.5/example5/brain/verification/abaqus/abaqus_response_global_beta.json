@@ -1,0 +1,12 @@
+{
+  "software": "ABAQUS 2025",
+  "model_type": "nonlinear_MDOF_T2D2_kinematic_plasticity_with_dashpots",
+  "n_stories": 4,
+  "results": {
+    "peak_top_displacement_m": 0.02668941766023636,
+    "peak_top_acceleration_ms2": 5.396080493927002,
+    "peak_isolation_displacement_m": 0.01989586651325226,
+    "peak_base_shear_N": 524739.6875,
+    "peak_base_reaction_N": 524739.6875
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "generated_at": "2026-06-25T00:14:54+08:00",
+  "thresholds": {
+    "input_time_step_abs_s": 1e-12,
+    "input_pga_abs_mps2": 1e-10,
+    "ground_motion_linf_mps2": 1e-10,
+    "peak_relative_error": 0.01,
+    "normalized_l2_error": 0.01,
+    "nrmse": 0.01,
+    "trend_correlation_min": 0.999
+  },
+  "threshold_reasoning": "The models are linear and use the same SI matrices, normalized input, and average-acceleration Newmark family integration. Exact input consistency is therefore required. A 1% response tolerance is strict for independent solver implementations while allowing small differences in OpenSeesPy and ABAQUS solver internals, time-history bookkeeping, and output extraction.",
+  "status": "PASS",
+  "strict_three_software_pass": true,
+  "source_outputs_used": {
+    "matlab": "verification/matlab/response.json",
+    "openseespy": "verification/openseespy/response.json",
+    "abaqus": "verification/abaqus/response.json"
+  },
+  "required_file_status": {
+    "matlab": [
+      {
+        "path": "verification/matlab/run_matlab.m",
+        "exists": true,
+        "size_bytes": 4028,
+        "nonempty": true
+      },
+      {
+        "path": "verification/matlab/execution.log",
+        "exists": true,
+        "size_bytes": 502,
+        "nonempty": true
+      },
+      {
+        "path": "verification/matlab/response.json",
+        "exists": true,
+        "size_bytes": 304338,
+        "nonempty": true
+      },
+      {
+        "path": "verification/matlab/topStoDis.txt",
+        "exists": true,
+        "size_bytes": 71620,
+        "nonempty": true
+      },
+      {
+        "path": "verification/matlab/topStoAcc.txt",
+        "exists": true,
+        "size_bytes": 67332,
+        "nonempty": true
+      },
+      {
+        "path": "verification/matlab/isolationDisplacement.txt",
+        "exists": true,
+        "size_bytes": 72323,
+        "nonempty": true
+      }
+    ],
+    "openseespy": [
+      {
+        "path": "verification/openseespy/run_openseespy.py",
+        "exists": true,
+        "size_bytes": 6989,
+        "nonempty": true
+      },
+      {
+        "path": "verification/openseespy/execution.log",
+        "exists": true,
+        "size_bytes": 514,
+        "nonempty": true
+      },
+      {
+        "path": "verification/openseespy/response.json",
+        "exists": true,
+        "size_bytes": 417622,
+        "nonempty": true
+      },
+      {
+        "path": "verification/openseespy/topStoDis.txt",
+        "exists": true,
+        "size_bytes": 106114,
+        "nonempty": true
+      },
+      {
+        "path": "verification/openseespy/topStoAcc.txt",
+        "exists": true,
+        "size_bytes": 106087,
+        "nonempty": true
+      },
+      {
+        "path": "verification/openseespy/isolationDisplacement.txt",
+        "exists": true,
+        "size_bytes": 106106,
+        "nonempty": true
+      }
+    ],
+    "abaqus": [
+      {
+        "path": "verification/abaqus/generate_abaqus_input.py",
+        "exists": true,
+        "size_bytes": 6504,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/isolated_building.inp",
+        "exists": true,
+        "size_bytes": 111231,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/execution.log",
+        "exists": true,
+        "size_bytes": 2060,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/postprocess_abaqus.py",
+        "exists": true,
+        "size_bytes": 4583,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/postprocess.log",
+        "exists": true,
+        "size_bytes": 440,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/response.json",
+        "exists": true,
+        "size_bytes": 381845,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/topStoDis.txt",
+        "exists": true,
+        "size_bytes": 106114,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/topStoAcc.txt",
+        "exists": true,
+        "size_bytes": 106087,
+        "nonempty": true
+      },
+      {
+        "path": "verification/abaqus/isolationDisplacement.txt",
+        "exists": true,
+        "size_bytes": 106106,
+        "nonempty": true
+      }
+    ]
+  },
+  "software_status": {
+    "matlab": {
+      "status": "success",
+      "time_step": 0.02,
+      "number_of_samples": 2686,
+      "time_start_s": 0.0,
+      "time_end_s": 53.7,
+      "pga_mps2": 3.92266,
+      "pga_g": 0.4,
+      "peak_top_story_displacement_m": 0.14201325070207046,
+      "peak_top_story_acceleration_mps2": 5.71542917762163,
+      "peak_isolation_layer_displacement_m": 0.07983280249287672,
+      "ground_motion_samples": 2686
+    },
+    "openseespy": {
+      "status": "success",
+      "time_step": 0.02,
+      "number_of_samples": 2686,
+      "time_start_s": 0.0,
+      "time_end_s": 53.7,
+      "pga_mps2": 3.92266,
+      "pga_g": 0.4,
+      "peak_top_story_displacement_m": 0.1420271674786476,
+      "peak_top_story_acceleration_mps2": 5.715865574431067,
+      "peak_isolation_layer_displacement_m": 0.07984134482949407,
+      "ground_motion_samples": 2686
+    },
+    "abaqus": {
+      "status": "success",
+      "time_step": 0.02,
+      "number_of_samples": 2686,
+      "time_start_s": 0.0,
+      "time_end_s": 53.7,
+      "pga_mps2": 3.92266,
+      "pga_g": 0.4,
+      "peak_top_story_displacement_m": 0.14201324968769113,
+      "peak_top_story_acceleration_mps2": 5.715426665433595,
+      "peak_isolation_layer_displacement_m": 0.07983279588587412,
+      "ground_motion_samples": 2686
+    }
+  },
+  "input_consistency": {
+    "same_number_of_samples": true,
+    "same_time_step": true,
+    "same_pga": true,
+    "pairwise_ground_motion_linf_mps2": {
+      "matlab_vs_openseespy": 0.0,
+      "matlab_vs_abaqus": 4.833911049217932e-13,
+      "openseespy_vs_abaqus": 4.833911049217932e-13
+    }
+  },
+  "pairwise_metrics": {
+    "matlab_vs_openseespy": {
+      "input": {
+        "sample_count_equal": true,
+        "max_time_abs_diff_s": 0.0,
+        "ground_motion_linf_mps2": 0.0,
+        "pga_abs_diff_mps2": 0.0
+      },
+      "responses": {
+        "top_story_displacement": {
+          "peak_a": 0.14201325070207046,
+          "peak_b": 0.1420271674786476,
+          "relative_peak_error": 9.798672200676596e-05,
+          "max_abs_difference": 9.738311021611763e-05,
+          "normalized_l2_error": 0.0004531790291867518,
+          "nrmse": 4.1768007344578285e-05,
+          "trend_correlation": 0.9999999055347537,
+          "passes_thresholds": true
+        },
+        "top_story_acceleration": {
+          "peak_a": 5.71542917762163,
+          "peak_b": 5.715865574431067,
+          "relative_peak_error": 7.634833320600767e-05,
+          "max_abs_difference": 0.03636088695173695,
+          "normalized_l2_error": 0.0008633763688216414,
+          "nrmse": 8.028059680050827e-05,
+          "trend_correlation": 0.9999996344369493,
+          "passes_thresholds": true
+        },
+        "isolation_layer_displacement": {
+          "peak_a": 0.07983280249287672,
+          "peak_b": 0.07984134482949407,
+          "relative_peak_error": 0.00010699139193594556,
+          "max_abs_difference": 5.1687555976863094e-05,
+          "normalized_l2_error": 0.0004554707022840452,
+          "nrmse": 4.14467349277835e-05,
+          "trend_correlation": 0.9999999047747448,
+          "passes_thresholds": true
+        }
+      },
+      "passes_thresholds": true
+    },
+    "matlab_vs_abaqus": {
+      "input": {
+        "sample_count_equal": true,
+        "max_time_abs_diff_s": 7.105427357601002e-15,
+        "ground_motion_linf_mps2": 4.833911049217932e-13,
+        "pga_abs_diff_mps2": 0.0
+      },
+      "responses": {
+        "top_story_displacement": {
+          "peak_a": 0.14201325070207046,
+          "peak_b": 0.14201324968769113,
+          "relative_peak_error": 7.1428498785715355e-09,
+          "max_abs_difference": 1.8293614400307495e-07,
+          "normalized_l2_error": 1.8052403727720259e-06,
+          "nrmse": 1.6638301486276175e-07,
+          "trend_correlation": 0.9999999999983721,
+          "passes_thresholds": true
+        },
+        "top_story_acceleration": {
+          "peak_a": 5.71542917762163,
+          "peak_b": 5.715426665433595,
+          "relative_peak_error": 4.3954495041653903e-07,
+          "max_abs_difference": 2.7870959112163973e-05,
+          "normalized_l2_error": 4.5462596164037705e-06,
+          "nrmse": 4.227315553158745e-07,
+          "trend_correlation": 0.9999999999896773,
+          "passes_thresholds": true
+        },
+        "isolation_layer_displacement": {
+          "peak_a": 0.07983280249287672,
+          "peak_b": 0.07983279588587412,
+          "relative_peak_error": 8.276049933725169e-08,
+          "max_abs_difference": 1.1015334260488716e-07,
+          "normalized_l2_error": 1.8045737452019091e-06,
+          "nrmse": 1.6421185665719825e-07,
+          "trend_correlation": 0.9999999999983737,
+          "passes_thresholds": true
+        }
+      },
+      "passes_thresholds": true
+    },
+    "openseespy_vs_abaqus": {
+      "input": {
+        "sample_count_equal": true,
+        "max_time_abs_diff_s": 7.105427357601002e-15,
+        "ground_motion_linf_mps2": 4.833911049217932e-13,
+        "pga_abs_diff_mps2": 0.0
+      },
+      "responses": {
+        "top_story_displacement": {
+          "peak_a": 0.1420271674786476,
+          "peak_b": 0.14201324968769113,
+          "relative_peak_error": 9.799386415674008e-05,
+          "max_abs_difference": 9.738310087652126e-05,
+          "normalized_l2_error": 0.00045313324558180005,
+          "nrmse": 4.176271352512181e-05,
+          "trend_correlation": 0.9999999055370005,
+          "passes_thresholds": true
+        },
+        "top_story_acceleration": {
+          "peak_a": 5.715865574431067,
+          "peak_b": 5.715426665433595,
+          "relative_peak_error": 7.678784459789987e-05,
+          "max_abs_difference": 0.036360600338917914,
+          "normalized_l2_error": 0.0008633112706319325,
+          "nrmse": 8.027529338250695e-05,
+          "trend_correlation": 0.9999996344221073,
+          "passes_thresholds": true
+        },
+        "isolation_layer_displacement": {
+          "peak_a": 0.07984134482949407,
+          "peak_b": 0.07983279588587412,
+          "relative_peak_error": 0.0001070741435806218,
+          "max_abs_difference": 5.1687406867126384e-05,
+          "normalized_l2_error": 0.0004554220346567067,
+          "nrmse": 4.144112221824468e-05,
+          "trend_correlation": 0.9999999047781596,
+          "passes_thresholds": true
+        }
+      },
+      "passes_thresholds": true
+    }
+  },
+  "notes": [
+    "Final comparisons use only response.json files generated in this run under verification/matlab, verification/openseespy, and verification/abaqus.",
+    "Top-story acceleration is absolute acceleration in all three response JSON files.",
+    "Isolation-layer displacement is the relative displacement of the isolation mass with respect to the fixed ground node."
+  ]
+}

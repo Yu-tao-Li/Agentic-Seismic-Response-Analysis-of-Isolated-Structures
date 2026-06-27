@@ -1,0 +1,18 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB frame_elastic_eigen
+Abaqus 2025
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 3 tokens from Flexnet server <local_machine>.
+<9996 out of 9999 licenses remain available>.
+Begin Analysis Input File Processor
+6/22/2026 4:54:03 PM
+Run pre.exe
+6/22/2026 4:54:17 PM
+Abaqus Error: Analysis Input File Processor exited with an error - Please see the 
+frame_elastic_eigen.dat file for possible error messages if the file exists.
+Begin SIM Wrap-up
+6/22/2026 4:54:17 PM
+Run SMASimUtility.exe
+6/22/2026 4:54:17 PM
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

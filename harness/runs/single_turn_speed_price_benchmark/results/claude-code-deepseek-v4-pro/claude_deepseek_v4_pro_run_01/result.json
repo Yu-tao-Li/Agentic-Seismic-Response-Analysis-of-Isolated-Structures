@@ -1,0 +1,20 @@
+﻿{
+    "run_id":  "claude_deepseek_v4_pro_run_01",
+    "model":  "deepseek-v4-pro[1m]",
+    "api_time_s":  26.957101000007242,
+    "input_tokens":  6317,
+    "output_tokens":  2601,
+    "output_tokens_per_s":  96.48663630407815,
+    "input_cost":  0.0027478949999999998,
+    "output_cost":  0.00226287,
+    "total_cost":  0.005010765,
+    "cost_per_1k_output_tokens":  0.0019264763552479815,
+    "completed":  true,
+    "notes":  "Request and model response successful; output violation: Markdown/prose wrapper; inner code passes syntax and all required-function checks.",
+    "started_at":  "2026-06-27T20:48:56.935557+08:00",
+    "ended_at":  "2026-06-27T20:49:23.892713+08:00",
+    "claude_code_version":  "2.1.112",
+    "method":  "claude --print --output-format json --tools empty",
+    "model_verified_from_response":  true
+}
+

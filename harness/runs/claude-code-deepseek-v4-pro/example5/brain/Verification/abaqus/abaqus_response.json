@@ -1,0 +1,11 @@
+{
+  "software": "ABAQUS 2025",
+  "model_type": "nonlinear_MDOF_CONN3D2_implicit",
+  "n_stories": 4,
+  "results": {
+    "peak_top_displacement_m": 0.028149081394076347,
+    "peak_top_acceleration_ms2": 5.142463207244873,
+    "peak_isolation_displacement_m": 0.023127097636461258,
+    "peak_base_shear_N": 537775.25
+  }
+}

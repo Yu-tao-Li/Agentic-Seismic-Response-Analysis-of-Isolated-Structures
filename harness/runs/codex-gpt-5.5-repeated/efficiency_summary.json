@@ -1,0 +1,285 @@
+﻿{
+    "agent":  "codex-gpt-5.5-repeated",
+    "created_at_local":  "2026-06-25T04:23:51.7178213+08:00",
+    "rows":  [
+                 {
+                     "example":  "example1",
+                     "exists":  true,
+                     "duration_minutes":  15.812,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  96,
+                     "command_execution_completed":  62,
+                     "agent_messages":  29,
+                     "manual_feedback_cycles":  0,
+                     "final_pass":  true,
+                     "final_pass_basis":  "status=PASS",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\modal_results.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\modal_results.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  1582
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\modal_results.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\modal_results.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  1598
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\modal_results.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\modal_results.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  2647
+                                                               }
+                                                },
+                     "codex_exec_invocations":  1
+                 },
+                 {
+                     "example":  "example2",
+                     "exists":  true,
+                     "duration_minutes":  16.03,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  103,
+                     "command_execution_completed":  62,
+                     "agent_messages":  35,
+                     "manual_feedback_cycles":  0,
+                     "final_pass":  true,
+                     "final_pass_basis":  "status=PASS",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\response_output.json",
+                                                                                            "verification\\matlab\\response.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  189711
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\response_output.json",
+                                                                                                "verification\\openseespy\\response.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\response.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  251187
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\response_output.json",
+                                                                                            "verification\\abaqus\\response.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  237160
+                                                               }
+                                                },
+                     "codex_exec_invocations":  1
+                 },
+                 {
+                     "example":  "example3",
+                     "exists":  true,
+                     "duration_minutes":  25.346,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  119,
+                     "command_execution_completed":  68,
+                     "agent_messages":  39,
+                     "manual_feedback_cycles":  0,
+                     "final_pass":  true,
+                     "final_pass_basis":  "status=PASS",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\response_output.json",
+                                                                                            "verification\\matlab\\response.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  304338
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\response_output.json",
+                                                                                                "verification\\openseespy\\response.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\response.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  417622
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\response_output.json",
+                                                                                            "verification\\abaqus\\response.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  381845
+                                                               }
+                                                },
+                     "codex_exec_invocations":  1
+                 },
+                 {
+                     "example":  "example4",
+                     "exists":  true,
+                     "duration_minutes":  30.135,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  130,
+                     "command_execution_completed":  76,
+                     "agent_messages":  44,
+                     "manual_feedback_cycles":  0,
+                     "final_pass":  true,
+                     "final_pass_basis":  "final_result.strict_three_software_pass=True",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\response_output.json",
+                                                                                            "verification\\matlab\\response.json",
+                                                                                            "verification\\matlab\\response_matlab.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\response_matlab.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  714011
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\response_output.json",
+                                                                                                "verification\\openseespy\\response.json",
+                                                                                                "verification\\openseespy\\response_openseespy.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\response_openseespy.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  752704
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\response_output.json",
+                                                                                            "verification\\abaqus\\response.json",
+                                                                                            "verification\\abaqus\\response_abaqus.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\response_abaqus.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  707322
+                                                               }
+                                                },
+                     "codex_exec_invocations":  1
+                 },
+                 {
+                     "example":  "example5",
+                     "exists":  true,
+                     "duration_minutes":  25.489,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  148,
+                     "command_execution_completed":  85,
+                     "agent_messages":  41,
+                     "manual_feedback_cycles":  0,
+                     "final_pass":  true,
+                     "final_pass_basis":  "status=PASS",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\response_output.json",
+                                                                                            "verification\\matlab\\response.json",
+                                                                                            "verification\\matlab\\response_matlab.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  1183136
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\response_output.json",
+                                                                                                "verification\\openseespy\\response.json",
+                                                                                                "verification\\openseespy\\response_openseespy.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\response.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  1276862
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\response_output.json",
+                                                                                            "verification\\abaqus\\response.json",
+                                                                                            "verification\\abaqus\\response_abaqus.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\response.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  1372661
+                                                               }
+                                                },
+                     "codex_exec_invocations":  1
+                 },
+                 {
+                     "example":  "example6",
+                     "exists":  true,
+                     "duration_minutes":  124.276,
+                     "num_agent_turns":  1,
+                     "codex_efficiency_action_count":  513,
+                     "command_execution_completed":  277,
+                     "agent_messages":  166,
+                     "manual_feedback_cycles":  1,
+                     "final_pass":  true,
+                     "final_pass_basis":  "after one neutral tool-location reminder: strict_three_software_pass=True, final_result=PASS",
+                     "software_output_status":  {
+                                                    "matlab":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\matlab\\matlab_results.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\matlab\\matlab_results.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  1000672
+                                                               },
+                                                    "openseespy":  {
+                                                                       "folder_exists":  true,
+                                                                       "accepted_outputs":  [
+                                                                                                "verification\\openseespy\\opensees_results.json"
+                                                                                            ],
+                                                                       "selected_output":  "verification\\openseespy\\opensees_results.json",
+                                                                       "output_exists":  true,
+                                                                       "output_size_bytes":  1228105
+                                                                   },
+                                                    "abaqus":  {
+                                                                   "folder_exists":  true,
+                                                                   "accepted_outputs":  [
+                                                                                            "verification\\abaqus\\abaqus_results.json"
+                                                                                        ],
+                                                                   "selected_output":  "verification\\abaqus\\abaqus_results.json",
+                                                                   "output_exists":  true,
+                                                                   "output_size_bytes":  1628938
+                                                               }
+                                                },
+                     "initial_duration_minutes":  25.586,
+                     "followup_duration_minutes":  98.69,
+                     "codex_exec_invocations":  2,
+                     "initial_attempt_pass":  false,
+                     "followup_prompt":  "example6\\brain\\agent_io\\codex_followup_tool_hint_20260625_prompt.txt",
+                     "followup_result":  "example6\\brain\\agent_io\\codex_followup_tool_hint_20260625_result.json"
+                 }
+             ],
+    "completed_count":  6,
+    "pass_count":  6,
+    "fail_or_partial_count":  0,
+    "total_recorded_minutes":  237.088
+}

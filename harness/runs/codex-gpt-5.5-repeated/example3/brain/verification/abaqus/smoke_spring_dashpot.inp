@@ -1,0 +1,33 @@
+*Heading
+SPRING2/DASHPOT2 smoke test
+*Node
+1, 0., 0., 0.
+2, 0., 0., 0.
+*Nset, nset=ALLN
+1, 2
+*Element, type=MASS, elset=MASS2
+1, 2
+*Mass, elset=MASS2
+1.0
+*Element, type=SPRING2, elset=SPR
+2, 1, 2
+*Spring, elset=SPR
+1, 1
+10.0
+*Element, type=DASHPOT2, elset=DASH
+3, 1, 2
+*Dashpot, elset=DASH
+1, 1
+0.1
+*Boundary
+1, 1, 6
+2, 2, 6
+*Step, name=Step-1
+*Dynamic, direct, alpha=0.
+0.01, 0.01
+*Cload
+2, 1, 1.0
+*Output, field
+*Node Output, nset=ALLN
+U, V, A
+*End Step

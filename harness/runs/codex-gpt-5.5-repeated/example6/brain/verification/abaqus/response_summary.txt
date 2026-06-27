@@ -1,0 +1,7 @@
+ABAQUS status: OK
+Failure stage: none
+Reason: none
+Physical response histories generated.
+Peak roof displacement: 0.018101494759321213
+Peak isolation displacement: 0.013862383551895618
+Peak total base shear: 31613.45911893851

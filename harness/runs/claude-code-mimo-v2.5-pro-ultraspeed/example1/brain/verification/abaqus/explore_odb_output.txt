@@ -1,0 +1,30 @@
+Step name: FREQ
+Number of frames: 4
+
+Frame 0:
+  frameId: 0
+  description: Increment      0: Base State
+  domain: MODAL
+  attributes: ['FieldOutput', 'associatedFrame', 'cyclicModeNumber', 'description', 'domain', 'fieldOutputs', 'frameId', 'frameValue', 'frequency', 'incrementNumber', 'isImaginary', 'loadCase', 'mode']
+  fieldOutputs: ['U']
+
+Frame 1:
+  frameId: 1
+  description: Mode         1: Value =   99.031     Freq =   1.5838     (cycles/time)
+  domain: MODAL
+  attributes: ['FieldOutput', 'associatedFrame', 'cyclicModeNumber', 'description', 'domain', 'fieldOutputs', 'frameId', 'frameValue', 'frequency', 'incrementNumber', 'isImaginary', 'loadCase', 'mode']
+  fieldOutputs: ['U']
+
+Frame 2:
+  frameId: 1
+  description: Mode         2: Value =   777.48     Freq =   4.4378     (cycles/time)
+  domain: MODAL
+  attributes: ['FieldOutput', 'associatedFrame', 'cyclicModeNumber', 'description', 'domain', 'fieldOutputs', 'frameId', 'frameValue', 'frequency', 'incrementNumber', 'isImaginary', 'loadCase', 'mode']
+  fieldOutputs: ['U']
+
+Frame 3:
+  frameId: 1
+  description: Mode         3: Value =   1623.5     Freq =   6.4128     (cycles/time)
+  domain: MODAL
+  attributes: ['FieldOutput', 'associatedFrame', 'cyclicModeNumber', 'description', 'domain', 'fieldOutputs', 'frameId', 'frameValue', 'frequency', 'incrementNumber', 'isImaginary', 'loadCase', 'mode']
+  fieldOutputs: ['U']

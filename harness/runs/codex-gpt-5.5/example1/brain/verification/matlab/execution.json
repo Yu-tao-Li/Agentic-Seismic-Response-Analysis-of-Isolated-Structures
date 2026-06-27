@@ -1,0 +1,12 @@
+{
+  "command": [
+    "matlab",
+    "-batch",
+    "run('main.m')"
+  ],
+  "returncode": 0,
+  "stdout": "Circular frequencies (rad/s):\n    9.9510   27.8830   40.2930\n\nPeriods (s):\n    0.6310    0.2250    0.1560\n\nNormalized mode shapes, rows = modes, columns = stories 1 to 3:\n    0.4450    0.8020    1.0000\n   -1.0000   -0.4450    0.8020\n    0.8020   -1.0000    0.4450\n\n",
+  "stderr": "",
+  "execution_seconds": 28.245984600041993,
+  "timed_out": false
+}

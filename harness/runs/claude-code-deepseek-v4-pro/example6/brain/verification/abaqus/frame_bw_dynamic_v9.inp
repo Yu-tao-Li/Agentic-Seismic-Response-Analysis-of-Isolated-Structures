@@ -1,0 +1,212 @@
+**
+** 2D Base-Isolated Frame - Bouc-Wen UEL
+** v9: Full Rayleigh damping via DASHPOT1 elements
+** Mass-proportional: dashpots from floor nodes to ground (C=alpha_m * m_i)
+** Stiffness-proportional at isolators: dashpots across isolators (C=beta_k * k0)
+** Material Rayleigh damping on steel frame for frame modes
+**
+*HEADING
+2D Base-Isolated Frame - Bouc-Wen UEL Time History v9
+**
+** ==== NODES ====
+** Ground reference nodes (fixed)
+*NODE
+ 13,   0.0, -0.01
+ 14,   6.0, -0.01
+ 15,  12.0, -0.01
+** Isolator top nodes (base level)
+*NODE
+  1,   0.0, 0.0
+  2,   6.0, 0.0
+  3,  12.0, 0.0
+** Floor 1 nodes
+*NODE
+  4,   0.0, 3.6
+  5,   6.0, 3.6
+  6,  12.0, 3.6
+** Floor 2 nodes
+*NODE
+  7,   0.0, 7.2
+  8,   6.0, 7.2
+  9,  12.0, 7.2
+** Floor 3 (roof) nodes
+*NODE
+ 10,   0.0, 10.8
+ 11,   6.0, 10.8
+ 12,  12.0, 10.8
+** Ground reference nodes for mass-proportional dashpots
+** (co-located with floor nodes but fixed to ground)
+*NODE
+100,   0.0, 3.6
+101,   6.0, 3.6
+102,  12.0, 3.6
+103,   0.0, 7.2
+104,   6.0, 7.2
+105,  12.0, 7.2
+106,   0.0, 10.8
+107,   6.0, 10.8
+108,  12.0, 10.8
+109,   0.0, 0.0
+110,   6.0, 0.0
+111,  12.0, 0.0
+**
+** ==== SETS ====
+*NSET, NSET=GROUND
+13,14,15
+*NSET, NSET=GROUND_REF
+100,101,102,103,104,105,106,107,108,109,110,111
+*NSET, NSET=ALL_FLOORS
+ 4, 5, 6, 7, 8, 9,10,11,12
+*NSET, NSET=BASE_NODES
+ 1, 2, 3
+*NSET, NSET=ROOF_CENTER
+11
+*NSET, NSET=ISO_TOP
+ 1, 2, 3
+**
+** ==== MATERIAL ====
+*MATERIAL, NAME=STEEL
+*ELASTIC
+ 2.06E11, 0.30
+*DENSITY
+ 7850.0
+*DAMPING, ALPHA=0.18647, BETA=0.00707
+**
+** ==== BEAM SECTIONS ====
+*BEAM GENERAL SECTION, ELSET=COLUMNS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.020, 8.0E-04, 0.0, 0.0
+ 0.0, 0.0, -1.0
+*BEAM GENERAL SECTION, ELSET=BEAMS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.015, 4.5E-04, 0.0, 0.0
+ 0.0, 0.0, -1.0
+**
+** ==== FRAME ELEMENTS ====
+*ELEMENT, TYPE=B21, ELSET=COLUMNS
+ 1, 1, 4
+ 2, 2, 5
+ 3, 3, 6
+ 4, 4, 7
+ 5, 5, 8
+ 6, 6, 9
+ 7, 7,10
+ 8, 8,11
+ 9, 9,12
+*ELEMENT, TYPE=B21, ELSET=BEAMS
+10, 4, 5
+11, 5, 6
+12, 7, 8
+13, 8, 9
+14,10,11
+15,11,12
+**
+** ==== LUMPED MASSES ====
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR1
+16, 4
+17, 5
+18, 6
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR2
+19, 7
+20, 8
+21, 9
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR3
+22,10
+23,11
+24,12
+*ELEMENT, TYPE=MASS, ELSET=MASS_BASE
+25, 1
+26, 2
+27, 3
+** UX mass = 83333.33 per floor node, UY mass = 83333.33, RZ inertia = 1.0E7
+*MASS, ELSET=MASS_FLOOR1
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_FLOOR2
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_FLOOR3
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_BASE
+1.0, 1.0, 1.0E7
+**
+** ==== STIFFNESS-PROPORTIONAL DASHPOTS AT ISOLATORS ====
+** C_iso = beta_k * k0 = 0.00707 * 2.0e6 = 14140 N-s/m
+*ELEMENT, TYPE=DASHPOT1, ELSET=ISO_DAMP
+103, 13, 1
+104, 14, 2
+105, 15, 3
+*DASHPOT, ELSET=ISO_DAMP
+1
+14140.0
+**
+** ==== MASS-PROPORTIONAL DASHPOTS FROM FLOOR NODES TO GROUND REF ====
+** C_floor = alpha_m * m_per_node = 0.18647 * 83333.33 = 15539 N-s/m
+** Floor 1: nodes 4,5,6 -> ground ref 100,101,102
+*ELEMENT, TYPE=DASHPOT1, ELSET=DAMP_FLOOR1
+106, 100, 4
+107, 101, 5
+108, 102, 6
+** Floor 2: nodes 7,8,9 -> ground ref 103,104,105
+*ELEMENT, TYPE=DASHPOT1, ELSET=DAMP_FLOOR2
+109, 103, 7
+110, 104, 8
+111, 105, 9
+** Floor 3: nodes 10,11,12 -> ground ref 106,107,108
+*ELEMENT, TYPE=DASHPOT1, ELSET=DAMP_FLOOR3
+112, 106, 10
+113, 107, 11
+114, 108, 12
+** Base nodes: nodes 1,2,3 -> ground ref 109,110,111
+** (small mass, but include for completeness)
+*ELEMENT, TYPE=DASHPOT1, ELSET=DAMP_BASE
+115, 109, 1
+116, 110, 2
+117, 111, 3
+*DASHPOT, ELSET=DAMP_FLOOR1
+1
+15539.0
+*DASHPOT, ELSET=DAMP_FLOOR2
+1
+15539.0
+*DASHPOT, ELSET=DAMP_FLOOR3
+1
+15539.0
+*DASHPOT, ELSET=DAMP_BASE
+1
+0.186
+**
+** ==== UEL ISOLATORS ====
+** UEL: Bouc-Wen horizontal, linear elastic vertical
+** Props: k0, kv, alpha, n, beta, gamma, Ao
+*USER ELEMENT, NODES=2, TYPE=U1, PROPERTIES=7, COORDINATES=2, VARIABLES=4
+1, 2
+*ELEMENT, TYPE=U1, ELSET=ISOLATORS
+100, 13, 1
+101, 14, 2
+102, 15, 3
+*UEL PROPERTY, ELSET=ISOLATORS
+ 2.0E6, 1.0E10, 0.05, 2.0, 2.0E4, 2.0E4, 1.0
+**
+** ==== BOUNDARY: Fix ground + ground ref + UY at isolator tops ====
+*BOUNDARY
+GROUND, 1, 2
+GROUND_REF, 1, 2
+ISO_TOP, 2, 2
+**
+** ==== GROUND MOTION AMPLITUDE ====
+*AMPLITUDE, NAME=ACCEL_HIST, INPUT=accel_amp.inp
+**
+** ==== IMPLICIT DYNAMIC ====
+*STEP, NAME=DYNAMIC, INC=2000
+*DYNAMIC, ALPHA=-0.05, HAFTOL=1.0E8
+0.01, 19.0, 1.0E-9, 0.01
+** Equivalent force: F_i = -m_i * ag(t) applied to floor nodes
+*CLOAD, AMPLITUDE=ACCEL_HIST
+ALL_FLOORS, 1, -83333.33
+** Field and history output
+*OUTPUT, FIELD, FREQUENCY=100
+*NODE OUTPUT
+U
+*OUTPUT, HISTORY, FREQUENCY=10
+*NODE OUTPUT, NSET=ROOF_CENTER
+U1
+*NODE OUTPUT, NSET=ISO_TOP
+U1
+*END STEP

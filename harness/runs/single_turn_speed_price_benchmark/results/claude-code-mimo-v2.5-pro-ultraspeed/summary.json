@@ -1,0 +1,16 @@
+{
+  "model": "mimo-v2.5-pro-ultraspeed",
+  "runs": 5,
+  "mean_api_time_s": 6.439303620008286,
+  "mean_input_tokens": 3129.6,
+  "mean_output_tokens": 2597.4,
+  "mean_output_tokens_per_s": 409.7513487072564,
+  "std_output_tokens_per_s": 60.10671900712846,
+  "mean_cost": 0.010863342,
+  "mean_cost_per_1k_output_tokens": 0.004256535575110031,
+  "completion_rate": 1.0,
+  "total_cost": 0.05431671,
+  "input_price_per_million": 1.305,
+  "output_price_per_million": 2.61,
+  "pricing_policy": "Reference cost uses Xiaomi's published pay-as-you-go USD rates. Cached-input details are not recorded in formal results. The active endpoint is Xiaomi's standard API endpoint. UltraSpeed's limited-time price is three times the MiMo V2.5 Pro rate."
+}

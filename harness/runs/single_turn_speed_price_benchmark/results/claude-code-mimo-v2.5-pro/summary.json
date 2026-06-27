@@ -1,0 +1,17 @@
+﻿{
+    "model":  "mimo-v2.5-pro",
+    "runs":  5,
+    "mean_api_time_s":  53.68923130000476,
+    "mean_input_tokens":  2762.2,
+    "mean_output_tokens":  2609,
+    "mean_output_tokens_per_s":  48.47715822367651,
+    "std_output_tokens_per_s":  1.7064050372249158,
+    "mean_cost":  0.003471387,
+    "mean_cost_per_1k_output_tokens":  0.001337880027037169,
+    "completion_rate":  1,
+    "total_cost":  0.017356935,
+    "input_price_per_million":  0.435,
+    "output_price_per_million":  0.87,
+    "pricing_policy":  "Reference cost uses Xiaomi\u0027s published pay-as-you-go USD rates. Cached-input details are not recorded in formal results. The active endpoint is a Token Plan endpoint, so this is not subscription billing."
+}
+

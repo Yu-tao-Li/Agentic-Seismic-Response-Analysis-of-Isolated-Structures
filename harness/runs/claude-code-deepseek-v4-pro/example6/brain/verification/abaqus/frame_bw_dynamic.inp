@@ -1,0 +1,134 @@
+**
+** 2D Base-Isolated Frame - Bouc-Wen UEL
+** v3: HHT damping (ALPHA=-0.05), fixed UY at isolator tops, larger RZ mass
+** No Rayleigh damping (use HHT numerical damping instead)
+**
+*HEADING
+2D Base-Isolated Frame - Bouc-Wen UEL Time History v3
+**
+*NODE
+  1,   0.0, 0.0
+  2,   6.0, 0.0
+  3,  12.0, 0.0
+  4,   0.0, 3.6
+  5,   6.0, 3.6
+  6,  12.0, 3.6
+  7,   0.0, 7.2
+  8,   6.0, 7.2
+  9,  12.0, 7.2
+ 10,   0.0, 10.8
+ 11,   6.0, 10.8
+ 12,  12.0, 10.8
+*NODE
+ 13,   0.0, -0.01
+ 14,   6.0, -0.01
+ 15,  12.0, -0.01
+**
+*NSET, NSET=GROUND
+13,14,15
+*NSET, NSET=ALL_FLOORS
+ 4, 5, 6, 7, 8, 9,10,11,12
+*NSET, NSET=ROOF_CENTER
+11
+*NSET, NSET=ISO_TOP
+ 1, 2, 3
+**
+*MATERIAL, NAME=STEEL
+*ELASTIC
+ 2.06E11, 0.30
+*DENSITY
+ 7850.0
+*DAMPING, ALPHA=0.18647, BETA=0.00707
+**
+*BEAM GENERAL SECTION, ELSET=COLUMNS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.020, 8.0E-04, 0.0, 0.0
+ 0.0, 0.0, -1.0
+*BEAM GENERAL SECTION, ELSET=BEAMS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.015, 4.5E-04, 0.0, 0.0
+ 0.0, 0.0, -1.0
+**
+*ELEMENT, TYPE=B21, ELSET=COLUMNS
+ 1, 1, 4
+ 2, 2, 5
+ 3, 3, 6
+ 4, 4, 7
+ 5, 5, 8
+ 6, 6, 9
+ 7, 7,10
+ 8, 8,11
+ 9, 9,12
+*ELEMENT, TYPE=B21, ELSET=BEAMS
+10, 4, 5
+11, 5, 6
+12, 7, 8
+13, 8, 9
+14,10,11
+15,11,12
+**
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR1
+16, 4
+17, 5
+18, 6
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR2
+19, 7
+20, 8
+21, 9
+*ELEMENT, TYPE=MASS, ELSET=MASS_FLOOR3
+22,10
+23,11
+24,12
+*ELEMENT, TYPE=MASS, ELSET=MASS_BASE
+25, 1
+26, 2
+27, 3
+** UX mass = 83333.33, UY mass = 83333.33, RZ inertia = 1.0E7 (suppress rotational modes)
+*MASS, ELSET=MASS_FLOOR1
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_FLOOR2
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_FLOOR3
+83333.33, 83333.33, 1.0E7
+*MASS, ELSET=MASS_BASE
+1.0, 1.0, 1.0E7
+**
+** Dashpot dampers in parallel with isolators (horizontal)
+*ELEMENT, TYPE=DASHPOT1, ELSET=ISO_DAMP
+103, 13, 1
+104, 14, 2
+105, 15, 3
+*DASHPOT, ELSET=ISO_DAMP
+1
+50000.0
+**
+** UEL isolators - horizontal Bouc-Wen
+*USER ELEMENT, NODES=2, TYPE=U1, PROPERTIES=7, COORDINATES=2, VARIABLES=4
+1, 2
+*ELEMENT, TYPE=U1, ELSET=ISOLATORS
+100, 13, 1
+101, 14, 2
+102, 15, 3
+*UEL PROPERTY, ELSET=ISOLATORS
+ 2.0E6, 1.0E10, 0.05, 2.0, 2.0E4, 2.0E4, 1.0
+**
+** Fix ground + fix UY at isolator tops (eliminates 5000:1 stiffness ratio)
+*BOUNDARY
+GROUND, 1, 2
+ISO_TOP, 2, 2
+**
+*AMPLITUDE, NAME=ACCEL_HIST, INPUT=accel_amp.inp
+**
+** dt=0.01s with damping (material Rayleigh + isolator dashpots)
+*STEP, NAME=DYNAMIC, INC=2000
+*DYNAMIC, ALPHA=-0.05, HAFTOL=1.0E8
+0.01, 19.0, 1.0E-6, 0.01
+*CLOAD, AMPLITUDE=ACCEL_HIST
+ALL_FLOORS, 1, -83333.33
+*OUTPUT, FIELD, FREQUENCY=100
+*NODE OUTPUT
+U
+*OUTPUT, HISTORY, FREQUENCY=10
+*NODE OUTPUT, NSET=ROOF_CENTER
+U1
+*NODE OUTPUT, NSET=ISO_TOP
+U1
+*END STEP

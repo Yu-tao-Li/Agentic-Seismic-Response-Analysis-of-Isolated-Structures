@@ -1,0 +1,12 @@
+ Abaqus/Standard 2025                  DATE 25-6ÔÂ-2026 TIME 03:21:59
+ SUMMARY OF JOB INFORMATION:
+ STEP  INC ATT SEVERE EQUIL TOTAL  TOTAL      STEP       INC OF       DOF    IF
+               DISCON ITERS ITERS  TIME/    TIME/LPF    TIME/LPF    MONITOR RIKS
+               ITERS               FREQ
+   1     1   1U    0     6     6  0.00       0.00       1.000     
+   1     1   2U    0     4     4  0.00       0.00       0.2500    
+   1     1   3U    0     6     6  0.00       0.00       0.06250   
+   1     1   4U    0     6     6  0.00       0.00       0.01562   
+   1     1   5U    0     6     6  0.00       0.00       0.003906  
+                          
+ THE ANALYSIS HAS NOT BEEN COMPLETED

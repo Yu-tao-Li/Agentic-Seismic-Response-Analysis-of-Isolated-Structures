@@ -1,0 +1,141 @@
+*HEADING
+Seismic isolated 4-story building: direct implicit dynamics with explicit dashpot damping
+** Equivalent to MATLAB/OpenSeesPy Newmark average acceleration with Rayleigh damping
+** SPRING2/DASHPOT2 format: DOF1, DOF2 on line 1, value on line 2 (confirmed working)
+**
+*NODE
+1, 0.0, 0.0, 0.0
+2, 0.0, 0.0, 1.0
+3, 0.0, 0.0, 2.0
+4, 0.0, 0.0, 3.0
+5, 0.0, 0.0, 4.0
+*NSET, NSET=BASE
+1
+*NSET, NSET=TOP
+5
+*NSET, NSET=ISO
+2
+*NSET, NSET=FLOORS
+2, 3, 4, 5
+**
+** Base fully fixed, floors only DOF 1 (X) active
+*BOUNDARY
+BASE, 1, 6
+FLOORS, 2, 6
+**
+** Mass elements
+*ELEMENT, TYPE=MASS, ELSET=MASS_ISO
+101, 2
+*MASS, ELSET=MASS_ISO
+500.0
+*ELEMENT, TYPE=MASS, ELSET=MASS_S2
+102, 3
+*MASS, ELSET=MASS_S2
+1000.0
+*ELEMENT, TYPE=MASS, ELSET=MASS_S3
+103, 4
+*MASS, ELSET=MASS_S3
+1000.0
+*ELEMENT, TYPE=MASS, ELSET=MASS_S4
+104, 5
+*MASS, ELSET=MASS_S4
+1000.0
+**
+** Springs between consecutive floors (DOF 1 = X, between 2 nodes)
+** k1=200kN/m, k2=k3=k4=500kN/m
+*ELEMENT, TYPE=SPRING2, ELSET=SPR_K1
+201, 1, 2
+*SPRING, ELSET=SPR_K1
+1, 1
+200000.0
+*ELEMENT, TYPE=SPRING2, ELSET=SPR_K2
+202, 2, 3
+*SPRING, ELSET=SPR_K2
+1, 1
+500000.0
+*ELEMENT, TYPE=SPRING2, ELSET=SPR_K3
+203, 3, 4
+*SPRING, ELSET=SPR_K3
+1, 1
+500000.0
+*ELEMENT, TYPE=SPRING2, ELSET=SPR_K4
+204, 4, 5
+*SPRING, ELSET=SPR_K4
+1, 1
+500000.0
+**
+** Dashpots between node pairs: stiffness-proportional + isolation damper combined
+** Rayleigh beta=0.003562808, alpha=0.481987108
+** Nodes 1-2: c = beta*200000 + alpha*500 + c_iso
+**         = 712.5616 + 240.9936 + 2000 = 2953.5552
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_12
+301, 1, 2
+*DASHPOT, ELSET=DASH_12
+1, 1
+2953.555153
+**
+** Nodes 2-3: c = beta*500000 = 1781.404
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_23
+302, 2, 3
+*DASHPOT, ELSET=DASH_23
+1, 1
+1781.403996
+**
+** Nodes 3-4: c = beta*500000 = 1781.404
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_34
+303, 3, 4
+*DASHPOT, ELSET=DASH_34
+1, 1
+1781.403996
+**
+** Nodes 4-5: c = beta*500000 = 1781.404
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_45
+304, 4, 5
+*DASHPOT, ELSET=DASH_45
+1, 1
+1781.403996
+**
+** Mass-proportional dashpots from nodes 3,4,5 to ground (node 1)
+** Node 2 mass-proportional already included in DASH_12 above
+** c_m = alpha * 1000 = 481.987108
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_M3
+305, 1, 3
+*DASHPOT, ELSET=DASH_M3
+1, 1
+481.987108
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_M4
+306, 1, 4
+*DASHPOT, ELSET=DASH_M4
+1, 1
+481.987108
+*ELEMENT, TYPE=DASHPOT2, ELSET=DASH_M5
+307, 1, 5
+*DASHPOT, ELSET=DASH_M5
+1, 1
+481.987108
+**
+** Ground motion amplitude
+*AMPLITUDE, NAME=GM, INPUT=GM_normalized.inp
+**
+** Direct implicit dynamics: HHT alpha=0 => Newmark average acceleration
+*STEP, NAME=DYNAMIC, NLGEOM=NO, INC=3000
+*DYNAMIC, ALPHA=0.0, HAFTOL=1.0E6
+0.02, 53.70, 1e-15, 0.02
+**
+** Equivalent forces: F_i = -m_i * a_g applied at each floor
+*CLOAD, AMPLITUDE=GM
+2, 1, -500.0
+3, 1, -1000.0
+4, 1, -1000.0
+5, 1, -1000.0
+**
+** Output
+*OUTPUT, FIELD, FREQUENCY=100
+*NODE OUTPUT
+U, A, V
+*OUTPUT, HISTORY, FREQUENCY=1
+*NODE OUTPUT, NSET=TOP
+U1, A1
+*NODE OUTPUT, NSET=ISO
+U1
+*END STEP

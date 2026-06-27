@@ -1,0 +1,44 @@
+Background:
+Structural modal analysis determines the natural vibration characteristics of a structure. In this harness, correctness must be supported by cross-software verification rather than by a single program output.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for MATLAB, Python + OpenSeesPy, and ABAQUS, then compare the three results.
+
+Aims:
+Conduct modal analysis for a three-story shear building. Each story has a lumped mass of 1000 kg and a story stiffness of 500 kN/m.
+
+Instructions:
+The success criterion is an auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+Use the same physical model and SI units in all three software implementations.
+
+1. MATLAB
+   - Build the 3x3 mass and stiffness matrices.
+   - Solve the generalized eigenvalue problem.
+   - Output circular frequencies, periods, and normalized mode shapes.
+
+2. Python + OpenSeesPy
+   - Build an equivalent three-DOF shear-building model.
+   - Use elastic story springs and lumped floor masses.
+   - Extract eigenvalues and node eigenvectors.
+
+3. ABAQUS
+   - Build an equivalent spring-mass model.
+   - Run a frequency extraction analysis.
+   - Post-process the ODB to extract frequencies and mode shapes.
+
+Harness verification requirements:
+For each software, write a machine-readable `modal_results.json` with:
+- `circular_frequencies_rad_per_s`
+- `periods_s`
+- `normalized_mode_shapes`
+
+Then create `cross_validation_report.json` that compares MATLAB, OpenSeesPy, and ABAQUS results. Mode-shape signs are arbitrary, so compare mode shapes after whole-mode sign correction or by absolute normalized amplitudes.
+
+The consistency thresholds may be proposed by the agent based on modal-analysis practice and software precision, but the adopted thresholds and their reasoning must be recorded before final pass/fail is declared.
+
+Necessary results:
+- Three software-specific scripts or input files.
+- Three software-specific `modal_results.json` files.
+- `cross_validation_report.json`.
+- `report.md` describing the model, software differences, encountered issues, corrections, adopted consistency criteria, and final agreement.

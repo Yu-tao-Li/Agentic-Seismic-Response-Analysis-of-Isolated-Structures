@@ -1,0 +1,55 @@
+*HEADING
+Three-story shear building modal analysis
+SI units: N, kg, m, s
+Story stiffness 500 kN/m, lumped floor mass 1000 kg
+**
+** Nodes placed along X so SPRINGA elements act laterally
+*NODE
+1, 0.0, 0.0, 0.0
+2, 1.0, 0.0, 0.0
+3, 2.0, 0.0, 0.0
+4, 3.0, 0.0, 0.0
+*NSET, NSET=BASE
+1
+*NSET, NSET=FLOORS
+2, 3, 4
+*NSET, NSET=ALL_NODES
+1, 2, 3, 4
+**
+** Axial springs between consecutive floors (stiffness in X direction)
+*ELEMENT, TYPE=SPRINGA, ELSET=STORY_SPRINGS
+1, 1, 2
+2, 2, 3
+3, 3, 4
+*SPRING, ELSET=STORY_SPRINGS
+1
+500000.0
+**
+** Lumped masses at floor nodes
+*ELEMENT, TYPE=MASS, ELSET=FLOOR_MASSES
+101, 2
+102, 3
+103, 4
+*MASS, ELSET=FLOOR_MASSES
+1000.0
+**
+** Boundary conditions
+*BOUNDARY
+BASE, 1, 6
+*BOUNDARY
+FLOORS, 2, 6
+**
+** Frequency extraction step (Lanczos, 3 modes)
+*STEP, NAME=FREQ_EXTRACTION
+*FREQUENCY, EIGENSOLVER=LANCZOS
+3,
+**
+** Request eigenvector output to .dat file
+*NODE PRINT, NSET=FLOORS
+U
+**
+** Request output to ODB for post-processing
+*OUTPUT, FIELD
+*NODE OUTPUT
+U
+*END STEP

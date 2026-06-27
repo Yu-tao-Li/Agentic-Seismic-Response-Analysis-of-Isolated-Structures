@@ -1,0 +1,112 @@
+**
+** 2D Three-Story Two-Bay Base-Isolated Steel Frame
+** ABAQUS/Standard - Elastic modal validation
+** Bouc-Wen isolators BLOCKED: no Fortran compiler for UEL subroutines
+** Units: N, m, kg, s, Pa
+**
+*HEADING
+2D Three-Story Two-Bay Base-Isolated Steel Frame - Elastic Validation
+**
+** === MODEL DATA ===
+**
+** -- Nodes (B21 beams in XY plane) --
+*NODE
+  1,   0.0, 0.0
+  2,   6.0, 0.0
+  3,  12.0, 0.0
+  4,   0.0, 3.6
+  5,   6.0, 3.6
+  6,  12.0, 3.6
+  7,   0.0, 7.2
+  8,   6.0, 7.2
+  9,  12.0, 7.2
+ 10,   0.0, 10.8
+ 11,   6.0, 10.8
+ 12,  12.0, 10.8
+**
+** -- Node sets for mass application --
+*NSET, NSET=FLOOR1
+ 4, 5, 6
+*NSET, NSET=FLOOR2
+ 7, 8, 9
+*NSET, NSET=FLOOR3
+10,11,12
+*NSET, NSET=BASE
+ 1, 2, 3
+**
+** -- Beam elements (B21) --
+*ELEMENT, TYPE=B21, ELSET=COLUMNS
+ 1, 1, 4
+ 2, 2, 5
+ 3, 3, 6
+ 4, 4, 7
+ 5, 5, 8
+ 6, 6, 9
+ 7, 7,10
+ 8, 8,11
+ 9, 9,12
+*ELEMENT, TYPE=B21, ELSET=BEAMS
+10, 4, 5
+11, 5, 6
+12, 7, 8
+13, 8, 9
+14,10,11
+15,11,12
+**
+** -- Material --
+*MATERIAL, NAME=STEEL
+*ELASTIC
+ 2.06E11, 0.30
+** Use adjusted density to achieve correct total mass:
+** Target floor mass per level = 250000 kg / 3 nodes = 83333.33 kg per node
+** Beam/column mass is relatively small, include via lumped mass
+*DENSITY
+ 1.0e-10
+**
+** -- Beam section properties --
+*BEAM GENERAL SECTION, ELSET=COLUMNS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.020, 8.0E-04, 0.0, 0.0, 0.0
+ 0.0, 0.0, -1.0
+*BEAM GENERAL SECTION, ELSET=BEAMS, MATERIAL=STEEL, SECTION=GENERAL
+ 0.015, 4.5E-04, 0.0, 0.0, 0.0
+ 0.0, 0.0, -1.0
+**
+** -- Concentrated masses at floor nodes (DOF 1 = UX only) --
+*MASS, ELSET=FLOOR1
+ 83333.33,
+*MASS, ELSET=FLOOR2
+ 83333.33,
+*MASS, ELSET=FLOOR3
+ 83333.33,
+**
+** -- Ground springs (node-based, SPRING1-like via *SPRING ELSET on node set) --
+*SPRING, ELSET=BASE
+1, 2.0E6
+2, 1.0E10
+**
+** -- Boundary conditions --
+** Pin base nodes in rotation (RZ fixed)
+*BOUNDARY
+BASE, 6, 6
+**
+** -- Rigid diaphragm (UX tied at each floor) --
+*EQUATION
+2
+ 4, 1, -1.0,  5, 1, 1.0
+2
+ 5, 1, -1.0,  6, 1, 1.0
+2
+ 7, 1, -1.0,  8, 1, 1.0
+2
+ 8, 1, -1.0,  9, 1, 1.0
+2
+10, 1, -1.0,  11, 1, 1.0
+2
+11, 1, -1.0,  12, 1, 1.0
+**
+** === STEP DATA ===
+**
+*STEP, NAME=FREQUENCY
+*FREQUENCY, EIGENSOLVER=LANCZOS
+ 8,
+*END STEP

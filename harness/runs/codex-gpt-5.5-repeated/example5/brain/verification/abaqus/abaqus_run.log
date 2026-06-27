@@ -1,0 +1,28 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB isolated_shear_abaqus
+Abaqus 2025
+abaqus : Abaqus License Manager checked out the following licenses:
+At line:2 char:93
++ ... ration.log; abaqus job=isolated_shear_abaqus input=isolated_shear_aba ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Abaqus License ...owing licenses::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Abaqus/Standard checked out 5 tokens from Flexnet server <local_machine>.
+<license availability redacted>.
+Begin Analysis Input File Processor
+6/25/2026 1:08:27 AM
+Run pre.exe
+6/25/2026 1:08:36 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/25/2026 1:08:36 AM
+Run standard.exe
+6/25/2026 1:09:25 AM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+6/25/2026 1:09:25 AM
+Run SMASimUtility.exe
+6/25/2026 1:09:25 AM
+End SIM Wrap-up
+Abaqus JOB isolated_shear_abaqus COMPLETED

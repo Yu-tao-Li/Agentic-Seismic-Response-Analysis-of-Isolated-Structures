@@ -1,0 +1,43 @@
+=== Modal Properties (Elastic Initial State) ===
+Mode 1: T = 2.8431 s, f = 0.3517 Hz
+Mode 2: T = 0.5264 s, f = 1.8998 Hz
+Mode 3: T = 0.2131 s, f = 4.6934 Hz
+Mode 4: T = 0.0799 s, f = 12.5157 Hz
+Mode 5: T = 0.0793 s, f = 12.6082 Hz
+Mode 6: T = 0.0756 s, f = 13.2299 Hz
+
+Rayleigh damping: alpha_m=1.864718e-01, beta_k=7.068775e-03
+Target: zeta=5.00% at T1=2.8431s, T2=0.5264s
+Check: zeta1=5.0000%, zeta2=5.0000%
+
+Ground motion: raw PGA=158.2810 m/s^2, scaled PGA=3.9240 m/s^2, scale=0.024791
+
+=== Time Integration (1900 steps) ===
+Step  200/1900: t=2.0s, roof=-0.0001m, shear=-0.1kN, iter=2
+Step  400/1900: t=4.0s, roof=0.0016m, shear=-0.7kN, iter=3
+Step  600/1900: t=6.0s, roof=-0.0088m, shear=-0.4kN, iter=3
+Step  800/1900: t=8.0s, roof=0.0002m, shear=0.1kN, iter=2
+Step 1000/1900: t=10.0s, roof=-0.0034m, shear=-0.8kN, iter=3
+Step 1200/1900: t=12.0s, roof=-0.0040m, shear=-1.0kN, iter=3
+Step 1400/1900: t=14.0s, roof=0.0015m, shear=0.0kN, iter=2
+Step 1600/1900: t=16.0s, roof=0.0049m, shear=1.9kN, iter=2
+Step 1800/1900: t=18.0s, roof=0.0012m, shear=0.6kN, iter=2
+Analysis complete. Failed: 0/1900 steps
+
+=== Peak Response Summary ===
+Fundamental period (elastic): 2.8431 s
+Peak roof displacement:       0.0148 m
+Peak isolation displacement:  0.0140 m
+Peak total base shear:        4.56 kN
+Max drift ratio story 1:      0.000139
+Max drift ratio story 2:      0.000119
+Max drift ratio story 3:      0.000126
+Failed steps:                 0
+
+=== Output files written ===
+  response.json
+  response_time_history.txt
+  isolator_*_hysteresis.txt
+  response_plots.png
+
+=== MATLAB analysis complete ===

@@ -1,0 +1,20 @@
+Three-story shear building modal analysis - MATLAB
+Units: kg, N, m, s
+Story mass: 1000 kg
+Story stiffness: 500000 N/m
+
+Mass matrix M [kg]:
+   1000  0  0 
+   0  1000  0 
+   0  0  1000 
+
+Stiffness matrix K [N/m]:
+   1000000 -500000  0 
+  -500000  1000000 -500000 
+   0 -500000  500000 
+
+Mode results:
+Mode, circular_frequency_rad_per_s, period_s, normalized_floor_1, normalized_floor_2, normalized_floor_3
+1, 9.9514386948612, 0.631384616821701, 0.445041867912629, 0.801937735804838, 1
+2, 27.8833116046801, 0.225338560794371, -1, -0.445041867912629, 0.801937735804839
+3, 40.2925526848167, 0.155939122455928, 0.801937735804839, -1, 0.445041867912629

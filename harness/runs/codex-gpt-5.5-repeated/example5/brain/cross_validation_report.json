@@ -1,0 +1,484 @@
+{
+  "status": "PASS",
+  "strict_three_software_pass": true,
+  "generated_output_files": {
+    "matlab": [
+      "verification\\matlab\\isolation_hysteresis.txt",
+      "verification\\matlab\\matlab_run.log",
+      "verification\\matlab\\response.json",
+      "verification\\matlab\\run_matlab_analysis.m",
+      "verification\\matlab\\story_hysteresis_all.txt",
+      "verification\\matlab\\topStoAccIso2.txt",
+      "verification\\matlab\\topStoDisIso2.txt"
+    ],
+    "openseespy": [
+      "verification\\openseespy\\isolation_hysteresis.txt",
+      "verification\\openseespy\\openseespy_run.log",
+      "verification\\openseespy\\response.json",
+      "verification\\openseespy\\run_openseespy_analysis.py",
+      "verification\\openseespy\\story_hysteresis_all.txt",
+      "verification\\openseespy\\topStoAccIso2.txt",
+      "verification\\openseespy\\topStoDisIso2.txt"
+    ],
+    "abaqus": [
+      "verification\\abaqus\\abaqus_extract.log",
+      "verification\\abaqus\\abaqus_input_generation.log",
+      "verification\\abaqus\\abaqus_input_metadata.json",
+      "verification\\abaqus\\abaqus_run.log",
+      "verification\\abaqus\\extract_abaqus_results.py",
+      "verification\\abaqus\\isolated_shear_abaqus.com",
+      "verification\\abaqus\\isolated_shear_abaqus.dat",
+      "verification\\abaqus\\isolated_shear_abaqus.env",
+      "verification\\abaqus\\isolated_shear_abaqus.inp",
+      "verification\\abaqus\\isolated_shear_abaqus.msg",
+      "verification\\abaqus\\isolated_shear_abaqus.odb",
+      "verification\\abaqus\\isolated_shear_abaqus.prt",
+      "verification\\abaqus\\isolated_shear_abaqus.sta",
+      "verification\\abaqus\\isolation_hysteresis.txt",
+      "verification\\abaqus\\response.json",
+      "verification\\abaqus\\story_hysteresis_all.txt",
+      "verification\\abaqus\\topStoAccIso2.txt",
+      "verification\\abaqus\\topStoDisIso2.txt",
+      "verification\\abaqus\\write_abaqus_input.py"
+    ]
+  },
+  "input_consistency": {
+    "dt": {
+      "values": {
+        "matlab": 0.01,
+        "openseespy": 0.01,
+        "abaqus": 0.01
+      },
+      "consistent": true
+    },
+    "sample_count": {
+      "values": {
+        "matlab": 1900,
+        "openseespy": 1900,
+        "abaqus": 1900
+      },
+      "consistent": true
+    },
+    "target_pga_mps2": {
+      "values": {
+        "matlab": 3.92266,
+        "openseespy": 3.92266,
+        "abaqus": 3.92266
+      },
+      "consistent": true
+    },
+    "normalized_peak_mps2": {
+      "values": {
+        "matlab": 3.92266,
+        "openseespy": 3.92266,
+        "abaqus": 3.92266
+      },
+      "consistent": true
+    },
+    "masses_kg": {
+      "values": {
+        "matlab": [
+          250000,
+          270000,
+          270000,
+          180000
+        ],
+        "openseespy": [
+          250000.0,
+          270000.0,
+          270000.0,
+          180000.0
+        ],
+        "abaqus": [
+          250000.0,
+          270000.0,
+          270000.0,
+          180000.0
+        ]
+      },
+      "consistent": true
+    },
+    "stiffness_N_per_m": {
+      "values": {
+        "matlab": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ],
+        "openseespy": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ],
+        "abaqus": [
+          50000000.0,
+          245000000.0,
+          195000000.0,
+          98000000.0
+        ]
+      },
+      "consistent": true
+    },
+    "yield_N": {
+      "values": {
+        "matlab": [
+          500000,
+          1225000.0,
+          975000,
+          490000
+        ],
+        "openseespy": [
+          500000.0,
+          1225000.0,
+          975000.0,
+          490000.0
+        ],
+        "abaqus": [
+          500000.0,
+          1225000.0,
+          975000.0,
+          490000.0
+        ]
+      },
+      "consistent": true
+    },
+    "post_yield_ratio": {
+      "values": {
+        "matlab": [
+          0.05,
+          0,
+          0,
+          0
+        ],
+        "openseespy": [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "abaqus": [
+          0.05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "consistent": true
+    }
+  },
+  "thresholds": {
+    "reasoning": "MATLAB and OpenSeesPy use the same Newmark average-acceleration target model, while ABAQUS uses its direct-integration connector implementation and ODB frame interpolation. For nonlinear hysteretic response, 5% displacement/base-shear peak error, 10% acceleration peak error, 5% displacement curve RMS error, 15% acceleration curve RMS error, 10% hysteresis area error, and 0.02 s first-yield timing tolerance were adopted before declaring pass/fail.",
+    "peak_relative": 0.05,
+    "acceleration_peak_relative": 0.1,
+    "curve_rms_relative": 0.05,
+    "acceleration_curve_rms_relative": 0.15,
+    "base_shear_peak_relative": 0.05,
+    "hysteresis_area_relative": 0.1,
+    "yield_time_abs_s": 0.02
+  },
+  "pairwise": {
+    "matlab_vs_openseespy": {
+      "time_window": [
+        0.0,
+        18.990000000000002
+      ],
+      "metrics": {
+        "top_story_displacement": {
+          "peak": {
+            "a_peak": 0.02747216641418354,
+            "b_peak": 0.02747214072966685,
+            "relative_error": 9.349286948595599e-07,
+            "absolute_error": 2.5684516690577253e-08
+          },
+          "curve": {
+            "rms_absolute": 2.025805621581949e-06,
+            "rms_relative": 0.00019615905633003054,
+            "max_absolute": 1.0144400282087847e-05
+          }
+        },
+        "top_story_acceleration": {
+          "peak": {
+            "a_peak": 2.5604880634717015,
+            "b_peak": 2.5604995651109435,
+            "relative_error": 4.491951257725814e-06,
+            "absolute_error": 1.1501639241906503e-05
+          },
+          "curve": {
+            "rms_absolute": 0.00030203291531028296,
+            "rms_relative": 0.0004653087942670152,
+            "max_absolute": 0.01189558708069825
+          }
+        },
+        "isolation_displacement": {
+          "peak": {
+            "a_peak": 0.021894237413395603,
+            "b_peak": 0.021894214029500973,
+            "relative_error": 1.0680387806225585e-06,
+            "absolute_error": 2.3383894629663837e-08
+          },
+          "curve": {
+            "rms_absolute": 1.4587187986561635e-06,
+            "rms_relative": 0.00018551664678211253,
+            "max_absolute": 6.712620816785416e-06
+          }
+        },
+        "base_shear": {
+          "peak": {
+            "a_peak": 529735.593533489,
+            "b_peak": 529735.5350737524,
+            "relative_error": 1.1035644452299399e-07,
+            "absolute_error": 0.058459736639633775
+          },
+          "curve": {
+            "rms_absolute": 71.57855996491688,
+            "rms_relative": 0.00022421150341757294,
+            "max_absolute": 335.6310408392709
+          }
+        },
+        "hysteresis_loop_area": {
+          "a": 56549.54098349737,
+          "b": 56550.950594731294,
+          "relative_error": 2.4926393263071628e-05,
+          "absolute_error": 1.4096112339248066
+        },
+        "yielding_sequence": {
+          "a_first_yield_times": [
+            3.68,
+            null,
+            null,
+            null
+          ],
+          "b_first_yield_times": [
+            3.68,
+            null,
+            null,
+            null
+          ],
+          "absolute_time_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "checks": {
+        "peak_top_displacement": true,
+        "peak_top_acceleration": true,
+        "curve_top_displacement": true,
+        "curve_top_acceleration": true,
+        "isolation_displacement": true,
+        "base_shear": true,
+        "hysteresis_loop_area": true,
+        "yielding_sequence": true
+      },
+      "pass": true
+    },
+    "matlab_vs_abaqus": {
+      "time_window": [
+        0.0,
+        18.989999771118164
+      ],
+      "metrics": {
+        "top_story_displacement": {
+          "peak": {
+            "a_peak": 0.027469271134464804,
+            "b_peak": 0.027725347575143437,
+            "relative_error": 0.00923618504635856,
+            "absolute_error": 0.0002560764406786334
+          },
+          "curve": {
+            "rms_absolute": 0.00017925484445996225,
+            "rms_relative": 0.017319662586198232,
+            "max_absolute": 0.0004922482709980277
+          }
+        },
+        "top_story_acceleration": {
+          "peak": {
+            "a_peak": 2.5591851415624673,
+            "b_peak": 2.5642735713072953,
+            "relative_error": 0.0019843552582549874,
+            "absolute_error": 0.005088429744827927
+          },
+          "curve": {
+            "rms_absolute": 0.038045382431812706,
+            "rms_relative": 0.05768630318514881,
+            "max_absolute": 0.23235168265188189
+          }
+        },
+        "isolation_displacement": {
+          "peak": {
+            "a_peak": 0.0218942176744541,
+            "b_peak": 0.022040969569427173,
+            "relative_error": 0.006658141535508042,
+            "absolute_error": 0.00014675189497307187
+          },
+          "curve": {
+            "rms_absolute": 0.0001537758374251931,
+            "rms_relative": 0.01949607251961394,
+            "max_absolute": 0.0004262707606892478
+          }
+        },
+        "base_shear": {
+          "peak": {
+            "a_peak": 529735.5441861353,
+            "b_peak": 530089.4033950028,
+            "relative_error": 0.0006675462791770868,
+            "absolute_error": 353.8592088675359
+          },
+          "curve": {
+            "rms_absolute": 4247.435581909768,
+            "rms_relative": 0.013298218796300979,
+            "max_absolute": 11511.388631219219
+          }
+        },
+        "hysteresis_loop_area": {
+          "a": 56549.54098349737,
+          "b": 57208.18500021135,
+          "relative_error": 0.01151310807555855,
+          "absolute_error": 658.6440167139808
+        },
+        "yielding_sequence": {
+          "a_first_yield_times": [
+            3.68,
+            null,
+            null,
+            null
+          ],
+          "b_first_yield_times": [
+            3.680000066757202,
+            null,
+            null,
+            null
+          ],
+          "absolute_time_differences": [
+            6.675720198856538e-08,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "checks": {
+        "peak_top_displacement": true,
+        "peak_top_acceleration": true,
+        "curve_top_displacement": true,
+        "curve_top_acceleration": true,
+        "isolation_displacement": true,
+        "base_shear": true,
+        "hysteresis_loop_area": true,
+        "yielding_sequence": true
+      },
+      "pass": true
+    },
+    "openseespy_vs_abaqus": {
+      "time_window": [
+        0.0,
+        18.989999771118164
+      ],
+      "metrics": {
+        "top_story_displacement": {
+          "peak": {
+            "a_peak": 0.027469245454513756,
+            "b_peak": 0.027725347575143437,
+            "relative_error": 0.009237111272836983,
+            "absolute_error": 0.00025610212062968096
+          },
+          "curve": {
+            "rms_absolute": 0.0001792618607751934,
+            "rms_relative": 0.017320340504905354,
+            "max_absolute": 0.0004922790389655799
+          }
+        },
+        "top_story_acceleration": {
+          "peak": {
+            "a_peak": 2.5591966495745573,
+            "b_peak": 2.5642735713072953,
+            "relative_error": 0.0019798674328456002,
+            "absolute_error": 0.005076921732737993
+          },
+          "curve": {
+            "rms_absolute": 0.03804121912905541,
+            "rms_relative": 0.05767999057821052,
+            "max_absolute": 0.23231505624486037
+          }
+        },
+        "isolation_displacement": {
+          "peak": {
+            "a_peak": 0.021894194004809242,
+            "b_peak": 0.022040969569427173,
+            "relative_error": 0.006659215428595374,
+            "absolute_error": 0.00014677556461793057
+          },
+          "curve": {
+            "rms_absolute": 0.000153802645404223,
+            "rms_relative": 0.01949947130002068,
+            "max_absolute": 0.00042626206910476353
+          }
+        },
+        "base_shear": {
+          "peak": {
+            "a_peak": 529735.4850120231,
+            "b_peak": 530089.4033950028,
+            "relative_error": 0.0006676579096148614,
+            "absolute_error": 353.9183829796966
+          },
+          "curve": {
+            "rms_absolute": 4245.573959328665,
+            "rms_relative": 0.013292390276027457,
+            "max_absolute": 11511.376551908586
+          }
+        },
+        "hysteresis_loop_area": {
+          "a": 56550.950594731294,
+          "b": 57208.18500021135,
+          "relative_error": 0.011488468048368042,
+          "absolute_error": 657.234405480056
+        },
+        "yielding_sequence": {
+          "a_first_yield_times": [
+            3.68,
+            null,
+            null,
+            null
+          ],
+          "b_first_yield_times": [
+            3.680000066757202,
+            null,
+            null,
+            null
+          ],
+          "absolute_time_differences": [
+            6.675720198856538e-08,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "checks": {
+        "peak_top_displacement": true,
+        "peak_top_acceleration": true,
+        "curve_top_displacement": true,
+        "curve_top_acceleration": true,
+        "isolation_displacement": true,
+        "base_shear": true,
+        "hysteresis_loop_area": true,
+        "yielding_sequence": true
+      },
+      "pass": true
+    }
+  },
+  "convergence_ok": {
+    "matlab": true,
+    "openseespy": true,
+    "abaqus": true
+  },
+  "generated_outputs_ok": {
+    "matlab": true,
+    "openseespy": true,
+    "abaqus": true
+  }
+}

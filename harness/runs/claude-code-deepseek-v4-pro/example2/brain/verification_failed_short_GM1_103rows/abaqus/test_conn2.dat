@@ -1,0 +1,148 @@
+1
+
+   Abaqus 2025                                  Date 21-6��-2026   Time 03:15:51
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine <local_machine> 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***ERROR: in keyword *CONNECTORBEHAVIOR, file "test_conn2.inp", line 11: 
+           Parameter "name" is a required parameter.
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT, TYPE=CONN3D2, ELSET=CONN
+  *ELEMENT, TYPE=MASS, ELSET=MAS
+  *heading
+          SDOF test with connector                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  *mass, elset=MAS
+  *connectorsection, elset=CONN
+  *connectorbehavior
+
+ ***ERROR: NO BEHAVIOR NAME WAS SPECIFIED ON THE *CONNECTOR BEHAVIOR CARD. 
+           PLEASE CHECK DATA.
+  *connectorelasticity, component=1
+
+ ***ERROR: ELASTIC STIFFNESS MUST BE POSITIVE
+  *mass, elset=MAS
+  *connectorsection, elset=CONN
+  *boundary
+  *boundary
+  *connectorsection, elset=CONN
+  *output, field
+  *output, field
+  *output, field
+  *step, name=Step-1
+  *step, name=Step-1
+  *output, field
+  *step, name=Step-1
+  *step, name=Step-1
+  *dynamic, directusercontrol
+  *output, field
+  *nodeoutput
+  *endstep
+  *boundary
+  *step, name=Step-1
+  *dynamic, directusercontrol
+  *cload, amplitude=A1
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     2
+          NUMBER OF NODES IS                                        6
+          NUMBER OF NODES DEFINED BY THE USER                       2
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM         4
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   12
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     3 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
+       WALLCLOCK TIME (SEC) =            0

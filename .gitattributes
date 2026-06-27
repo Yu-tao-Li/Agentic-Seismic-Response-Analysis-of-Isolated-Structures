@@ -1,0 +1,6 @@
+*.odb binary
+*.odb_f binary
+*.dll binary
+*.obj binary
+*.png binary
+*.pdf binary

@@ -1,0 +1,61 @@
+{
+  "input_file": "harness\runs\\codex-gpt-5.5-repeated\\example4\\brain\\input_data\\Northridge_01_NO_968.txt",
+  "raw_count": 1900,
+  "dt": 0.01,
+  "scale_to_mps2": 0.024791352089006263,
+  "normalized_pga_mps2": 3.9240000000000004,
+  "target_pga_g": 0.4,
+  "total_time": 18.990000000000002,
+  "masses_kg": [
+    250000.0,
+    270000.0,
+    270000.0,
+    180000.0
+  ],
+  "story_stiffness_N_per_m": [
+    50000000.0,
+    245000000.0,
+    195000000.0,
+    98000000.0
+  ],
+  "yield_forces_N": [
+    null,
+    1225000.0,
+    975000.0,
+    490000.0
+  ],
+  "post_yield_ratios": [
+    null,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "isolation_dashpot_Ns_per_m": 1000000.0,
+  "rayleigh": {
+    "zeta": 0.05,
+    "mode_pair": [
+      1,
+      4
+    ],
+    "alpha_mass": 0.5807292965956242,
+    "beta_initial_stiffness": 0.0017337982046407969,
+    "c_story_dashpots_Ns_per_m": [
+      86689.91023203984,
+      424780.5601369952,
+      338090.6499049554,
+      169912.2240547981
+    ],
+    "c_mass_dashpots_Ns_per_m": [
+      145182.32414890605,
+      156796.91008081855,
+      156796.91008081855,
+      104531.27338721236
+    ],
+    "initial_omega_rad_per_s": [
+      6.5514695544742985,
+      22.212986812764807,
+      35.90427991756181,
+      51.12536949884432
+    ]
+  }
+}

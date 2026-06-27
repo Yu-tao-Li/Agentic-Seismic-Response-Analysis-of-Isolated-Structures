@@ -1,0 +1,114 @@
+*Heading
+Codex linear MDOF transient verification using MASS, SPRING2, DASHPOT2, and equivalent inertial loads
+*Preprint, echo=NO, model=NO, history=NO, contact=NO
+*Node
+1, 0., 0., 0.
+2, 0., 1.000000, 0.
+3, 0., 2.000000, 0.
+4, 0., 3.000000, 0.
+5, 0., 4.000000, 0.
+*Nset, nset=BASE
+1
+*Nset, nset=FLOORS
+2, 3, 4, 5
+*Nset, nset=ROOF
+5
+*Boundary
+BASE, 1, 6
+2, 1, 1
+2, 3, 6
+3, 1, 1
+3, 3, 6
+4, 1, 1
+4, 3, 6
+5, 1, 1
+5, 3, 6
+*Element, type=MASS, elset=MASS_1
+101, 2
+*Mass, elset=MASS_1
+500
+*Element, type=MASS, elset=MASS_2
+102, 3
+*Mass, elset=MASS_2
+1000
+*Element, type=MASS, elset=MASS_3
+103, 4
+*Mass, elset=MASS_3
+1000
+*Element, type=MASS, elset=MASS_4
+104, 5
+*Mass, elset=MASS_4
+1000
+*Element, type=SPRING2, elset=SPR_1
+201, 1, 2
+*Spring, elset=SPR_1
+2, 2
+200000
+*Element, type=SPRING2, elset=SPR_2
+202, 2, 3
+*Spring, elset=SPR_2
+2, 2
+500000
+*Element, type=SPRING2, elset=SPR_3
+203, 3, 4
+*Spring, elset=SPR_3
+2, 2
+500000
+*Element, type=SPRING2, elset=SPR_4
+204, 4, 5
+*Spring, elset=SPR_4
+2, 2
+500000
+*Element, type=DASHPOT2, elset=KDAMP_1
+301, 1, 2
+*Dashpot, elset=KDAMP_1
+2, 2
+2712.56159854
+*Element, type=DASHPOT2, elset=KDAMP_2
+302, 2, 3
+*Dashpot, elset=KDAMP_2
+2, 2
+1781.40399635
+*Element, type=DASHPOT2, elset=KDAMP_3
+303, 3, 4
+*Dashpot, elset=KDAMP_3
+2, 2
+1781.40399635
+*Element, type=DASHPOT2, elset=KDAMP_4
+304, 4, 5
+*Dashpot, elset=KDAMP_4
+2, 2
+1781.40399635
+*Element, type=DASHPOT2, elset=MDAMP_1
+401, 1, 2
+*Dashpot, elset=MDAMP_1
+2, 2
+240.993553975
+*Element, type=DASHPOT2, elset=MDAMP_2
+402, 1, 3
+*Dashpot, elset=MDAMP_2
+2, 2
+481.98710795
+*Element, type=DASHPOT2, elset=MDAMP_3
+403, 1, 4
+*Dashpot, elset=MDAMP_3
+2, 2
+481.98710795
+*Element, type=DASHPOT2, elset=MDAMP_4
+404, 1, 5
+*Dashpot, elset=MDAMP_4
+2, 2
+481.98710795
+*Amplitude, name=GM, input=GM_normalized.inp
+*Step, name=DYNAMIC, nlgeom=NO, inc=10000
+*Dynamic, direct
+0.02, 53.7, 0.02, 0.02
+*Cload, amplitude=GM
+2, 2, -500
+3, 2, -1000
+4, 2, -1000
+5, 2, -1000
+*Output, field, frequency=1
+*Node Output
+U, V, A
+*End Step

@@ -1,0 +1,17 @@
+﻿{
+    "model":  "gpt-5.5",
+    "runs":  5,
+    "mean_api_time_s":  57.8210202199989,
+    "mean_input_tokens":  10949,
+    "mean_output_tokens":  2780.6,
+    "mean_output_tokens_per_s":  48.129370317627796,
+    "std_output_tokens_per_s":  1.32694755190643,
+    "mean_cost":  0.138163,
+    "mean_cost_per_1k_output_tokens":  0.04970827959490365,
+    "completion_rate":  1.0,
+    "total_cost":  0.6908150000000001,
+    "input_price_per_million":  5.0,
+    "output_price_per_million":  30.0,
+    "pricing_policy":  "Cached-input details are not recorded in formal results. All input tokens are priced at the standard input rate, as required by the test plan."
+}
+

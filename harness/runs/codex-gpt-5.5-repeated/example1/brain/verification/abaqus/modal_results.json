@@ -1,0 +1,89 @@
+{
+  "software": "ABAQUS",
+  "execution": {
+    "source_input_file": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\abaqus\\three_story_shear_spring_mass.inp",
+    "postprocess_file": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\abaqus\\postprocess_abaqus.py",
+    "odb_file": "harness\runs\\codex-gpt-5.5-repeated\\example1\\brain\\verification\\abaqus\\three_story_shear_spring_mass.odb"
+  },
+  "model": {
+    "description": "Three-story shear building with equal lumped floor masses and equal story stiffnesses.",
+    "units": "SI: kg, N, m, s",
+    "story_mass_kg": 1000.0,
+    "story_stiffness_N_per_m": 500000.0,
+    "floor_node_labels": [
+      2,
+      3,
+      4
+    ],
+    "mass_element_type": "MASS",
+    "spring_element_type": "SPRING2 in global U1"
+  },
+  "mode_shape_convention": "Rows are floors 1..3; columns are modes 1..3; each mode is normalized to max(abs(component)) = 1 and signed so the roof component is positive.",
+  "frequencies_hz": [
+    1.5838,
+    4.4378,
+    6.4128
+  ],
+  "circular_frequencies_rad_per_s": [
+    9.95130888951103,
+    27.88351975620157,
+    40.29281073788125
+  ],
+  "periods_s": [
+    0.6313928526329081,
+    0.22533687863355717,
+    0.15593812375249502
+  ],
+  "normalized_mode_shapes": [
+    [
+      0.4450418533455702,
+      -1.0,
+      0.8019377228228192
+    ],
+    [
+      0.8019377228228192,
+      -0.4450418533455702,
+      -1.0
+    ],
+    [
+      1.0,
+      0.8019377228228192,
+      0.4450418533455702
+    ]
+  ],
+  "raw_abaqus_mode_records": [
+    {
+      "mode": 1,
+      "frequency_hz": 1.5838,
+      "circular_frequency": 9.95130888951103,
+      "period": 0.6313928526329081,
+      "mode_shape": [
+        0.4450418533455702,
+        0.8019377228228192,
+        1.0
+      ]
+    },
+    {
+      "mode": 2,
+      "frequency_hz": 4.4378,
+      "circular_frequency": 27.88351975620157,
+      "period": 0.22533687863355717,
+      "mode_shape": [
+        -1.0,
+        -0.4450418533455702,
+        0.8019377228228192
+      ]
+    },
+    {
+      "mode": 3,
+      "frequency_hz": 6.4128,
+      "circular_frequency": 40.29281073788125,
+      "period": 0.15593812375249502,
+      "mode_shape": [
+        0.8019377228228192,
+        -1.0,
+        0.4450418533455702
+      ]
+    }
+  ]
+}

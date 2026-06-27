@@ -1,0 +1,6 @@
+MATLAB 2D frame Bouc-Wen benchmark started: 2026-06-25 01:37:54
+Input samples: 1900, raw PGA: 158.281, scale: 0.024791352089, normalized PGA: 3.924 m/s^2
+Elastic modal periods used for damping: 2.84281060192 s, 0.526244206774 s
+Rayleigh coefficients: alphaM = 0.186496975085, betaKinit = 0.00706719882471
+MATLAB benchmark completed: failed_steps=0, max residual ratio=9.98703814704e-09
+Outputs written to harness\runs\codex-gpt-5.5-repeated\example6\brain\verification\matlab

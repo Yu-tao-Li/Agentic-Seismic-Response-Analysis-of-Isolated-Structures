@@ -1,0 +1,204 @@
+You are running inside a coding-agent harness. Work only inside this run directory:
+harness\runs\codex-gpt-5.5-repeated\example6\brain
+
+This is an independent repeated Codex run. Use the task prompt below as the input. Do not copy generated outputs,
+scripts, reports, or response files from other agents or from the previous codex-gpt-5.5 run. You may use the files
+provided inside this run directory as inputs, and you may inspect software documentation or logs as needed.
+
+Required final structure:
+- verification/matlab/ with executable MATLAB code, logs, and machine-readable output
+- verification/openseespy/ with executable Python + OpenSeesPy code, logs, and machine-readable output
+- verification/abaqus/ with ABAQUS input/post-processing files, logs, and machine-readable output
+- cross_validation_report.json
+- report.md
+
+Record failures honestly. Do not declare PASS if any required generated software output is missing, empty, copied
+from another run, or not physically comparable. Save stdout/stderr logs where useful.
+
+Base task prompt:
+
+Background:
+Examples 1-5 mainly use lumped-story MDOF models with prescribed story stiffness. Example 6 extends the evaluation to a more realistic two-dimensional beam-column finite-element frame, so that lateral stiffness and modal properties are generated from frame geometry, member sections, material properties, mass distribution, boundary conditions, and isolation elements.
+
+This example is intended to address the reviewer concern that the previous examples were too simplified and did not model beams and columns explicitly. Correctness must be supported by cross-software verification rather than by agreement between two codes generated from the same prompt.
+
+Role:
+Act as a structural engineer and coding agent. Produce executable, auditable analysis files for MATLAB, Python + OpenSeesPy, and ABAQUS, then compare the results using machine-readable outputs.
+
+Aims:
+Establish a two-dimensional three-story, two-bay base-isolated steel frame and evaluate its seismic response under a normalized ground-motion input. The frame members are modeled explicitly using beam-column elements. The isolation layer is modeled using horizontal Bouc-Wen hysteretic isolators placed below the three column lines. The upper frame remains elastic, while nonlinear behavior is concentrated in the isolation layer.
+
+Use the same physical assumptions, units, mass distribution, input normalization, damping definition, output definitions, and sign conventions as far as possible in MATLAB, OpenSeesPy, and ABAQUS.
+
+Do not invent missing engineering constants. If any required value is absent, stop and record the missing input in `report.md`.
+
+Model definition:
+
+1. Geometry
+   - Plane frame with 3 stories and 2 bays.
+   - Bay width: 6.0 m for each bay.
+   - Story height: 3.6 m for each story.
+   - There are 3 column lines and 4 vertical node levels if the isolation/top-of-isolator level is counted as level 0.
+   - The superstructure columns extend from the isolation level to the roof.
+   - Beams connect adjacent column lines at each floor level.
+
+2. Material
+   - Structural steel elastic modulus: E = 2.06e11 Pa.
+   - Poisson ratio: nu = 0.30.
+   - Density: rho = 7850 kg/m^3.
+   - The upper-frame beams and columns are elastic.
+
+3. Member sections
+   - Column area: A_c = 0.020 m^2.
+   - Column second moment of area about the out-of-plane bending axis: I_c = 8.0e-4 m^4.
+   - Beam area: A_b = 0.015 m^2.
+   - Beam second moment of area about the out-of-plane bending axis: I_b = 4.5e-4 m^4.
+
+4. Mass distribution
+   - Lumped floor mass at each floor: 2.5e5 kg.
+   - Distribute each floor mass equally to the three floor nodes.
+   - Assign the floor mass to the horizontal translational DOF only for the primary seismic-response comparison.
+   - Rotational inertia may be neglected.
+   - Gravity load and P-Delta effects are not included in this benchmark.
+
+5. Isolation layer
+   - One horizontal isolator is placed below each column line, for a total of three isolators.
+   - Initial horizontal stiffness per isolator: k0 = 2.0e6 N/m.
+   - Target characteristic yield force per isolator: Fy = 1.0e4 N.
+   - Target characteristic yield deformation: uy = Fy / k0 = 0.005 m.
+   - Bouc-Wen post-yield stiffness ratio: alpha = 0.05.
+   - Bouc-Wen smoothness exponent: n = 2.0.
+   - Bouc-Wen shape parameters: beta = 2.0e4 and gamma = 2.0e4.
+   - Bouc-Wen reference amplitude: Ao = 1.0.
+   - Bouc-Wen degradation parameters: deltaA = 0.0, deltaNu = 0.0, and deltaEta = 0.0.
+   - Vertical stiffness per isolator: kv = 1.0e10 N/m.
+   - Horizontal nonlinear behavior must use the same Bouc-Wen hysteretic evolution law in all software paths. Do not replace it with a bilinear Steel01/Hardening approximation.
+   - In OpenSeesPy, the intended material is `uniaxialMaterial BoucWen` with arguments `(alpha, ko, n, gamma, beta, Ao, deltaA, deltaNu, deltaEta)`.
+   - In MATLAB and ABAQUS post-processing/user implementation, follow the OpenSees Bouc-Wen force convention: horizontal force F = alpha * k0 * u + (1 - alpha) * k0 * z, where u is horizontal isolator deformation and z is the displacement-like hysteretic state variable. Use an implicit/backward-Euler or equivalently stable state update for z and document the update equation.
+   - The parameter choice beta = gamma = 0.5 / uy^n places the smooth hysteretic transition near the target deformation uy while keeping the original initial stiffness.
+   - The top node of each isolator coincides with the base node of the corresponding superstructure column.
+   - The bottom node of each isolator is fixed to the ground.
+
+6. Boundary conditions and constraints
+   - Bottom nodes below the isolators are fixed.
+   - The superstructure is a planar frame with nodal DOFs ux, uy, and rz.
+   - At each floor level, enforce a rigid-diaphragm-type horizontal constraint so that the three floor nodes have the same horizontal displacement.
+   - Vertical translations and rotations of floor nodes remain governed by the beam-column frame unless a software-specific simplification is required and documented.
+
+7. Damping
+   - Use 5% damping in the first two elastic modes of the isolated frame.
+   - In MATLAB, compute Rayleigh coefficients from the elastic tangent stiffness at the initial state.
+   - In OpenSeesPy and ABAQUS, implement equivalent mass- and stiffness-proportional damping where feasible.
+   - If a software-specific Rayleigh damping implementation does not affect the selected elements, replace it with explicit dashpot elements and document the correction in `report.md`.
+
+8. Ground motion
+   - Use `input_data/Northridge_01_NO_968.txt`.
+   - Time step: dt = 0.01 s.
+   - Normalize the peak ground acceleration to 0.40 g, where g = 9.81 m/s^2.
+   - Apply horizontal base excitation in the frame x direction.
+
+Instructions:
+The success criterion is auditable final agreement among MATLAB, OpenSeesPy, and ABAQUS.
+
+1. MATLAB
+   - Build a 2D frame reference model by assembling elastic beam-column element stiffness matrices with nodal DOFs ux, uy, and rz.
+   - Include the three Bouc-Wen horizontal isolators at the base.
+   - Use Newmark-beta integration with beta = 0.25 and gamma = 0.5.
+   - Use Newton-Raphson iteration or a documented consistent state-update procedure for the Bouc-Wen isolator forces.
+   - Track the Bouc-Wen internal hysteretic variable for each isolator and report the adopted update equation.
+   - Use a relative convergence criterion, not a fixed absolute force-only tolerance. For example, require
+     norm(residual, inf) / max(1, norm(effective_external_force, inf), norm(restoring_force, inf)) < 1e-8,
+     or justify an equivalent dimensionless criterion.
+   - Output fundamental period, roof displacement, story drift ratios, isolation displacement, total base shear, isolator hysteresis data, and convergence information.
+
+2. Python + OpenSeesPy
+   - Build the same 2D frame using beam-column elements.
+   - Use floor masses, equalDOF or rigid-diaphragm constraints, fixed ground nodes, and zeroLength or equivalent isolator elements.
+   - Use `uniaxialMaterial BoucWen` for the horizontal isolators with alpha = 0.05, ko = 2.0e6 N/m, n = 2.0, gamma = 2.0e4, beta = 2.0e4, Ao = 1.0, deltaA = 0.0, deltaNu = 0.0, and deltaEta = 0.0.
+   - Apply the same normalized ground motion.
+   - Record roof displacement, story drift ratios, isolation displacement, base shear, isolator force-deformation response, and convergence information.
+
+3. ABAQUS
+   - Build an independent 2D beam finite-element benchmark model using equivalent beam elements, section properties, nodal masses, constraints, and nonlinear connector or spring elements for the isolators.
+   - Implement the same Bouc-Wen horizontal isolator force-deformation law. If the installed ABAQUS workflow cannot represent the Bouc-Wen state evolution directly, stop and record the blocker in `report.md` rather than substituting a bilinear plasticity model.
+   - Apply the same normalized horizontal excitation, or an equivalent inertial-force formulation if base excitation is not convenient.
+   - Post-process the same engineering response quantities as MATLAB and OpenSeesPy.
+   - Document any software-specific modeling differences, especially for Bouc-Wen state integration, connector implementation, damping, output timing, and sign conventions.
+
+Harness verification requirements:
+For each software path, write machine-readable response output, preferably JSON plus text time-history files, containing:
+- fundamental period
+- roof displacement time history
+- inter-story drift ratio time histories
+- isolation displacement time history
+- total base shear time history
+- isolator hysteresis data, including force-deformation histories for all three isolators
+- Bouc-Wen internal hysteretic state histories where available
+- peak response quantities
+- convergence or failed-step count
+- modeling assumptions and damping coefficients
+
+Then create `cross_validation_report.json` comparing MATLAB, OpenSeesPy, and ABAQUS by:
+- input consistency and PGA normalization
+- fundamental period
+- peak roof displacement
+- maximum inter-story drift ratio
+- peak isolation displacement
+- peak total base shear
+- roof-displacement curve NRMSE
+- isolation-displacement curve NRMSE
+- base-shear curve NRMSE
+- isolator hysteresis loop area
+- convergence behavior
+
+The agent may propose task-specific consistency thresholds for nonlinear and hysteretic response quantities. Record the thresholds and reasoning before final pass/fail is declared.
+
+Necessary results:
+- MATLAB script and outputs.
+- OpenSeesPy script and outputs.
+- ABAQUS input/post-processing scripts and outputs.
+- `cross_validation_report.json`.
+- `report.md` describing modeling assumptions, software-specific differences, missing-input checks, encountered issues, corrections, adopted consistency criteria, and final agreement.
+
+Additional harness execution instructions:
+
+Work only inside the current run directory.
+
+Do not treat reference files as generated software results. Reference files may be used only to understand parameters or to diagnose discrepancies. The final pass/fail must be based on outputs generated in this run by MATLAB, OpenSeesPy, and ABAQUS.
+
+You must actually run the generated analysis paths when the software is available. A script that is written but not executed does not count as a completed software result.
+
+Use this directory layout:
+- verification/matlab/
+- verification/openseespy/
+- verification/abaqus/
+
+Each software folder must contain:
+- the source/input file used for that software
+- an execution log
+- machine-readable response or modal result JSON
+- manuscript-style txt outputs when requested
+
+The final `cross_validation_report.json` must compare only these generated outputs:
+- verification/matlab/*
+- verification/openseespy/*
+- verification/abaqus/*
+
+If any software path fails, read the error log, identify the root cause, modify that software path, rerun it, and repeat until either:
+1. all three generated outputs agree within adopted thresholds, or
+2. a true external blocker remains.
+
+Do not declare PASS if any of MATLAB, OpenSeesPy, or ABAQUS output is missing.
+
+For ABAQUS:
+- Ensure the model has valid inertia/mass definitions.
+- Ensure spring/connector elements have valid section/property definitions.
+- Ensure output extraction produces the same physical quantities and units as MATLAB and OpenSeesPy.
+- If ODB extraction fails, inspect the `.dat`, `.msg`, `.sta`, and `.odb`/postprocessing logs before revising.
+
+The report must include:
+- generated output files used in validation
+- errors encountered
+- corrections made
+- final pairwise metrics
+- whether the final result is a strict three-software pass
