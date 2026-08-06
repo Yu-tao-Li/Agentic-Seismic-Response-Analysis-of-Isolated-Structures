@@ -1,0 +1,71 @@
+{
+  "software": "MATLAB",
+  "generated_by": "Example5_3",
+  "units": {
+    "length": "m",
+    "mass": "kg",
+    "time": "s",
+    "force": "N",
+    "acceleration": "m/s^2"
+  },
+  "criteria": {
+    "force_residual_relative_tolerance": 1E-7,
+    "displacement_correction_relative_tolerance": 1E-10,
+    "state_transition_relative_tolerance": 1E-10,
+    "force_residual_definition": "norm(residual,1)/max(norm(deltaPeff,1),norm(restoringForce,1),norm(fy,1))",
+    "displacement_correction_definition": "norm(deltaU,inf)/max(norm(uTrial,inf),max(fy./k))",
+    "state_transition_definition": "abs(shear-elasticTrial)/max(abs(shear),abs(elasticTrial),fy)"
+  },
+  "model": {
+    "masses_kg": [
+      250000,
+      270000,
+      270000,
+      180000
+    ],
+    "stiffness_N_per_m": [
+      5.0E+7,
+      2.45E+8,
+      1.95E+8,
+      9.8E+7
+    ],
+    "yield_N": [
+      500000,
+      1.225E+6,
+      975000,
+      490000
+    ],
+    "post_yield_ratio": [
+      0.05,
+      0,
+      0,
+      0
+    ],
+    "damping_ratio": 0.05,
+    "rayleigh_modes": [
+      1,
+      2
+    ],
+    "rayleigh_alphaM": 0.50592893173366082,
+    "rayleigh_betaKinit": 0.0034765127740739666
+  },
+  "input": {
+    "ground_motion_file": "E:\\PythonFiles\\GPT\\已修回-GPT\\Discover Civil Engineering\\0806修改\\github_worktree\\harness\\runs\\codex-gpt-5.5-repeated\\example5\\brain\\reviewer1_round2_validation\\..\\input_data\\Northridge_01_NO_968.txt",
+    "dt": 0.01,
+    "sample_count": 1900,
+    "target_pga_mps2": 3.9240000000000004
+  },
+  "convergence": {
+    "failed_step_count": 0,
+    "max_iterations": 3,
+    "max_final_residual_ratio": 4.3271245855813141E-17,
+    "max_final_correction_ratio": 6.7554230568113081E-17
+  },
+  "peaks": {
+    "top_displacement_abs_max": 0.028148812300878866,
+    "top_acceleration_abs_max": 5.0791572380799961,
+    "isolation_displacement_abs_max": 0.02314766872752656,
+    "base_shear_abs_max": 532869.17181881645,
+    "hysteresis_loop_area_abs": 55987.89955194779
+  }
+}

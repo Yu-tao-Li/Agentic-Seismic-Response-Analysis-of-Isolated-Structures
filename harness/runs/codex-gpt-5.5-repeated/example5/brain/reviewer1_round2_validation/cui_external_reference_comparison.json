@@ -1,0 +1,53 @@
+{
+  "external_reference": {
+    "source": "Cui, Shen, and Yang (2022), Structural Seismic Response Analysis Programming and Application, China Architecture & Building Press",
+    "origin": "Reference output generated outside the coding-agent harness and extracted from the archived Origin project",
+    "comparison_window": "0.00-18.99 s, matching the 1900-sample generated record",
+    "files": {
+      "top_displacement": {
+        "repository_relative_path": "harness/runs/codex-gpt-5.5/example5/brain/reference/origin_extracted/cui/topStoDisIso2.txt",
+        "sha256": "3911191109140c61093e9322935216c20b96fd62c1263883c29d2213bc064e70"
+      },
+      "top_acceleration": {
+        "repository_relative_path": "harness/runs/codex-gpt-5.5/example5/brain/reference/origin_extracted/cui/topStoAccIso2.txt",
+        "sha256": "cef742f9914a10f8bb045dae8a9d64787d365c84a681d5d5de7c7bf328ed6808"
+      },
+      "isolation_hysteresis": {
+        "repository_relative_path": "harness/runs/codex-gpt-5.5/example5/brain/reference/origin_extracted/cui/hysteresis_layer1.txt",
+        "sha256": "2d9201921a759895a5097df45ddec243e6ae2575ffc91d489f3e7b095a779d9d"
+      }
+    }
+  },
+  "metrics": {
+    "top_displacement": {
+      "samples": 1900,
+      "generated_peak_abs": 0.0281488123008789,
+      "reference_peak_abs": 0.028148812301,
+      "peak_relative_error": 4.302172488238117e-12,
+      "nrmse": 3.822764218544608e-12,
+      "relative_l2_error": 1.7538460302415285e-11,
+      "correlation": 1.0
+    },
+    "top_acceleration": {
+      "samples": 1900,
+      "generated_peak_abs": 5.07915723808,
+      "reference_peak_abs": 5.0791572381,
+      "peak_relative_error": 3.937661449970976e-12,
+      "nrmse": 1.695947252318906e-12,
+      "relative_l2_error": 1.4780265638382855e-11,
+      "correlation": 0.9999999999999998
+    },
+    "isolation_hysteresis": {
+      "samples": 1900,
+      "generated_peak_displacement_abs": 0.0231476687275266,
+      "reference_peak_displacement_abs": 0.023147668727,
+      "generated_peak_force_abs": 532869.171818816,
+      "reference_peak_force_abs": 532869.17182,
+      "displacement_nrmse": 3.823842751216693e-12,
+      "force_nrmse": 2.370023736140765e-12,
+      "generated_loop_area_abs": 55987.89955194782,
+      "reference_loop_area_abs": 55987.89955183047,
+      "loop_area_relative_error": 2.0959286799626644e-12
+    }
+  }
+}

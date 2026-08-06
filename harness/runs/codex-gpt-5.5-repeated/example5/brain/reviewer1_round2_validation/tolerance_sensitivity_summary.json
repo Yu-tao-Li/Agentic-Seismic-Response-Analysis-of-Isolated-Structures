@@ -1,0 +1,45 @@
+{
+  "run_count": 27,
+  "adopted": {
+    "force_rtol": 1E-7,
+    "displacement_rtol": 1E-10,
+    "state_rtol": 1E-10
+  },
+  "sweep": {
+    "force_rtol": [
+      1E-6,
+      1E-7,
+      1E-8
+    ],
+    "displacement_rtol": [
+      1E-8,
+      1E-10,
+      1E-12
+    ],
+    "state_rtol": [
+      1E-8,
+      1E-10,
+      1E-12
+    ]
+  },
+  "maximum_over_sweep": {
+    "top_displacement_peak_relative_change": 0,
+    "top_acceleration_peak_relative_change": 0,
+    "isolation_displacement_peak_relative_change": 0,
+    "base_shear_peak_relative_change": 0,
+    "hysteresis_area_relative_change": 0,
+    "top_displacement_nrmse": 0,
+    "top_acceleration_nrmse": 0,
+    "isolation_displacement_nrmse": 0,
+    "base_shear_nrmse": 0,
+    "failed_steps": 0,
+    "max_iterations": 3
+  },
+  "baseline_peaks": {
+    "top_displacement_abs_max": 0.028148812300878866,
+    "top_acceleration_abs_max": 5.0791572380799961,
+    "isolation_displacement_abs_max": 0.02314766872752656,
+    "base_shear_abs_max": 532869.17181881645,
+    "hysteresis_loop_area_abs": 55987.89955194779
+  }
+}
