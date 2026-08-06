@@ -1,0 +1,10 @@
+metric,value
+top displacement peak relative error,4.302172488238117e-12
+top displacement NRMSE,3.822764218544608e-12
+top displacement relative L2 error,1.7538460302415285e-11
+top acceleration peak relative error,3.937661449970976e-12
+top acceleration NRMSE,1.695947252318906e-12
+top acceleration relative L2 error,1.4780265638382855e-11
+hysteresis displacement NRMSE,3.823842751216693e-12
+hysteresis force NRMSE,2.370023736140765e-12
+hysteresis loop-area relative error,2.0959286799626644e-12

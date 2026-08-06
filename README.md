@@ -15,6 +15,7 @@ package-relative paths for public release.
 - `harness/runs/codex-gpt-5.5-repeated/`: repeated Codex GPT-5.5 run supporting the repeatability discussion.
 - `harness/runs/claude-code-mimo-v2.5-pro/example1/` and `harness/runs/claude-code-mimo-v2.5-pro-ultraspeed/example1/`: Example 1 workflow records used for the model-speed comparison.
 - `harness/runs/single_turn_speed_price_benchmark/`: controlled five-run single-turn speed, cost, and correctness benchmark.
+- `harness/runs/codex-gpt-5.5-repeated/example5/brain/reviewer1_round2_validation/`: canonical corrected Example 5 solver, dimensionless tolerance criteria, 27-run sensitivity analysis, and comparison with the independent Cui et al. reference output prepared for the second revision.
 
 The retained run folders include the generated programs, input files,
 machine-readable outputs, cross-validation reports, run-level reports, plotting
