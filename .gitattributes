@@ -4,3 +4,5 @@
 *.obj binary
 *.png binary
 *.pdf binary
+external_reference_validation/example1_chen/raw_output/reference_metrics.json -text
+external_reference_validation/example1_chen/parsed_output/canonical_matlab_modal_results.json -text
