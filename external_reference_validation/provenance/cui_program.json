@@ -1,0 +1,30 @@
+{
+  "source": "J. Cui, X. Shen, and M. Yang, Structural Seismic Response Analysis Programming and Application, China Architecture & Building Press, 2022 (in Chinese)",
+  "official_book_page": "https://www.jdcui.com/?page_id=16529",
+  "isbn": "978-7-112-26685-2",
+  "code_author": "Not individually attributed",
+  "code_author_basis": "The cited source is the coauthored book; the available evidence does not establish which individual wrote the associated program files.",
+  "chapter": 11,
+  "examples": [4, 5],
+  "original_solver_logic_modified": false,
+  "executed_during_this_revision": false,
+  "external_result_origin": "Existing author-confirmed machine-readable outputs exported from archived Origin projects.",
+  "not_generated_from_corrected_harness_matlab": true,
+  "archive_handling": "The external series are treated as immutable read-only inputs. Derived comparison files are written separately and do not overwrite them.",
+  "original_result_generation_date": "Unavailable from the archived material; no date is inferred.",
+  "origin_projects": {
+    "example4": {
+      "file": "gpt4.opju",
+      "sha256": "51089DFCF6B397B68C02CB430A426A997A273048C4C3577308E91E0E13B8D433",
+      "local_last_write_time": "2026-06-19T21:45:50+08:00"
+    },
+    "example5": {
+      "file": "gpt5.opju",
+      "sha256": "C0CDDDB3B248E9E1083A776680942D60257664355326DAE77EDA2E910F55FB63",
+      "local_last_write_time": "2026-06-19T21:45:52+08:00"
+    }
+  },
+  "ground_motion_sha256": "4D7952AA3DD7289CE462917F254D325B4AC44165F664FD6FAA36E3642DCB7ECC",
+  "input_match_note": "The Northridge record in the Supplementary files and the corrected harness MATLAB Examples 4 and 5 runs is byte-identical.",
+  "distribution_note": "The book program is not redistributed; source metadata, hashes, existing outputs, and comparison code are deposited."
+}

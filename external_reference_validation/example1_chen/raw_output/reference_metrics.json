@@ -1,0 +1,44 @@
+{
+  "example": "example1",
+  "task_type": "modal_analysis",
+  "source": "Analytical eigenvalue solution for the three-story shear building; values match Table 2 in the manuscript.",
+  "parameters": {
+    "story_mass_kg": 1000.0,
+    "story_stiffness_n_per_m": 500000.0,
+    "mass_matrix": [
+      [1000.0, 0.0, 0.0],
+      [0.0, 1000.0, 0.0],
+      [0.0, 0.0, 1000.0]
+    ],
+    "stiffness_matrix": [
+      [1000000.0, -500000.0, 0.0],
+      [-500000.0, 1000000.0, -500000.0],
+      [0.0, -500000.0, 500000.0]
+    ]
+  },
+  "circular_frequencies_rad_per_s": [
+    9.95143869,
+    27.8833116,
+    40.29255268
+  ],
+  "periods_s": [
+    0.63138462,
+    0.22533856,
+    0.15593912
+  ],
+  "normalized_mode_shapes": [
+    [0.44504187, 0.80193774, 1.0],
+    [-1.0, -0.44504187, 0.80193774],
+    [-0.80193774, 1.0, -0.44504187]
+  ],
+  "normalized_mode_shapes_abs": [
+    [0.44504187, 0.80193774, 1.0],
+    [1.0, 0.44504187, 0.80193774],
+    [0.80193774, 1.0, 0.44504187]
+  ],
+  "evaluation_notes": {
+    "frequency_and_period_tolerance_relative": 0.001,
+    "mode_shape_tolerance_absolute": 0.001,
+    "mode_shape_sign": "The sign of each eigenvector is arbitrary; evaluate mode shapes after allowing a whole-mode sign flip or by comparing absolute normalized amplitudes."
+  }
+}

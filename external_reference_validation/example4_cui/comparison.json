@@ -1,0 +1,35 @@
+{
+  "external_reference": "Cui et al. published MATLAB implementation",
+  "top_displacement": {
+    "samples": 1900,
+    "time_start_s": 0.0,
+    "time_end_s": 18.99,
+    "generated_peak_abs": 0.0358984692742315,
+    "reference_peak_abs": 0.036022644844,
+    "peak_relative_error": 0.003447153042378101,
+    "nrmse": 0.002678905097265424,
+    "relative_l2_error": 0.015009094425398313,
+    "correlation": 0.9999130045009458
+  },
+  "top_relative_acceleration": {
+    "samples": 1900,
+    "time_start_s": 0.0,
+    "time_end_s": 18.990000000000002,
+    "generated_peak_abs": 5.476209301964155,
+    "reference_peak_abs": 5.395365565,
+    "peak_relative_error": 0.014983922032752058,
+    "nrmse": 0.007759919673635381,
+    "relative_l2_error": 0.0705346295924983,
+    "correlation": 0.9976713914743939
+  },
+  "isolation_displacement": {
+    "samples": 1900,
+    "generated_peak_abs": 0.02504130333964,
+    "reference_peak_abs": 0.025045285909,
+    "peak_relative_error": 0.00015901472933749114,
+    "nrmse": 0.0018712253624609799,
+    "relative_l2_error": 0.010406912515476699,
+    "correlation": 0.999945894807469
+  },
+  "force_comparison_note": "The archived Cui et al. reference force series includes a different force-output convention; it is retained as raw evidence but excluded from the summary metric."
+}

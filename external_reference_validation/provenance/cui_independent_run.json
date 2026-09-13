@@ -1,0 +1,24 @@
+{
+  "source": "J. Cui, X. Shen, and M. Yang, Structural Seismic Response Analysis Programming and Application, China Architecture & Building Press, 2022 (in Chinese)",
+  "official_book_page": "https://www.jdcui.com/?page_id=16529",
+  "chapter": 11,
+  "appendices": [1, 6],
+  "code_author": "Not individually attributed",
+  "execution_environment": "MATLAB R2025b",
+  "executed_during_this_revision": true,
+  "independent_execution_basis": "The published algorithm and required appendix functions were retranscribed and executed separately from the agent-generated implementation, with no shared source-code fragment.",
+  "input_file": "example5_cui/input/Northridge_01_NO_968.txt",
+  "input_pga_convention": "Normalized to 0.40 g to match the corrected harness benchmark convention.",
+  "response_history_amplitude_rescaling": false,
+  "fitted_time_shift": false,
+  "response_sign_adjustment": false,
+  "source_listing_distributed": false,
+  "output_files": [
+    "example5_cui/independent_published_algorithm_output/top_displacement_m.txt",
+    "example5_cui/independent_published_algorithm_output/top_relative_acceleration_mps2.txt",
+    "example5_cui/independent_published_algorithm_output/isolator_hysteresis_m_N.txt"
+  ],
+  "comparison_target": "Corrected harness MATLAB output used in the revised manuscript.",
+  "comparison_file": "example5_cui/independent_run_comparison.json",
+  "historical_artifact_policy": "Previously deposited external series remain available as immutable comparison and integrity records; no historical artifact was altered or removed."
+}

@@ -1,0 +1,3 @@
+private_programs/
+__pycache__/
+*.pyc

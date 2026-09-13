@@ -1,0 +1,9 @@
+{
+  "generated_file": "example1_chen/parsed_output/canonical_matlab_modal_results.json",
+  "reference_file": "example1_chen/raw_output/reference_metrics.json",
+  "max_frequency_relative_error": 4.884923045575873e-10,
+  "max_period_relative_error": 1.5749277236160654e-08,
+  "minimum_mac": 1.0,
+  "max_sign_aligned_component_abs_difference": 4.195161551479032e-09,
+  "mode_shape_sign_rule": "Whole-mode sign alignment only; no component-wise sign fitting."
+}

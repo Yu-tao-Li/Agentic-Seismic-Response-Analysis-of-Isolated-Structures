@@ -1,0 +1,14 @@
+{
+  "external_reference": "Chen compiled MDOF program (article id=408)",
+  "top_displacement": {
+    "samples": 2000,
+    "time_start_s": 0.0,
+    "time_end_s": 39.98,
+    "generated_peak_abs": 0.109023891638892,
+    "reference_peak_abs": 0.108991,
+    "peak_relative_error": 0.00030178307284089485,
+    "nrmse": 4.9571272295217614e-05,
+    "relative_l2_error": 0.0004917789108602614,
+    "correlation": 0.9999999266902015
+  }
+}

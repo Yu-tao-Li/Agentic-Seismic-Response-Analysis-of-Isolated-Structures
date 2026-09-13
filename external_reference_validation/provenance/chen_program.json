@@ -1,0 +1,22 @@
+{
+  "program_name": "MDOF step-by-step integration program (mdof_hist2)",
+  "author": "Xuewei Chen (Dino Chen)",
+  "source_page": "http://www.dinochen.com/article.asp?id=408",
+  "source_page_title_zh": "多自由度体系模型时程分析的逐步积分法",
+  "source_page_date": "2022-01-08",
+  "archived_page_checked": "http://web.archive.org/web/20220528041154/http://www.dinochen.com/article.asp?id=408",
+  "download_archive_name": "mdof_hist2_program5.rar",
+  "download_archive_sha256": "20B334565C51EDDB28A3379DD2BB6836224CFEDD142455BB9401208313967C7D",
+  "executable_name": "MDOF_hist2.exe",
+  "executable_sha256": "4939F474FA63CBB31D052C7D79436BB53BB60FCA78F30DF90F53D3B9D3C294FF",
+  "modified": false,
+  "executed_during_this_revision": false,
+  "external_result_origin": "Existing author-confirmed results retained from the original study and archived project files.",
+  "not_generated_from_corrected_harness_matlab": true,
+  "archive_handling": "The external series are treated as immutable read-only inputs. Derived comparison files are written separately and do not overwrite them.",
+  "original_result_generation_date": "Unavailable from the archived material; no date is inferred.",
+  "examples": [1, 2],
+  "example2_ground_motion_sha256": "4F3AA79D0B724F2046E7163A5F334258301B27E0E5C717A630A69CF90272DB0D",
+  "input_match_note": "The GM1.txt in the downloaded package, the Supplementary files, and the corrected harness MATLAB Example 2 run are byte-identical.",
+  "distribution_note": "The executable and archive are retained privately and are excluded from the public validation package."
+}

@@ -1,0 +1,70 @@
+{
+  "external_reference": "Cui et al. published algorithm (independent run)",
+  "source": {
+    "citation": "J. Cui, X. Shen, and M. Yang, Structural Seismic Response Analysis Programming and Application, China Architecture & Building Press, 2022 (in Chinese)",
+    "chapter": 11,
+    "appendices": [
+      1,
+      6
+    ],
+    "execution_environment": "MATLAB R2025b",
+    "source_listing_distributed": false
+  },
+  "input_convention": {
+    "ground_motion": "example5_cui/input/Northridge_01_NO_968.txt",
+    "pga_scaling": "Normalized to 0.40 g to match the benchmark input convention.",
+    "response_history_amplitude_rescaling": false,
+    "time_shift": false,
+    "sign_adjustment": false
+  },
+  "comparison_target": "Corrected harness MATLAB output used in the revised manuscript.",
+  "comparison_window": "0.00--18.99 s (1900 samples)",
+  "reference_series": {
+    "top_displacement": "example5_cui/independent_published_algorithm_output/top_displacement_m.txt",
+    "top_relative_acceleration": "example5_cui/independent_published_algorithm_output/top_relative_acceleration_mps2.txt",
+    "isolator_hysteresis": "example5_cui/independent_published_algorithm_output/isolator_hysteresis_m_N.txt"
+  },
+  "harness_series": {
+    "top_displacement": "example5_cui/parsed_output/canonical_matlab_top_displacement.txt",
+    "top_relative_acceleration": "example5_cui/parsed_output/canonical_matlab_top_relative_acceleration.txt",
+    "isolator_hysteresis": "example5_cui/parsed_output/canonical_matlab_isolation_hysteresis.txt"
+  },
+  "metrics": {
+    "top_displacement": {
+      "samples": 1900,
+      "time_start_s": 0.0,
+      "time_end_s": 18.99,
+      "reference_peak_abs": 0.028148812300761245,
+      "harness_peak_abs": 0.0281488123008789,
+      "maximum_absolute_difference": 1.18325488296378e-13,
+      "peak_relative_error": 4.179781504723349e-12,
+      "nrmse": 1.4721862771917413e-12
+    },
+    "top_relative_acceleration": {
+      "samples": 1900,
+      "time_start_s": 0.0,
+      "time_end_s": 18.99,
+      "reference_peak_abs": 5.079157238079473,
+      "harness_peak_abs": 5.07915723808,
+      "maximum_absolute_difference": 2.9555247138546292e-12,
+      "peak_relative_error": 1.0369629806564638e-13,
+      "nrmse": 6.261981616714949e-14
+    },
+    "isolator_hysteresis": {
+      "samples": 1900,
+      "reference_peak_displacement_abs": 0.023147668727415093,
+      "harness_peak_displacement_abs": 0.0231476687275266,
+      "reference_peak_force_abs": 532869.1718185378,
+      "harness_peak_force_abs": 532869.171818816,
+      "maximum_absolute_displacement_difference": 1.1168149738338684e-13,
+      "maximum_absolute_force_difference": 1.190404873341322e-06,
+      "displacement_nrmse": 1.72711734180965e-12,
+      "force_nrmse": 3.0005091150379736e-13,
+      "reference_loop_area_abs": 55987.8995519269,
+      "harness_loop_area_abs": 55987.89955194782,
+      "loop_area_relative_error": 3.736231990874431e-13
+    },
+    "maximum_peak_relative_error": 4.179781504723349e-12,
+    "maximum_nrmse": 1.72711734180965e-12
+  }
+}
